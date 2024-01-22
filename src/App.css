@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,200;0,300;0,500;0,900;1,200;1,500;1,900&display=swap');
+
+.generaldes{
+  font-family:'Noto Serif',serif;
+  font-size: 16px;
+}
+.generaldesita{
+  font-family: 'Noto Serif',serif;
+  font-size: 16px;
+  font-style: italic;
+}
+.generaldessc{
+  font-family: 'Noto Serif SC',serif;
+  font-size: 16px;
+}
+.profilepic{
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:450px;
+  height:auto;
+}
+.profilecol{
+  background-color: #FEF9F9;
+  font-family: 'Noto Serif', serif;
+  color: #001125;
+}
+.des-wrapper{
+  display:flex;
+  flex-direction: column;
+  margin:40px;
+  gap:50px;
+}
+.header{
+  font-family: 'Noto Serif',serif;
+  font-size: 30px;
+  color: #001125;
+}
+.contact{
+  padding: 20px;
+  color: #001125;
+  text-align: center;
+  background-color: #C0BAFF;
+  display: flex;
+  justify-content: center;
+  align-items:baseline;
+  gap:30px;
+}
+.icon{
+  max-width: 40px;
+}
+.icon-wrapper{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.icon-wrapper a,
+.generaldes {
+  color: #001125;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
+
+
+/* font-family: 'Noto Serif SC', serif; */
+/* font-family: 'Noto Serif', serif; */
+@media screen and (max-width:600px) {
+  .profilepic{
+    width:300px;
+    height:auto;
+  }
+  .profilecol{
+    display:block;
+}
+}
+
+

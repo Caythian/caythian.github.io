@@ -1,0 +1,80 @@
+[
+    {
+        "imageName": "Berlin-06.jpg",
+        "title": "The Postamt Rohrpost, Berlin",
+        "time":"September 2023",
+        "info": "OM-1 21mm f/3.5 1/800"
+    },
+    {
+        "imageName": "Berlin-22.jpg",
+        "title": "Museum Island, Berlin",
+        "time":"September 2023",
+        "info": "OM-1 35mm f/4 1/200"
+    },
+    {
+        "imageName": "Berlin-23.jpg",
+        "title": "Pergamon Museum, Berlin",
+        "time":"September 2023",
+        "info": "OM-1 12mm f/3.2 1/800"
+    },
+    {
+        "imageName": "Berlin-20.jpg",
+        "title": "Cube Berlin, Berlin",
+        "time":"September 2023",
+        "info": "OM-1 27mm f/3.2 1/125"
+    },
+    {
+        "imageName":"Berlin-41.jpg",
+        "title":"Pfaueninsel, Berlin ",
+        "time":"October 2023",
+        "info":"OM-1 150mm f/4 1/500"
+    },
+    {
+        "imageName":"Berlin-75.jpg",
+        "title":"Berlin Cathedral, Berlin",
+        "time":"December 2023",
+        "info":"OM-1 21mm f/2.8 1/40"
+    },
+    {
+        "imageName":"Berlin-78.jpg",
+        "title":"Museum Island, Berlin",
+        "time":"December 2023",
+        "info":"OM-1 40mm f/4 1/1000"
+    },
+    {
+        "imageName":"Berlin-79.jpg",
+        "title":"Victory Column, Berlin",
+        "time":"October 2023",
+        "info":"OM-1 150mm f/4 1/160"
+    },
+    {
+        "imageName":"Berlin-28.jpg",
+        "title":"The Mitte, Berlin",
+        "time":"September 2023",
+        "info":"OM-1 20mm f/2.8 1/1000"
+    },
+    {
+        "imageName":"Berlin-32.jpg",
+        "title":"Kreuzberg, Berlin", 
+        "time":"September 2023",
+        "info":"OM-1 40mm f/2.8 1/160"
+    },
+    {
+        "imageName":"Berlin-37.jpg",
+        "title":"Near Museum Island, Berlin",
+        "time":"September 2023",
+        "info":"OM-1 14mm f/2.8 1/500"
+    },
+    {
+        "imageName":"Berlin-30.jpg",
+        "title":"Near Museum Island, Berlin",
+        "time":"September 2023",
+        "info":"OM-1 22mm f/2.8 1/500"
+    },
+    {
+        "imageName":"Berlin-59.jpg",
+        "title":"Pfaueninsel, Berlin ",
+        "time":"October 2023",
+        "info":"OM-1 85mm f/4 1/160"
+    }
+]

@@ -1,0 +1,27 @@
+.footerdes{
+    font-family: 'Noto Serif',serif;
+    color: #001125;
+  
+  }
+  .footerdessc{
+    font-family: 'Noto Serif SC', serif;
+    color: #001125;
+    text-decoration: none;
+  }
+
+  .footer-wrapper{
+    background-color: #FEF9F9;
+    padding: 20px;
+    font-weight: 300;
+    font-size: 12px;
+    text-align: center;
+    position:relative;
+    bottom:0px;
+    justify-content: space-between;
+  }
+  .footerlinks{
+    display: flex;
+    justify-content:center;
+    gap:20px;
+    margin-top: 20px;
+  }
