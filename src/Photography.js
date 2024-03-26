@@ -10,7 +10,7 @@ function Photography(){
     <div>
         <Headbar/>
         <div className="des-wrapper">
-        <div className="generaldes">Photography, for Xuecong Wang, only acts as a documentation tool for her traveling and living experience. Therefore, it is entirely separated from her artistic practice, which is contemplative rather than aesthetically pleasing. Now (until the end of the season), this page features some highlights she took in Berlin. It will be updated seasonally.  </div>
+        <div className="generaldes">Photography, for Xuecong Wang, only acts as a documentation tool for her traveling and living experience. Therefore, it is entirely separated from her artistic practice, which is contemplative rather than aesthetically pleasing. Now (until the end of the season), this page features what she took in Savannah, Georgia, during the spring break. It will be updated seasonally.  </div>
         </div>
         <PhotoDisplay/>
         <Footer/>

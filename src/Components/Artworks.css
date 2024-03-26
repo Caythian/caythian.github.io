@@ -4,7 +4,7 @@
 }
 .artworkgallery-wrapper {
     margin:20px;
-    column-count: 2;
+    column-count: 3;
     column-gap: 1em;
     max-width: 100%;
     padding: 0 4px;

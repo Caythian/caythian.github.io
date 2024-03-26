@@ -1,80 +1,86 @@
 [
     {
-        "imageName": "Berlin-06.jpg",
-        "title": "The Postamt Rohrpost, Berlin",
-        "time":"September 2023",
-        "info": "OM-1 21mm f/3.5 1/800"
+        "imageName": "Savannah2024-01.jpg",
+        "title": "Ring-billed Gull",
+        "time":"March 2024",
+        "info": "OM-1 150mm f/5 1/1600"
     },
     {
-        "imageName": "Berlin-22.jpg",
-        "title": "Museum Island, Berlin",
-        "time":"September 2023",
-        "info": "OM-1 35mm f/4 1/200"
+        "imageName": "Savannah2024-15.jpg",
+        "title": "Great Blue Heron",
+        "time":"March 2024",
+        "info": "OM-1 140mm f/5 1/1600"
     },
     {
-        "imageName": "Berlin-23.jpg",
-        "title": "Pergamon Museum, Berlin",
-        "time":"September 2023",
-        "info": "OM-1 12mm f/3.2 1/800"
+        "imageName": "Savannah2024-03.jpg",
+        "title": "Sanderling",
+        "time":"March 2024",
+        "info": "OM-1 150mm f/5 1/1600"
     },
     {
-        "imageName": "Berlin-20.jpg",
-        "title": "Cube Berlin, Berlin",
-        "time":"September 2023",
-        "info": "OM-1 27mm f/3.2 1/125"
+        "imageName": "Savannah2024-04.jpg",
+        "title": "Sanderling",
+        "time":"March 2024",
+        "info": "OM-1 150mm f/5 1/1600"
     },
     {
-        "imageName":"Berlin-41.jpg",
-        "title":"Pfaueninsel, Berlin ",
-        "time":"October 2023",
-        "info":"OM-1 150mm f/4 1/500"
+        "imageName":"Savannah2024-05.jpg",
+        "title":"",
+        "time":"March 2024",
+        "info":"OM-1 150mm f/5 1/1600"
     },
     {
-        "imageName":"Berlin-75.jpg",
-        "title":"Berlin Cathedral, Berlin",
-        "time":"December 2023",
-        "info":"OM-1 21mm f/2.8 1/40"
+        "imageName":"Savannah2024-06.jpg",
+        "title":"",
+        "time":"March 2024",
+        "info":"OM-1 93mm f/5 1/1600"
     },
     {
-        "imageName":"Berlin-78.jpg",
-        "title":"Museum Island, Berlin",
-        "time":"December 2023",
-        "info":"OM-1 40mm f/4 1/1000"
+        "imageName":"Savannah2024-07.jpg",
+        "title":"Osprey",
+        "time":"March 2024",
+        "info":"OM-1 140mm f/5 1/1600"
     },
     {
-        "imageName":"Berlin-79.jpg",
-        "title":"Victory Column, Berlin",
-        "time":"October 2023",
-        "info":"OM-1 150mm f/4 1/160"
+        "imageName":"Savannah2024-08.jpg",
+        "title":"Yellow-bellied Sapsucker ",
+        "time":"March 2024",
+        "info":"OM-1 150mm f/5 1/1600"
     },
     {
-        "imageName":"Berlin-28.jpg",
-        "title":"The Mitte, Berlin",
-        "time":"September 2023",
-        "info":"OM-1 20mm f/2.8 1/1000"
+        "imageName":"Savannah2024-10.jpg",
+        "title":"Wormsole Historic Plantation",
+        "time":"March 2024",
+        "info":"OM-1 40mm f/4 1/320"
     },
     {
-        "imageName":"Berlin-32.jpg",
-        "title":"Kreuzberg, Berlin", 
-        "time":"September 2023",
-        "info":"OM-1 40mm f/2.8 1/160"
+        "imageName":"Savannah2024-11.jpg",
+        "title":"Brown Headed-Cowbird", 
+        "time":"March 2024",
+        "info":"OM-1 150mm f/4 1/1250"
     },
     {
-        "imageName":"Berlin-37.jpg",
-        "title":"Near Museum Island, Berlin",
-        "time":"September 2023",
-        "info":"OM-1 14mm f/2.8 1/500"
+        "imageName":"Savannah2024-12.jpg",
+        "title":"",
+        "time":"March 2024",
+        "info":"OM-1 40mm f/4 1/2500"
     },
     {
-        "imageName":"Berlin-30.jpg",
-        "title":"Near Museum Island, Berlin",
-        "time":"September 2023",
-        "info":"OM-1 22mm f/2.8 1/500"
+        "imageName":"Savannah2024-13.jpg",
+        "title":"Black-bellied Whistling Duck",
+        "time":"March 2024",
+        "info":"OM-1 150mm f/5 1/1600"
     },
     {
-        "imageName":"Berlin-59.jpg",
-        "title":"Pfaueninsel, Berlin ",
-        "time":"October 2023",
-        "info":"OM-1 85mm f/4 1/160"
+        "imageName":"Savannah2024-18.jpg",
+        "title":"Anhinga ",
+        "time":"March 2024",
+        "info":"OM-1 150mm f/5 1/1600"
+    },
+    {
+        "imageName":"Savannah2024-16.jpg",
+        "title":"Turkey Vulture",
+        "time":"March 2024",
+        "info":"OM-1 150mm f/4 1/1250"
     }
 ]
