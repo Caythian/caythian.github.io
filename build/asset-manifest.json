@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.05d4b6b9.css",
-    "main.js": "/static/js/main.675f4809.js",
+    "main.js": "/static/js/main.874d1e4e.js",
     "static/js/453.d10748bc.chunk.js": "/static/js/453.d10748bc.chunk.js",
     "static/media/Cyberspace Triptych.jpg": "/static/media/Cyberspace Triptych.1799277bb0a320e18163.jpg",
     "static/media/IMG_1665.PNG": "/static/media/IMG_1665.213f0c4d157689fa4f25.PNG",
@@ -54,11 +54,11 @@
     "static/media/instaicon.svg": "/static/media/instaicon.84b1f3dfd1d7bb0d1b6a69f7928e3350.svg",
     "static/media/email.svg": "/static/media/email.04b12ca7da207cd3f54d7c93808d10e2.svg",
     "main.05d4b6b9.css.map": "/static/css/main.05d4b6b9.css.map",
-    "main.675f4809.js.map": "/static/js/main.675f4809.js.map",
+    "main.874d1e4e.js.map": "/static/js/main.874d1e4e.js.map",
     "453.d10748bc.chunk.js.map": "/static/js/453.d10748bc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.05d4b6b9.css",
-    "static/js/main.675f4809.js"
+    "static/js/main.874d1e4e.js"
   ]
 }

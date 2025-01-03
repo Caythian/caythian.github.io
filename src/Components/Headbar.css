@@ -1,63 +1,76 @@
-.headbar-wrapper{
-    display: flex;
-    justify-content: space-between;
-    background-color: #001125;
-    padding: 20px;
-    align-items: center;
-  }
-  .headbar{
-    text-align: center;
-    color:#FEF9F9;
-    display:flex;
-    gap:20px;
-    align-items: baseline;
-  }
-  .headbar:hover{
-    color:#FAE967;
-    transition: color 0.5s ease;
-  }
-  
-  .title{
-    font-family: 'Noto Serif', serif;
-    font-weight: 400;
-    font-size: 30px;
-    text-transform: uppercase;
-    text-decoration: none;
-  }
-  .titlesc{
-    font-family: 'Noto Serif SC, serif';
-    font-weight: 700;
-    font-size: 20px;
-  }
-  .menubar{
-    display:flex;
-    justify-content: center;
-    gap:40px;
-  }
-  .menubarcol{
-    display: block;
-    justify-content: center;
-    text-align: center;
-    padding: 10px;
-  }
-  
-  .subtitlesc{
-    font-family: 'Noto Serif SC', serif;
-    font-weight: 400;
-    text-decoration: none;
-    color: #FEF9F9;
-    padding: 10px;
-    text-transform: uppercase;
-  }
-  
-  .subtitlesc:hover{
-    transition:all 0.2s ease;
-    color:#FAE967;
-    text-decoration:underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 5px;
-    text-decoration-color: #FAE967;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+.headbar-wrapper {
+  display: flex;
+  justify-content: space-between;
+  background-color: #001125;
+  padding: 20px;
+  align-items: center;
+}
+.headbar {
+  text-align: center;
+  color: #fef9f9;
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+}
+.headbar:hover {
+  color: #fae967;
+  transition: color 0.5s ease;
+}
+
+.title {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  font-size: 30px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.titlesc {
+  font-family: "Noto Serif SC, serif";
+  font-weight: 700;
+  font-size: 20px;
+}
+.menubar {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+.menubarcol {
+  display: block;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+}
+.subtitle {
+  font-weight: 400;
+  text-decoration: none;
+  color: #fef9f9;
+  padding: 10px;
+  text-transform: uppercase;
+  font-family: "Playfair Display", serif;
+}
+.subtitlesc {
+  font-family: "Noto Serif SC", serif;
+}
+
+.subtitlesc:hover {
+  transition: all 0.2s ease;
+  color: #fae967;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  text-decoration-color: #fae967;
+}
+
+.subtitle:hover {
+  transition: all 0.2s ease;
+  color: #fae967;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  text-decoration-color: #fae967;
+}
 
 @media screen and (max-width: 800px) {
   .menubar {
@@ -67,11 +80,12 @@
   .menubarcol {
     padding: 5px;
   }
-  .title, .titlesc {
-    font-size: 20px; 
+  .title,
+  .titlesc {
+    font-size: 20px;
   }
   .subtitlesc {
-    font-size: 14px; 
+    font-size: 14px;
   }
 }
 
@@ -84,12 +98,11 @@
     display: flex;
     width: 100%;
   }
-  .title, .titlesc {
-    font-size: 18px; 
+  .title,
+  .titlesc {
+    font-size: 18px;
   }
   .subtitlesc {
-    font-size: 12px; 
+    font-size: 12px;
   }
 }
-
-

@@ -11,16 +11,16 @@ function Headbar() {
       </div>
       <div className="menubar">
         <div className="menubarcol">
-          <Link to="/" className="subtitlesc">Art 艺术</Link>
+          <Link to="/" className="subtitle">Art  <span className="subtitlesc">艺术</span></Link>
         </div>
         <div className="menubarcol">
-          <Link to="/photography" className="subtitlesc">Photography 摄影</Link>
+          <Link to="/photography" className="subtitle">Photography <span className="subtitlesc">摄影</span></Link>
         </div>
         <div className="menubarcol">
-          <Link to="/about" className="subtitlesc">About 关于</Link>
+          <Link to="/about" className="subtitle">About <span className="subtitlesc">关于</span></Link>
         </div>
         <div className="menubarcol">
-          <Link to="/cv" className="subtitlesc">CV 简历</Link>
+          <Link to="/cv" className="subtitle">CV <span className="subtitlesc">简历</span></Link>
         </div>
       </div>
     </div>

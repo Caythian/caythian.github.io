@@ -27,15 +27,15 @@ function About(){
             <div className="contact">
                 <a className="icon-wrapper"href="https://www.instagram.com/xc_wang.art?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
                     <img className="icon" src={insta} alt="instagram icon"></img>
-                    <div className="generaldes">Instagram</div>
+                    {/* <div className="generaldes">Instagram</div> */}
                 </a>
                 <a className="icon-wrapper"href="mailto:xcatherine020202@gmail.com">
                     <img className="icon" src={email} alt="email icon"></img>
-                    <div className="generaldes"> Email</div>
+                    {/* <div className="generaldes">Email</div> */}
                 </a>
                 <a className="icon-wrapper"href="https://www.youtube.com/channel/UCxSwejYGGTz7fBi_y0iI7uQ" target="_blank" rel="noopener noreferrer">
                     <img className="icon" src={youtube} alt="youtube icon"></img>
-                    <div className="generaldes">YouTube</div>
+                    {/* <div className="generaldes">YouTube</div> */}
                 </a>
             </div>
         </div>

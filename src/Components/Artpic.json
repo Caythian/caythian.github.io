@@ -1,5 +1,89 @@
 [
     {
+        "image":"Crowdshot.jpg",
+        "title":"Crowd Shot",
+        "time":"June 2024",
+        "medium":"Watercolor on paper mounted on wood panel",
+        "description":"The hooded crows took over the plaza. I saw them. Their eyes glittered in the dark."
+    },
+    {
+        "image": "Selfportrait.jpg",
+        "title": "Self-Portrait: my finger hurts",
+        "time": "November 2024",
+        "medium": "Watercolor on stretched paper",
+        "description": [
+            "Scared scared",
+            "I got an unknown splinter in my index finger",
+            "Scared scared",
+            "I heard stories about fiberglass stuck forever",
+            "Scared scared",
+            "I stepped on the grates of a dark basement",
+            "Puzzled–",
+            "A small shadow, a small me,",
+            "Inside–",
+            "A big shadow, another me"
+        ]
+    },     
+    {
+        "image":"study no.3.jpg",
+        "title":"study no.3",
+        "time":"August 2024",
+        "medium":"Watercolor on paper"
+    },
+    {   "image":"study no.2.JPG",
+        "title":"study no.2",
+        "time":"July 2024",
+        "medium":"Watercolor on paper"
+    },
+    {   "image":"study no.1.JPG",
+        "title":"study no.1",
+        "time":"August 2024",
+        "medium":"Watercolor on paper"
+    },
+    {   "image":"01_ToBeCivilisToPee.jpg",
+        "title":"To Be Civil is To Pee",
+        "time":"December 2024",
+        "medium":"Frame: ceramic, Painting: watercolor on paper mounted on wood panel",
+        "description":"In New York, beauty and ugliness coexist, like a puddle of urine alongside the fascinating interplay of light and shadows cast by glass. In this work, the artist uses New York as a microcosm of post-capitalist society, exploring the symbolic significance of urine and dogs within this context.",
+        "detail1":"02_ToBeCivilisToPee.jpg",
+        "detail2":"03_ToBeCivilisToPee.jpg",
+        "detail3":"04_ToBeCivilisToPee.jpg"
+    },
+    {
+        "image":"01_Xenovessel.jpg",
+        "title":"Xenovessel No.1",
+        "time":"September 2024",
+        "medium":"Ceramic",
+        "description":"Interested in how ancient artifacts could be selectively chosen to shape history based on demands of the contemporary, the artist aims to create a series of alien vessels resembling organic forms in nature, such as a shell, that provide a “twist in history”.",
+        "detail1":"02_Xenovessel.jpg"
+    },
+    {
+        "image":"04_untitled.jpg",
+        "title":"untitled",
+        "time":"November 2024",
+        "medium":"Ceramic",
+        "description":"Ceramic is usually regarded as a material requiring much care. In this piece, the artist challenges this concept by making modular pieces with ceramic and assembling them together like children’s stacking toys. The careless playfulness to the making of these forms contrasts with the fragile nature of the material itself.",
+        "detail1":"01_untitled.jpg",
+        "detail2":"02_untitled.jpg"
+    },
+    {
+        "image":"01_Eggs2024.jpg",
+        "title":"Eggs(2024)",
+        "time":"October 2024",
+        "medium":"Ceramic",
+        "description":"This is an experimental ceramic piece of red clay.",
+        "detail1":"02_Eggs2024.jpg",
+        "detail2":"03_Eggs2024.jpg"
+    },
+    {
+        "image":"LockingEyes.JPG",
+        "title":"Locking Eyes",
+        "time":"August 2024",
+        "medium":"Watercolor on paper mounted on wood panel",
+        "description":"In East Asian families, expressions of love often remain veiled in subtlety. It dwells neither in words nor in physical touch. Often, this love exists in an invisible realm, perhaps only manifesting itself in moments of shared gazes. In this diptych, the artist captures moments of eye contact with her parents. These exchanges of glances occur in peculiar occasions, and within them lies the “possibility of non-existence.” “Is my father truly looking at me, or is it merely a fleeting glance as we pass by each other?” “Is my mother really gazing at me, or is she simply smiling playfully as the eyebrows become a mustache when viewed upside down?”",
+        "detail1":"Wang_Xuecong_Locking Eyes.jpg"
+    },
+    {
         "image":"magazine.jpg",
         "title":"How to Cut Out a Star",
         "time":"March 2024",
@@ -9,18 +93,10 @@
         "detail2":"P2.jpg"
     },
     {
-        "image":"Wang_Xuecong_Locking Eyes.jpg",
-        "title":"Locking Eyes",
-        "time":"March 2024",
-        "medium":"Watercolor on Paper mounted on Wood Board",
-        "description":"The artist drew inspiration from the unique way she connected with her father during her childhood. In their most common family activity, swimming, they shared an unspoken agreement to neither speak nor gesture to each other, completely void of communication. The artist found it strangely touching when her father turned around and swam toward her, as she pondered whether the eyes behind the goggles were looking at her or not.",
-        "detail1":""
-    },
-    {
         "image":"Theywhisper2.jpg",
         "title":"They Whisper",
         "time":"September-November 2023",
-        "medium":"Watercolor on Paper",
+        "medium":"Watercolor on paper",
         "description":"The artist perceives a hallowed ambiguity in the foggy natural darkness. As human’s primary sense- sight- is surrendered to the night, the boundary between imagination and reality becomes ambiguous. Shapes, colors, and noises emerge from the veiled darkness, and they morph and blend by imagination. Submerging in this darkness also revives the raw and primal fear of the unknown, and the rush of adrenaline reawakens our animalistic connection to the wild. Inspired by the dramatic effect of flashlight photography, the artist contemplates the invasive nature of artificial light—its aggressive, stark nature, penetrating the murky darkness, serves as a metaphor for humanity's relentless expansion into natural landscapes. Thus, They Whisper suggests a contemplative discourse on how we, modern technology, and the untouched natural realm coexist in today's world. ",
         "detail1":"IMG_2251.jpg",
         "detail2":"P1111808.jpg",
@@ -43,8 +119,7 @@
         "medium":"Acrylics on canvas",
         "description":"This painting delves into the challenges of renovating culture, particularly the indigenous culture in America. During a visit to Monument Valley, I observed with sadness how the practice of horseback riding, a common practice of Western tourism, has desecrated a sacred land. However, this activity represents the only feasible means for the reservation to generate revenue and support the revitalization of indigenous culture. There’s this strangeness, there’s this dillema.",
         "detail1":"On Horseback detail1.jpg",
-        "detail2":"On Horseback detail2.jpg",
-        "detail3":""
+        "detail2":"On Horseback detail2.jpg"
     },
     {
         "image":"WaterfrontCrowdShot.jpg",

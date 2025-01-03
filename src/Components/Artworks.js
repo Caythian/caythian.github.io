@@ -56,7 +56,22 @@ const Artwork = () => {
                     <div className="caption">Title: {selectedArtwork.title}</div>
                     <div className="caption">Time: {selectedArtwork.time}</div>
                     <div className="caption">Medium: {selectedArtwork.medium}</div>                
-                    <div className="description">Description: {selectedArtwork.description}</div>
+                    <div className="description">Description:  
+                        <div className="descriptionplus">
+                        {Array.isArray(selectedArtwork.description) ? (
+                            selectedArtwork.description.map((line, index) => (
+                                <p key={index} className="line">
+                                    {line}
+                                </p>
+                            ))
+                        ) : (
+                            <p className="regular-description">
+                                {selectedArtwork.description}
+                            </p>
+                        )}
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
