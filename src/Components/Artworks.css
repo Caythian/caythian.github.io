@@ -54,16 +54,17 @@
 .modal {
     position: fixed;
     z-index: 1000;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height:80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height:auto;
     background-color: rgba(0, 17, 37, 0.6); 
     display: flex;
     align-items: center; 
     justify-content: center; 
     overflow: hidden;
+    padding: 20px;
 }
 .modal * {
     font-family: 'Playfair Display', serif !important;
@@ -77,14 +78,12 @@
 
 .modal-content-wrapper {
     position: relative;
-    max-height: 50vh; 
-    width: calc(90% - 60px);
+    height: 80vh; 
+    width: 80%; 
     max-width: 1200px;
-    margin: 20px auto; /* Added vertical margin */
+    margin: auto;
     overflow-y: auto;
-    padding-right: 20px;
-    padding-top: 20px; /* Added top padding */
-    padding-bottom: 20px; /* Added bottom padding */
+    padding: 20px 30px 20px 20px; /* Combined padding */
 }
 
 .modal-content-wrapper::-webkit-scrollbar {
