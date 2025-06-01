@@ -2,10 +2,11 @@ import "./App.css";
 import React from "react";
 import Headbar from "./Components/Headbar";
 import Footer from "./Components/Footer";
-const img = "https://images.xuecong.art/MewithTheyWhisper.JPG";
-const insta = "https://images.xuecong.art/instaicon.svg";
-const email = "https://images.xuecong.art/email.svg";
-const youtube = "https://images.xuecong.art/Youtubeicon.svg";
+const imageCdnBaseUrl =
+  import.meta.env.VITE_CDN_URL || "https://images.xuecong.art/";
+const img = `${imageCdnBaseUrl}MewithTheyWhisper.JPG`;
+const insta = `${imageCdnBaseUrl}instaicon.svg`;
+const email = `${imageCdnBaseUrl}email.svg`;
 
 function About() {
   return (

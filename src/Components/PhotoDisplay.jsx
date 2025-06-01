@@ -6,7 +6,8 @@ import "../App.css";
 const Photo = () => {
   const [photos, setPhotos] = useState([]);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const imageCdnBaseUrl = "https://images.xuecong.art/";
+  const imageCdnBaseUrl =
+    import.meta.env.VITE_CDN_URL || "https://images.xuecong.art/";
 
   useEffect(() => {
     if (Array.isArray(photosData)) {
