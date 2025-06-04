@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import Photography from "./Photography";
+import Blog from "./Blog";
 import About from "./About";
 import Cv from "./Cv";
 // import More from './More';
@@ -15,8 +15,8 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/photography",
-    element: <Photography />,
+    path: "/blog",
+    element: <Blog />,
   },
   // {
   //   path: "/more",
