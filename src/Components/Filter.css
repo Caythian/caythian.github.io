@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+.title {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px;
+  }  
+.titlesc {
+    font-family: "Noto Serif SC, serif";
+    font-weight: 700;
+    font-size: 20px;
+  }
+.filter-wrapper{
+    color: #001125;
+    justify-content: center;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.title:hover{
+    background-color: #001125;
+    color: #fae967;
+    transition: color 0.5s ease;
+}
