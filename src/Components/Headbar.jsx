@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Headbar.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Headbar.css";
 
 function Headbar() {
   return (
@@ -11,16 +11,24 @@ function Headbar() {
       </div>
       <div className="menubar">
         <div className="menubarcol">
-          <Link to="/" className="subtitle">Art <span className="subtitlesc">艺术</span></Link>
+          <Link to="/" className="subtitle">
+            Art <span className="subtitlesc">艺术</span>
+          </Link>
         </div>
         <div className="menubarcol">
-          <Link to="/blog" className="subtitle">Blog <span className="subtitlesc">博客</span></Link>
+          <Link to="/blog" className="subtitle">
+            Blog <span className="subtitlesc">博客</span>
+          </Link>
         </div>
         <div className="menubarcol">
-          <Link to="/about" className="subtitle">About <span className="subtitlesc">关于</span></Link>
+          <Link to="/about" className="subtitle">
+            About <span className="subtitlesc">关于</span>
+          </Link>
         </div>
         <div className="menubarcol">
-          <Link to="/cv" className="subtitle">CV <span className="subtitlesc">简历</span></Link>
+          <Link to="/cv" className="subtitle">
+            CV <span className="subtitlesc">简历</span>
+          </Link>
         </div>
       </div>
     </div>

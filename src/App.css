@@ -1,51 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,200;0,300;0,500;0,900;1,200;1,500;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-.generaldes{
-  font-family:'Playfair Display',serif;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,200;0,300;0,500;0,900;1,200;1,500;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+.generaldes {
+  font-family: "Playfair Display", serif;
   font-size: 16px;
   text-indent: 2em;
 }
-.generaldesita{
-  font-family: 'Playfair Display',serif;
+.generaldesita {
+  font-family: "Playfair Display", serif;
   font-size: 16px;
   font-style: italic;
 }
 .extra-indent {
-  padding-left: 2em; 
+  padding-left: 2em;
 }
-.generaldessc{
-  font-family: 'Noto Serif SC',serif;
+.generaldessc {
+  font-family: "Noto Serif SC", serif;
   font-size: 16px;
 }
 
-.profilepic{
+.profilepic {
   margin-top: 20px;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width:450px;
-  height:auto;
+  width: 450px;
+  height: auto;
 }
-.profilecol{
-  background-color: #FEF9F9;
-  font-family: 'Playfair Display', serif;
+.profilecol {
+  background-color: #fef9f9;
+  font-family: "Playfair Display", serif;
   color: #001125;
 }
-.des-wrapper{
-  display:flex;
+.des-wrapper {
+  display: flex;
   flex-direction: column;
-  margin:40px;
-  gap:50px;
+  margin: 40px;
+  gap: 50px;
 }
-.header{
-  font-family: 'Playfair Display',serif;
+.header {
+  font-family: "Playfair Display", serif;
   font-size: 30px;
   color: #001125;
 }
 .contact {
   padding: 20px;
-  background-color: #C0BAFF;
+  background-color: #c0baff;
   display: flex;
   justify-content: center;
   gap: 30px;
@@ -74,17 +74,14 @@ a:-webkit-any-link {
   text-decoration: none;
 }
 
-
 /* font-family: 'Noto Serif SC', serif; */
 /* font-family: 'Noto Serif', serif; */
-@media screen and (max-width:600px) {
-  .profilepic{
-    width:300px;
-    height:auto;
+@media screen and (max-width: 600px) {
+  .profilepic {
+    width: 300px;
+    height: auto;
   }
-  .profilecol{
-    display:block;
+  .profilecol {
+    display: block;
+  }
 }
-}
-
-
