@@ -3,29 +3,29 @@ name: Deploy React App to GitHub Pages
 on:
   push:
     branches:
-      - main  # Set this to the branch you're using
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Source Code
-      uses: actions/checkout@v2
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '21'  # Specify your Node.js version
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
 
-    - name: Install Dependencies
-      run: npm install
+      - name: Install Dependencies
+        run: bun install
 
-    - name: Build React App
-      run: npm run build
+      - name: Build React App
+        run: bun run build
 
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        branch: gh-pages  # Pushes the build to the gh-pages branch
-        folder: build     # The folder the action should deploy
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # Use the secret token
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist # Vite builds to 'dist' by default, not 'build'
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}

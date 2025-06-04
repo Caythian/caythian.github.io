@@ -1,156 +1,158 @@
 [
-    {
-        "image":"Crowdshot.jpg",
-        "title":"Crowd Shot",
-        "time":"June 2024",
-        "medium":"Watercolor on paper mounted on wood panel",
-        "description":"The hooded crows took over the plaza. I saw them. Their eyes glittered in the dark."
-    },
-    {
-        "image": "Selfportrait.jpg",
-        "title": "Self-Portrait: my finger hurts",
-        "time": "November 2024",
-        "medium": "Watercolor on stretched paper",
-        "description": [
-            "Scared scared",
-            "I got an unknown splinter in my index finger",
-            "Scared scared",
-            "I heard stories about fiberglass stuck forever",
-            "Scared scared",
-            "I stepped on the grates of a dark basement",
-            "Puzzled–",
-            "A small shadow, a small me,",
-            "Inside–",
-            "A big shadow, another me"
-        ]
-    },     
-    {
-        "image":"study no.3.jpg",
-        "title":"study no.3",
-        "time":"August 2024",
-        "medium":"Watercolor on paper"
-    },
-    {   "image":"study no.2.JPG",
-        "title":"study no.2",
-        "time":"July 2024",
-        "medium":"Watercolor on paper"
-    },
-    {   "image":"study no.1.JPG",
-        "title":"study no.1",
-        "time":"August 2024",
-        "medium":"Watercolor on paper"
-    },
-    {   "image":"01_ToBeCivilisToPee.jpg",
-        "title":"To Be Civil is To Pee",
-        "time":"December 2024",
-        "medium":"Frame: ceramic, Painting: watercolor on paper mounted on wood panel",
-        "description":"In New York, beauty and ugliness coexist, like a puddle of urine alongside the fascinating interplay of light and shadows cast by glass. In this work, the artist uses New York as a microcosm of post-capitalist society, exploring the symbolic significance of urine and dogs within this context.",
-        "detail1":"02_ToBeCivilisToPee.jpg",
-        "detail2":"03_ToBeCivilisToPee.jpg",
-        "detail3":"04_ToBeCivilisToPee.jpg"
-    },
-    {
-        "image":"01_Xenovessel.jpg",
-        "title":"Xenovessel No.1",
-        "time":"September 2024",
-        "medium":"Ceramic",
-        "description":"Interested in how ancient artifacts could be selectively chosen to shape history based on demands of the contemporary, the artist aims to create a series of alien vessels resembling organic forms in nature, such as a shell, that provide a “twist in history”.",
-        "detail1":"02_Xenovessel.jpg"
-    },
-    {
-        "image":"04_untitled.jpg",
-        "title":"untitled",
-        "time":"November 2024",
-        "medium":"Ceramic",
-        "description":"Ceramic is usually regarded as a material requiring much care. In this piece, the artist challenges this concept by making modular pieces with ceramic and assembling them together like children’s stacking toys. The careless playfulness to the making of these forms contrasts with the fragile nature of the material itself.",
-        "detail1":"01_untitled.jpg",
-        "detail2":"02_untitled.jpg"
-    },
-    {
-        "image":"01_Eggs2024.jpg",
-        "title":"Eggs(2024)",
-        "time":"October 2024",
-        "medium":"Ceramic",
-        "description":"This is an experimental ceramic piece of red clay.",
-        "detail1":"02_Eggs2024.jpg",
-        "detail2":"03_Eggs2024.jpg"
-    },
-    {
-        "image":"LockingEyes.JPG",
-        "title":"Locking Eyes",
-        "time":"August 2024",
-        "medium":"Watercolor on paper mounted on wood panel",
-        "description":"In East Asian families, expressions of love often remain veiled in subtlety. It dwells neither in words nor in physical touch. Often, this love exists in an invisible realm, perhaps only manifesting itself in moments of shared gazes. In this diptych, the artist captures moments of eye contact with her parents. These exchanges of glances occur in peculiar occasions, and within them lies the “possibility of non-existence.” “Is my father truly looking at me, or is it merely a fleeting glance as we pass by each other?” “Is my mother really gazing at me, or is she simply smiling playfully as the eyebrows become a mustache when viewed upside down?”",
-        "detail1":"Wang_Xuecong_Locking Eyes.jpg"
-    },
-    {
-        "image":"magazine.jpg",
-        "title":"How to Cut Out a Star",
-        "time":"March 2024",
-        "medium":"Illustration: watercolor on paper; Magazine: Photoshop",
-        "description":"“How to Cut Out a Star” takes the form of a paper-cutting tutorial accompanied by the illustrative style of children’s magazines and primary school textbooks. Children’s education is normally assumed to be “innocent”, designed to prepare children for social integration by introducing social and cultural norms, fostering personal growth, and cultivating basic moral ethics. However, education also assumes the responsibility of introducing the concepts of culture, nation, and state. This kind of education is often instilled in other educational content.",
-        "detail1":"P1.jpg",
-        "detail2":"P2.jpg"
-    },
-    {
-        "image":"Theywhisper2.jpg",
-        "title":"They Whisper",
-        "time":"September-November 2023",
-        "medium":"Watercolor on paper",
-        "description":"The artist perceives a hallowed ambiguity in the foggy natural darkness. As human’s primary sense- sight- is surrendered to the night, the boundary between imagination and reality becomes ambiguous. Shapes, colors, and noises emerge from the veiled darkness, and they morph and blend by imagination. Submerging in this darkness also revives the raw and primal fear of the unknown, and the rush of adrenaline reawakens our animalistic connection to the wild. Inspired by the dramatic effect of flashlight photography, the artist contemplates the invasive nature of artificial light—its aggressive, stark nature, penetrating the murky darkness, serves as a metaphor for humanity's relentless expansion into natural landscapes. Thus, They Whisper suggests a contemplative discourse on how we, modern technology, and the untouched natural realm coexist in today's world. ",
-        "detail1":"IMG_2251.jpg",
-        "detail2":"P1111808.jpg",
-        "detail3":"P1111809.jpg"
-    },
-    {
-        "image": "Cyberspace Triptych.jpg",
-        "title": "Cyberspace Triptych",
-        "time":"April-May 2023",
-        "medium": "Acrylics on canvas",
-        "description":"This project is a reflection of my understanding of cyberspace: regardless of the glorious neon lights and dazzling moving pictures, it is a space comparable to reality especially the natural landscape, where everything is interconnected, where people are still compelled by innate desires, and where a cloak of anonymity results in elusive identities.",
-        "detail1":"TriptychLeft.jpg",
-        "detail2":"TriptychMid.jpg",
-        "detail3":"TriptychRight.jpg"
-    },
-    {
-        "image":"On Horseback.jpg",
-        "title":"On Horseback",
-        "time":"March 2023",
-        "medium":"Acrylics on canvas",
-        "description":"This painting delves into the challenges of renovating culture, particularly the indigenous culture in America. During a visit to Monument Valley, I observed with sadness how the practice of horseback riding, a common practice of Western tourism, has desecrated a sacred land. However, this activity represents the only feasible means for the reservation to generate revenue and support the revitalization of indigenous culture. There’s this strangeness, there’s this dillema.",
-        "detail1":"On Horseback detail1.jpg",
-        "detail2":"On Horseback detail2.jpg"
-    },
-    {
-        "image":"WaterfrontCrowdShot.jpg",
-        "title":"Waterfront Crowd Shot",
-        "time":"March 2023",
-        "medium":"Acrylics on canvas",
-        "description":"As a student studying in New York City while residing in Jersey City, I make the daily 30-minute commute across the Hudson River. This routine has led me to reflect on the habits of Canada geese, who disperse widely during the day but gather together on the river bank at dusk and night. In many ways, their patterns mirror those the Jersey residents, who lead busy lives but come together in the evening to unwind and connect. In this painting, I aim to replicate the look of a photograph taken with a flashlight, while also conveying the sense of unease and discomfort that such lighting can create.",
-        "detail1":"Detail1.jpg"
-    },
-    {
-        "image":"TemptationFromMemory.jpg",
-        "title":"Temptation from Memory",
-        "time":"April 2023",
-        "medium":"Acrylics on canvas",
-        "description":"This artwork delves into the dichotomy of humans’ innate fear and curiosity towards darkness, which the artist experienced firsthand while stargazing in Zion National Park. Following the creation of the Waterfront Crowd Shot piece, this work continues to explore the artistic potential of using a flashlight in photography. The dramatic contrasts of light and dark emphasize the enigmatic quality of nature’s shadows. In contrast to photography, this painting features a surrealist foreground and experimental color speckles, which impart an unreal and illusory quality to the image.",
-        "detail1":"tfmdetail.jpg"
-    },
-    {
-        "image":"IMG_8501.jpg",
-        "title":"Hag Stone",
-        "time":"April 2023",
-        "medium":"Acrylics on wood",
-        "description":"The artist, who enjoys collecting natural souvenirs, came across this hag stone on a California beach. The stone’s unique holes, created by mollusks, and its symmetrical shape, coupled with a bright line in the middle, immediately caught the artist’s attention. The stone’s portability and aesthetic qualities prompted the artist to explore its spiritual significance, both as a singular artifact and in the context of traditional beliefs about hag stones and their perceived protective properties against evil. The artist’s recent fascination with Surrealism served as inspiration for this diptych. The backgrounds are reminiscent of Yves Tanguy’s depictions of landscapes, while the artist’s inclusion of time and contextual changes in the piece reflects the Surrealist exploration of time and space."
-    },
-    {
-        "image":"IMG_1665.PNG",
-        "title":"Add One Year of Longevity to my Fate",
-        "time":"March 2022",
-        "medium":"original: Lipstick, Pencil, Scriptliner pen. for display: Scanned copy of original pages",
-        "description":"In many Asian myths, one’s palm lines relate to their fate. The middle one, the Life Line, refers specifically to one’s health and longevity. The action of elongating this line to increase longevity is an abstract representation of human’s futile struggle of survival in the fear of mortality",
-        "detail1":"IMG_1560.PNG"
-    }
-
+  {
+    "image": "Crowdshot.jpg",
+    "title": "Crowd Shot",
+    "time": "June 2024",
+    "medium": "Watercolor on paper mounted on wood panel",
+    "description": "The hooded crows took over the plaza. I saw them. Their eyes glittered in the dark."
+  },
+  {
+    "image": "Selfportrait.jpg",
+    "title": "Self-Portrait: my finger hurts",
+    "time": "November 2024",
+    "medium": "Watercolor on stretched paper",
+    "description": [
+      "Scared scared",
+      "I got an unknown splinter in my index finger",
+      "Scared scared",
+      "I heard stories about fiberglass stuck forever",
+      "Scared scared",
+      "I stepped on the grates of a dark basement",
+      "Puzzled–",
+      "A small shadow, a small me,",
+      "Inside–",
+      "A big shadow, another me"
+    ]
+  },
+  {
+    "image": "study no.3.jpg",
+    "title": "study no.3",
+    "time": "August 2024",
+    "medium": "Watercolor on paper"
+  },
+  {
+    "image": "study no.2.JPG",
+    "title": "study no.2",
+    "time": "July 2024",
+    "medium": "Watercolor on paper"
+  },
+  {
+    "image": "study no.1.JPG",
+    "title": "study no.1",
+    "time": "August 2024",
+    "medium": "Watercolor on paper"
+  },
+  {
+    "image": "01_ToBeCivilisToPee.jpg",
+    "title": "To Be Civil is To Pee",
+    "time": "December 2024",
+    "medium": "Frame: ceramic, Painting: watercolor on paper mounted on wood panel",
+    "description": "In New York, beauty and ugliness coexist, like a puddle of urine alongside the fascinating interplay of light and shadows cast by glass. In this work, the artist uses New York as a microcosm of post-capitalist society, exploring the symbolic significance of urine and dogs within this context.",
+    "detail1": "02_ToBeCivilisToPee.jpg",
+    "detail2": "03_ToBeCivilisToPee.jpg",
+    "detail3": "04_ToBeCivilisToPee.jpg"
+  },
+  {
+    "image": "01_Xenovessel.jpg",
+    "title": "Xenovessel No.1",
+    "time": "September 2024",
+    "medium": "Ceramic",
+    "description": "Interested in how ancient artifacts could be selectively chosen to shape history based on demands of the contemporary, the artist aims to create a series of alien vessels resembling organic forms in nature, such as a shell, that provide a “twist in history”.",
+    "detail1": "02_Xenovessel.jpg"
+  },
+  {
+    "image": "04_untitled.jpg",
+    "title": "untitled",
+    "time": "November 2024",
+    "medium": "Ceramic",
+    "description": "Ceramic is usually regarded as a material requiring much care. In this piece, the artist challenges this concept by making modular pieces with ceramic and assembling them together like children’s stacking toys. The careless playfulness to the making of these forms contrasts with the fragile nature of the material itself.",
+    "detail1": "01_untitled.jpg",
+    "detail2": "02_untitled.jpg"
+  },
+  {
+    "image": "01_Eggs2024.jpg",
+    "title": "Eggs(2024)",
+    "time": "October 2024",
+    "medium": "Ceramic",
+    "description": "This is an experimental ceramic piece of red clay.",
+    "detail1": "02_Eggs2024.jpg",
+    "detail2": "03_Eggs2024.jpg"
+  },
+  {
+    "image": "LockingEyes.JPG",
+    "title": "Locking Eyes",
+    "time": "August 2024",
+    "medium": "Watercolor on paper mounted on wood panel",
+    "description": "In East Asian families, expressions of love often remain veiled in subtlety. It dwells neither in words nor in physical touch. Often, this love exists in an invisible realm, perhaps only manifesting itself in moments of shared gazes. In this diptych, the artist captures moments of eye contact with her parents. These exchanges of glances occur in peculiar occasions, and within them lies the “possibility of non-existence.” “Is my father truly looking at me, or is it merely a fleeting glance as we pass by each other?” “Is my mother really gazing at me, or is she simply smiling playfully as the eyebrows become a mustache when viewed upside down?”",
+    "detail1": "Wang_Xuecong_Locking Eyes.jpg"
+  },
+  {
+    "image": "magazine.jpg",
+    "title": "How to Cut Out a Star",
+    "time": "March 2024",
+    "medium": "Illustration: watercolor on paper; Magazine: Photoshop",
+    "description": "“How to Cut Out a Star” takes the form of a paper-cutting tutorial accompanied by the illustrative style of children’s magazines and primary school textbooks. Children’s education is normally assumed to be “innocent”, designed to prepare children for social integration by introducing social and cultural norms, fostering personal growth, and cultivating basic moral ethics. However, education also assumes the responsibility of introducing the concepts of culture, nation, and state. This kind of education is often instilled in other educational content.",
+    "detail1": "P1.jpg",
+    "detail2": "P2.jpg"
+  },
+  {
+    "image": "Theywhisper2.jpg",
+    "title": "They Whisper",
+    "time": "September-November 2023",
+    "medium": "Watercolor on paper",
+    "description": "The artist perceives a hallowed ambiguity in the foggy natural darkness. As human’s primary sense- sight- is surrendered to the night, the boundary between imagination and reality becomes ambiguous. Shapes, colors, and noises emerge from the veiled darkness, and they morph and blend by imagination. Submerging in this darkness also revives the raw and primal fear of the unknown, and the rush of adrenaline reawakens our animalistic connection to the wild. Inspired by the dramatic effect of flashlight photography, the artist contemplates the invasive nature of artificial light—its aggressive, stark nature, penetrating the murky darkness, serves as a metaphor for humanity's relentless expansion into natural landscapes. Thus, They Whisper suggests a contemplative discourse on how we, modern technology, and the untouched natural realm coexist in today's world. ",
+    "detail1": "IMG_2251.jpg",
+    "detail2": "P1111808.jpg",
+    "detail3": "P1111809.jpg"
+  },
+  {
+    "image": "Cyberspace Triptych.jpg",
+    "title": "Cyberspace Triptych",
+    "time": "April-May 2023",
+    "medium": "Acrylics on canvas",
+    "description": "This project is a reflection of my understanding of cyberspace: regardless of the glorious neon lights and dazzling moving pictures, it is a space comparable to reality especially the natural landscape, where everything is interconnected, where people are still compelled by innate desires, and where a cloak of anonymity results in elusive identities.",
+    "detail1": "TriptychLeft.jpg",
+    "detail2": "TriptychMid.jpg",
+    "detail3": "TriptychRight.jpg"
+  },
+  {
+    "image": "On Horseback.jpg",
+    "title": "On Horseback",
+    "time": "March 2023",
+    "medium": "Acrylics on canvas",
+    "description": "This painting delves into the challenges of renovating culture, particularly the indigenous culture in America. During a visit to Monument Valley, I observed with sadness how the practice of horseback riding, a common practice of Western tourism, has desecrated a sacred land. However, this activity represents the only feasible means for the reservation to generate revenue and support the revitalization of indigenous culture. There’s this strangeness, there’s this dillema.",
+    "detail1": "On Horseback detail1.jpg",
+    "detail2": "On Horseback detail2.jpg"
+  },
+  {
+    "image": "WaterfrontCrowdShot.jpg",
+    "title": "Waterfront Crowd Shot",
+    "time": "March 2023",
+    "medium": "Acrylics on canvas",
+    "description": "As a student studying in New York City while residing in Jersey City, I make the daily 30-minute commute across the Hudson River. This routine has led me to reflect on the habits of Canada geese, who disperse widely during the day but gather together on the river bank at dusk and night. In many ways, their patterns mirror those the Jersey residents, who lead busy lives but come together in the evening to unwind and connect. In this painting, I aim to replicate the look of a photograph taken with a flashlight, while also conveying the sense of unease and discomfort that such lighting can create.",
+    "detail1": "Detail1.jpg"
+  },
+  {
+    "image": "TemptationFromMemory.jpg",
+    "title": "Temptation from Memory",
+    "time": "April 2023",
+    "medium": "Acrylics on canvas",
+    "description": "This artwork delves into the dichotomy of humans’ innate fear and curiosity towards darkness, which the artist experienced firsthand while stargazing in Zion National Park. Following the creation of the Waterfront Crowd Shot piece, this work continues to explore the artistic potential of using a flashlight in photography. The dramatic contrasts of light and dark emphasize the enigmatic quality of nature’s shadows. In contrast to photography, this painting features a surrealist foreground and experimental color speckles, which impart an unreal and illusory quality to the image.",
+    "detail1": "tfmdetail.jpg"
+  },
+  {
+    "image": "IMG_8501.jpg",
+    "title": "Hag Stone",
+    "time": "April 2023",
+    "medium": "Acrylics on wood",
+    "description": "The artist, who enjoys collecting natural souvenirs, came across this hag stone on a California beach. The stone’s unique holes, created by mollusks, and its symmetrical shape, coupled with a bright line in the middle, immediately caught the artist’s attention. The stone’s portability and aesthetic qualities prompted the artist to explore its spiritual significance, both as a singular artifact and in the context of traditional beliefs about hag stones and their perceived protective properties against evil. The artist’s recent fascination with Surrealism served as inspiration for this diptych. The backgrounds are reminiscent of Yves Tanguy’s depictions of landscapes, while the artist’s inclusion of time and contextual changes in the piece reflects the Surrealist exploration of time and space."
+  },
+  {
+    "image": "IMG_1665.PNG",
+    "title": "Add One Year of Longevity to my Fate",
+    "time": "March 2022",
+    "medium": "original: Lipstick, Pencil, Scriptliner pen. for display: Scanned copy of original pages",
+    "description": "In many Asian myths, one’s palm lines relate to their fate. The middle one, the Life Line, refers specifically to one’s health and longevity. The action of elongating this line to increase longevity is an abstract representation of human’s futile struggle of survival in the fear of mortality",
+    "detail1": "IMG_1560.PNG"
+  }
 ]

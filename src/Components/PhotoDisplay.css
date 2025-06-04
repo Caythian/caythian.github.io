@@ -1,131 +1,130 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,200;0,300;0,500;0,900;1,200;1,500;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,200;0,300;0,500;0,900;1,200;1,500;1,900&display=swap");
 
 .photogallery-wrapper {
-    margin:20px;
-    column-count: 3;
-    column-gap: 1em;
-    max-width: 100%;
-    padding: 0 4px;
+  margin: 20px;
+  column-count: 3;
+  column-gap: 1em;
+  max-width: 100%;
+  padding: 0 4px;
+}
+
+.photogallery {
+  break-inside: avoid;
+  margin-bottom: 1em;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+}
+
+.photogallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.photogallery .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: #fff9f950;
+  color: #fff9f9;
+  font-family: "Noto Serif", serif;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.photogallery:hover .overlay {
+  opacity: 1;
+}
+
+.modal {
+  display: row;
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  top: 50%;
+  width: 90%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 17, 37, 0.6);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: auto;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  overflow: auto;
+  max-width: 600px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin: auto;
+  color: #fff9f950;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: auto;
+}
+
+.close:hover,
+.close:focus {
+  color: #fff9f9;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.caption {
+  padding: 10px;
+  text-align: left;
+  font-size: 16px;
+  font-family: "Noto Serif", serif;
+  color: #fff9f9;
+}
+
+@media screen and (max-width: 800px) {
+  .photogallery-wrapper {
+    column-count: 2;
   }
-  
-  .photogallery {
-    break-inside: avoid;
-    margin-bottom: 1em;
-    width: 100%;
-    position:relative;
-    cursor:pointer;
-  }
-  
-  .photogallery img {
-    width: 100%;
-    height: auto;
-    display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .photogallery-wrapper {
+    column-count: 1;
   }
   .photogallery .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: #FFF9F950; 
-    color: #FFF9F9;
-    font-family: 'Noto Serif',serif;
-    font-size: 20px;
-    display: flex;
-    align-items: center; 
-    justify-content: center; 
-    overflow: hidden; 
-  }
-  
-  .photogallery:hover .overlay {
+    font-size: 16px;
     opacity: 1;
+    right: 0;
+    top: auto;
+    text-align: center;
+    height: 10%;
+    background-color: #fff9f960;
+    color: #00376a;
   }
 
-  .modal {
-    display: row;
-    position: fixed;
-    z-index: 1000;
-    left: 50%;
-    top: 50%;
+  .photogallery:hover .overlay {
+    opacity: 0.9;
+  }
+  .modal-content {
     width: 90%;
     height: auto;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 17, 37, 0.6); 
-    align-items: center; 
-    justify-content: center; 
-    padding: 20px;
-    overflow: auto; 
   }
-  
-  .modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    overflow: auto;
-    max-width: 600px;
-  }
-  
-  .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;;
-    margin: auto;
-    color: #FFF9F950;
-    font-size: 35px;
-    font-weight: bold;
-    cursor: pointer;
-    margin: auto;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color:#FFF9F9;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
   .caption {
-    padding: 10px;;
-    text-align: left;
-    font-size: 16px;
-    font-family: 'Noto Serif', serif;
-    color: #FFF9F9;
-  }  
-  
-  @media screen and (max-width: 800px) {
-    .photogallery-wrapper {
-      column-count: 2;
-    }
+    font-size: 12px;
   }
-  
-  @media screen and (max-width: 600px) {
-    .photogallery-wrapper {
-      column-count: 1;
-    }
-    .photogallery .overlay {
-      font-size: 16px; 
-      opacity: 1; 
-      right:0;
-      top:auto;
-      text-align:center;
-      height: 10%;
-      background-color: #FFF9F960;
-      color:#00376A;
-    }
-  
-    .photogallery:hover .overlay {
-      opacity: 0.9; 
-    }
-    .modal-content{
-      width: 90%;
-      height:auto;
-    }
-    .caption{
-      font-size: 12px;;
-    }
-  }
-  
+}
