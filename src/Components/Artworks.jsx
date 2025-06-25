@@ -1,25 +1,50 @@
 import React, { useState, useEffect } from "react";
-import artPicData from "./Artpic.json";
 import "./Artworks.css";
 import "../App.css";
 
-const Artwork = () => {
+const Artwork = ({ selectedFilter }) => {
   const [artworks, setArtworks] = useState([]);
   const [selectedArtwork, setSelectedArtwork] = useState(null);
   const imageCdnBaseUrl =
     import.meta.env.VITE_CDN_URL || "https://images.xuecong.art/";
 
   useEffect(() => {
-    if (Array.isArray(artPicData)) {
-      const loadedArtworks = artPicData.map((artwork) => {
-        return {
-          ...artwork,
-          url: `${imageCdnBaseUrl}${artwork.image}`,
-        };
-      });
-      setArtworks(loadedArtworks);
-    }
-  }, []);
+    const loadArtworks = async () => {
+      try {
+        let artPicDataModule;
+        if (selectedFilter === "painting") {
+          artPicDataModule = await import("./data/Painting.json");
+        } else if (selectedFilter === "sculpture") {
+          artPicDataModule = await import("./data/Sculpture.json");
+        } else if (selectedFilter === "installation") {
+          artPicDataModule = await import("./data/Installation.json");
+        } else if (selectedFilter === "other") {
+          artPicDataModule = await import("./data/Other.json");
+        } 
+        else {
+          // No filter selected, load all artworks (optional - modify as needed)
+          artPicDataModule = await import("./Artpic.json"); // Or a default JSON
+        }
+
+        const artPicData = artPicDataModule.default; // Access the default export
+        if (Array.isArray(artPicData)) {
+          const loadedArtworks = artPicData.map((artwork) => ({
+            ...artwork,
+            url: `${imageCdnBaseUrl}${artwork.image}`,
+          }));
+          setArtworks(loadedArtworks);
+        } else {
+          console.error("Invalid JSON data:", artPicData);
+          setArtworks([]);
+        }
+      } catch (error) {
+        console.error("Error loading artworks:", error);
+        setArtworks([]);
+      }
+    };
+
+    loadArtworks();
+  }, [selectedFilter]);
 
   if (!artworks || artworks.length === 0) {
     return <div>Loading...</div>;
@@ -88,6 +113,7 @@ const Artwork = () => {
               <div className="caption">Title: {selectedArtwork.title}</div>
               <div className="caption">Time: {selectedArtwork.time}</div>
               <div className="caption">Medium: {selectedArtwork.medium}</div>
+              <div className="caption">Dimension: {selectedArtwork.dimension}</div>
               <div className="description">
                 Description:
                 <div className="descriptionplus">

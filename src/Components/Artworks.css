@@ -5,11 +5,10 @@
 }
 
 .artworkgallery-wrapper {
-  margin: 20px;
   column-count: 3;
   column-gap: 1em;
   max-width: 100%;
-  padding: 0 4px;
+  padding: 20px 4px;
 }
 
 .artworkgallery {
@@ -35,9 +34,9 @@
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition: 0.5s ease;
-  background-color: #fff9f960;
-  color: #fff9f9;
+  transition: 0.3s ease;
+  backdrop-filter: blur(15px);
+  color: #ffffff;
   text-shadow: #00376a 1px 0 10px;
   font-family: "Playfair Display", serif;
   font-size: 20px;
@@ -92,7 +91,7 @@
 }
 
 .modal-content-wrapper::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 249, 249, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
 }
 
@@ -103,7 +102,7 @@
 /* Firefox scrollbar */
 .modal-content-wrapper {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 249, 249, 0.3) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
 
 .modal-content {
@@ -119,7 +118,7 @@
   z-index: 1010;
   top: 20px;
   right: calc(5% + 20px); /* Align with modal content edge */
-  color: #fff9f9;
+  color: #ffffff;
   font-size: 35px;
   font-weight: bold;
   cursor: pointer;
