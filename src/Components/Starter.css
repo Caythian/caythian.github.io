@@ -32,6 +32,7 @@
     padding:20px;
     text-align: center;
     color: #001125;
+    z-index: 1;
   }
   .Startertitle{
     font-size:40px;
