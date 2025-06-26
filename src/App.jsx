@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Headbar from './Components/Headbar';
 import Footer from './Components/Footer';
-import Artworkdisplay from './Components/Artworks';
+import Artwork from './Components/Artworks';
 import Starter from './Components/Artpage';
 import Filter from './Components/Filter';
 import './App.css';
 
 function App() {
   const [selectedFilter, setSelectedFilter] = useState(null);
+  const [selectedArtwork, setSelectedArtwork] = useState(null);
+
+  useEffect(() => {
+    if (selectedArtwork) {
+      document.body.classList.add("overflow-y-hidden");
+    } else {
+      document.body.classList.remove("overflow-y-hidden");
+    }
+
+    return () => {
+      document.body.classList.remove("overflow-y-hidden");
+    };
+  }, [selectedArtwork]);
 
   const handleFilter = (filterType) => {
     setSelectedFilter((prevFilter) => {
@@ -19,13 +32,23 @@ function App() {
     });
   };
 
+  const openModal = (artwork) => {
+    setSelectedArtwork(artwork);
+  };
+
+  const closeModal = () => {
+    setSelectedArtwork(null);
+  };
 
   return (
     <div className="App">
       <Starter />
       <Headbar />
-      <Filter onFilter={handleFilter} selectedFilter={selectedFilter} /> {/* Pass selectedFilter prop */}
-      <Artworkdisplay selectedFilter={selectedFilter} />
+      <Filter onFilter={handleFilter} selectedFilter={selectedFilter} />
+      <Artwork
+        selectedFilter={selectedFilter}
+        openModal={openModal}
+      />
       <Footer />
     </div>
   );

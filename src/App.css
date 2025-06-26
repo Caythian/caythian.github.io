@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,200;0,300;0,500;0,900;1,200;1,500;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 .generaldes {
   font-family: "Playfair Display", serif;
@@ -15,7 +14,7 @@
   padding-left: 2em;
 }
 .generaldessc {
-  font-family: "Noto Serif SC", serif;
+  font-family: "Playfair Display", serif;
   font-size: 16px;
 }
 
@@ -55,17 +54,16 @@
 .icon {
   width: 40px;
   height: 40px;
-  display: block; /* Add this to ensure the image is displayed */
+  display: block; 
 }
 
 .icon-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer; /* Add this to show it's clickable */
+  cursor: pointer; 
 }
 
-/* Add hover effect for better user experience */
 .icon-wrapper:hover {
   opacity: 0.8;
 }
@@ -74,8 +72,6 @@ a:-webkit-any-link {
   text-decoration: none;
 }
 
-/* font-family: 'Noto Serif SC', serif; */
-/* font-family: 'Noto Serif', serif; */
 @media screen and (max-width: 600px) {
   .profilepic {
     width: 300px;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Artworks.css";
 import "../App.css";
-import Popup from "./Popup"; // Import the Popup component
+import Popup from "./Popup"; 
 
 const Artwork = ({ selectedFilter }) => {
   const [artworks, setArtworks] = useState([]);
@@ -67,7 +67,7 @@ const Artwork = ({ selectedFilter }) => {
 
   const openModal = (artwork) => {
     setSelectedArtwork(artwork);
-    setCurrentDetailIndex(0); // Reset index when opening a new modal
+    setCurrentDetailIndex(0); 
   };
 
   const closeModal = () => {
@@ -106,7 +106,7 @@ const Artwork = ({ selectedFilter }) => {
 
   return (
     <div>
-      <div className="artworkgallery-wrapper">
+       <div className="artworkgallery-wrapper">
         {artworks.map((artwork, index) => (
           <div
             className="artworkgallery"
@@ -118,6 +118,7 @@ const Artwork = ({ selectedFilter }) => {
           </div>
         ))}
       </div>
+
 
       <Popup
         selectedArtwork={selectedArtwork}
