@@ -10,8 +10,17 @@ function App() {
   const [selectedFilter, setSelectedFilter] = useState(null);
 
   const handleFilter = (filterType) => {
-    setSelectedFilter(filterType);
+    setSelectedFilter((prevFilter) => {
+      if (prevFilter === filterType) {
+        // If the same filter is clicked again, deselect it
+        return null;
+      } else {
+        // Otherwise, select the new filter
+        return filterType;
+      }
+    });
   };
+
 
   return (
     <div className="App">

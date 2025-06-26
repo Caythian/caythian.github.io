@@ -11,22 +11,39 @@ const Artwork = ({ selectedFilter }) => {
   useEffect(() => {
     const loadArtworks = async () => {
       try {
-        let artPicDataModule;
+        let artPicData;
         if (selectedFilter === "painting") {
-          artPicDataModule = await import("./data/Painting.json");
+          const artPicDataModule = await import("./data/Painting.json");
+          artPicData = artPicDataModule.default;
         } else if (selectedFilter === "sculpture") {
-          artPicDataModule = await import("./data/Sculpture.json");
+          const artPicDataModule = await import("./data/Sculpture.json");
+          artPicData = artPicDataModule.default;
         } else if (selectedFilter === "installation") {
-          artPicDataModule = await import("./data/Installation.json");
+          const artPicDataModule = await import("./data/Installation.json");
+          artPicData = artPicDataModule.default;
         } else if (selectedFilter === "other") {
-          artPicDataModule = await import("./data/Other.json");
-        } 
-        else {
-          // No filter selected, load all artworks (optional - modify as needed)
-          artPicDataModule = await import("./Artpic.json"); // Or a default JSON
+          const artPicDataModule = await import("./data/Other.json");
+          artPicData = artPicDataModule.default;
+        } else {
+          // No filter selected, load all artworks from every category
+          const paintingModule = await import("./data/Painting.json");
+          const sculptureModule = await import("./data/Sculpture.json");
+          const installationModule = await import("./data/Installation.json");
+          const otherModule = await import("./data/Other.json");
+
+          const paintingData = paintingModule.default;
+          const sculptureData = sculptureModule.default;
+          const installationData = installationModule.default;
+          const otherData = otherModule.default;
+
+          artPicData = [
+            ...(Array.isArray(paintingData) ? paintingData : []),
+            ...(Array.isArray(sculptureData) ? sculptureData : []),
+            ...(Array.isArray(installationData) ? installationData : []),
+            ...(Array.isArray(otherData) ? otherData : []),
+          ];
         }
 
-        const artPicData = artPicDataModule.default; // Access the default export
         if (Array.isArray(artPicData)) {
           const loadedArtworks = artPicData.map((artwork) => ({
             ...artwork,
@@ -113,7 +130,7 @@ const Artwork = ({ selectedFilter }) => {
               <div className="caption">Title: {selectedArtwork.title}</div>
               <div className="caption">Time: {selectedArtwork.time}</div>
               <div className="caption">Medium: {selectedArtwork.medium}</div>
-              <div className="caption">Dimension: {selectedArtwork.dimension}</div>
+               <div className="caption">Dimension: {selectedArtwork.dimension}</div>
               <div className="description">
                 Description:
                 <div className="descriptionplus">
