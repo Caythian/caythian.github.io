@@ -12,10 +12,8 @@ function App() {
   const handleFilter = (filterType) => {
     setSelectedFilter((prevFilter) => {
       if (prevFilter === filterType) {
-        // If the same filter is clicked again, deselect it
         return null;
       } else {
-        // Otherwise, select the new filter
         return filterType;
       }
     });

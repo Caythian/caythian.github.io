@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./Artworks.css";
 import "../App.css";
+import Popup from "./Popup"; // Import the Popup component
 
 const Artwork = ({ selectedFilter }) => {
   const [artworks, setArtworks] = useState([]);
   const [selectedArtwork, setSelectedArtwork] = useState(null);
+  const [currentDetailIndex, setCurrentDetailIndex] = useState(0);
   const imageCdnBaseUrl =
     import.meta.env.VITE_CDN_URL || "https://images.xuecong.art/";
 
@@ -63,17 +65,44 @@ const Artwork = ({ selectedFilter }) => {
     loadArtworks();
   }, [selectedFilter]);
 
-  if (!artworks || artworks.length === 0) {
-    return <div>Loading...</div>;
-  }
-
   const openModal = (artwork) => {
     setSelectedArtwork(artwork);
+    setCurrentDetailIndex(0); // Reset index when opening a new modal
   };
 
   const closeModal = () => {
     setSelectedArtwork(null);
   };
+
+  const goToPrevious = () => {
+    setCurrentDetailIndex((prevIndex) =>
+      prevIndex > 0 ? prevIndex - 1 : getDetailImageUrls().length - 1
+    );
+  };
+
+  const goToNext = () => {
+    setCurrentDetailIndex((nextIndex) =>
+      nextIndex < getDetailImageUrls().length - 1 ? nextIndex + 1 : 0
+    );
+  };
+
+  const getDetailImageUrls = () => {
+    const urls = [];
+    if (selectedArtwork) {
+      urls.push(selectedArtwork.url);
+      if (selectedArtwork.detail1)
+        urls.push(`${imageCdnBaseUrl}${selectedArtwork.detail1}`);
+      if (selectedArtwork.detail2)
+        urls.push(`${imageCdnBaseUrl}${selectedArtwork.detail2}`);
+      if (selectedArtwork.detail3)
+        urls.push(`${imageCdnBaseUrl}${selectedArtwork.detail3}`);
+    }
+    return urls;
+  };
+
+  if (!artworks || artworks.length === 0) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -90,67 +119,15 @@ const Artwork = ({ selectedFilter }) => {
         ))}
       </div>
 
-      {selectedArtwork && (
-        <div className="modal" onClick={closeModal}>
-          <span className="close">&times;</span>
-          <div className="modal-content-wrapper">
-            <div className="modal-images-container">
-              <img
-                className="modal-content"
-                src={selectedArtwork.url}
-                alt={selectedArtwork.title}
-                loading="lazy"
-              />
-              {selectedArtwork.detail1 && (
-                <img
-                  className="modal-content"
-                  src={`${imageCdnBaseUrl}${selectedArtwork.detail1}`}
-                  alt="Detail 1"
-                  loading="lazy"
-                />
-              )}
-              {selectedArtwork.detail2 && (
-                <img
-                  className="modal-content"
-                  src={`${imageCdnBaseUrl}${selectedArtwork.detail2}`}
-                  alt="Detail 2"
-                  loading="lazy"
-                />
-              )}
-              {selectedArtwork.detail3 && (
-                <img
-                  className="modal-content"
-                  src={`${imageCdnBaseUrl}${selectedArtwork.detail3}`}
-                  alt="Detail 3"
-                  loading="lazy"
-                />
-              )}
-            </div>
-            <div className="caption-wrapper">
-              <div className="caption">Title: {selectedArtwork.title}</div>
-              <div className="caption">Time: {selectedArtwork.time}</div>
-              <div className="caption">Medium: {selectedArtwork.medium}</div>
-               <div className="caption">Dimension: {selectedArtwork.dimension}</div>
-              <div className="description">
-                Description:
-                <div className="descriptionplus">
-                  {Array.isArray(selectedArtwork.description) ? (
-                    selectedArtwork.description.map((line, index) => (
-                      <p key={index} className="line">
-                        {line}
-                      </p>
-                    ))
-                  ) : (
-                    <p className="regular-description">
-                      {selectedArtwork.description}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <Popup
+        selectedArtwork={selectedArtwork}
+        closeModal={closeModal}
+        goToPrevious={goToPrevious}
+        goToNext={goToNext}
+        getDetailImageUrls={getDetailImageUrls}
+        imageCdnBaseUrl={imageCdnBaseUrl}
+        currentDetailIndex={currentDetailIndex}
+      />
     </div>
   );
 };

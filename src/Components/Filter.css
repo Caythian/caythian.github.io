@@ -7,6 +7,7 @@
   border-radius: 3px;
   transition: background-color 0.3s ease;
   display: inline-block;
+
 }
 .title {
   font-family: "Playfair Display", serif;
@@ -33,7 +34,14 @@
 
 .filter-option.active {
   background-color: rgba(250, 233, 103, 1); 
-  transition: all 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
   cursor: default; 
   transform: scaleX(1.1); 
+
+}
+
+
+.filter-option:hover{
+    transform: scaleX(1.1); 
+    transition: all 0.3s ease-in-out;
 }
