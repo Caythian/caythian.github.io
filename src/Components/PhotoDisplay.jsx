@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import photosData from "./Photos.json";
 import "./PhotoDisplay.css";
 import "../App.css";
+import Popup from "./Popup";
 
 const Photo = () => {
   const [photos, setPhotos] = useState([]);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+
   const imageCdnBaseUrl =
     import.meta.env.VITE_CDN_URL || "https://images.xuecong.art/";
 
@@ -15,23 +18,45 @@ const Photo = () => {
         return {
           ...photo,
           url: `${imageCdnBaseUrl}${photo.imageName}`,
+          description: `Camera Info: ${photo.info}`,
         };
       });
       setPhotos(loadedPhotos);
     }
   }, []);
 
-  if (!photos || photos.length === 0) {
-    return <div>Loading...</div>;
-  }
-
-  const openModal = (photo) => {
+  const openModal = (photo, index) => {
     setSelectedPhoto(photo);
+    setCurrentPhotoIndex(index);
   };
 
   const closeModal = () => {
     setSelectedPhoto(null);
   };
+
+  const goToPrevious = () => {
+    const newIndex = currentPhotoIndex > 0 ? currentPhotoIndex - 1 : photos.length - 1;
+    setCurrentPhotoIndex(newIndex);
+    setSelectedPhoto(photos[newIndex]);
+  };
+
+  const goToNext = () => {
+    const newIndex = currentPhotoIndex < photos.length - 1 ? currentPhotoIndex + 1 : 0;
+    setCurrentPhotoIndex(newIndex);
+    setSelectedPhoto(photos[newIndex]);
+  };
+
+  const getDetailImageUrls = () => {
+    if (!selectedPhoto) return [];
+    // For photos, we'll just show the single image.
+    // The navigation will loop through the photos array.
+    return [selectedPhoto.url];
+  };
+
+  if (!photos || photos.length === 0) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <div className="photogallery-wrapper">
@@ -39,7 +64,7 @@ const Photo = () => {
           <div
             className="photogallery"
             key={index}
-            onClick={() => openModal(photo)}
+            onClick={() => openModal(photo, index)}
           >
             <img src={photo.url} alt={photo.title} loading="lazy" />
             <div className="overlay">Click to see info</div>
@@ -47,20 +72,14 @@ const Photo = () => {
         ))}
       </div>
 
-      {selectedPhoto && (
-        <div className="modal" onClick={closeModal}>
-          <span className="close">&times;</span>
-          <img
-            className="modal-content"
-            src={selectedPhoto.url}
-            alt={selectedPhoto.title}
-            loading="lazy"
-          />
-          <div className="caption">Location: {selectedPhoto.title}</div>
-          <div className="caption">Date: {selectedPhoto.time}</div>
-          <div className="caption">Camera Info: {selectedPhoto.info}</div>
-        </div>
-      )}
+      <Popup
+        selectedArtwork={selectedPhoto}
+        closeModal={closeModal}
+        goToPrevious={goToPrevious}
+        goToNext={goToNext}
+        getDetailImageUrls={getDetailImageUrls}
+        currentDetailIndex={0} // Always 0 as we only have one image per item
+      />
     </div>
   );
 };

@@ -11,6 +11,17 @@ const Artwork = ({ selectedFilter }) => {
     import.meta.env.VITE_CDN_URL || "https://images.xuecong.art/";
 
   useEffect(() => {
+    if (selectedArtwork) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [selectedArtwork]);
+
+  useEffect(() => {
     const loadArtworks = async () => {
       try {
         let artPicData;
