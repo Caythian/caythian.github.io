@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+.close {
+  position: absolute;
+  z-index: 1010;
+  top:10px;
+  right:10px;
+  color: #fef9f980;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.close:hover,
+.close:focus {
+  color: #fef9f9;
+  text-decoration: none;
+  cursor: pointer;
+}
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:#00112580;
+    z-index: 1000; 
+    pointer-events: auto; 
+    overflow:hidden;
+}
+.modal {
+    font-family: "Playfair Display", serif !important;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 20px;
+    z-index: 1001;
+    width:80vw;
+    height: 80vh;
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    justify-content:space-evenly ;
+    overflow: hidden;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    background-color: #fef9f950;
+}
+
+
+.modal-images-container {
+  width: 100%;
+  height: 100%;
+}
+
+.modal-content-wrapper {
+  position: relative;
+  height: 80vh;
+  width: 100%;
+  max-width: 1300px;
+  overflow: hidden;
+  padding: 20px;
+  display: flex;
+  gap: 40px;
+  margin:0;
+}
+
+.image-and-nav-wrapper {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 0;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.caption-wrapper {
+  flex: 0 0 400px;
+  font-family: "Playfair Display", serif;
+  text-align: center;
+  background-color: #00112520;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 20px;
+  color: #fff9f9;
+}
+.caption-wrapper:hover{
+  background-color: #00112580;
+  transition: all 0.3s ease;
+}
+
+.modal-content {
+  width: auto;
+  height: 100%;
+  min-height: 80%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+.caption {
+  font-family: "Playfair Display", serif;
+  padding: 10px;
+  text-align: left;
+  font-size: 16px;
+  color: #fff9f9;
+  text-shadow: #00376a 1px 0 10px;
+}
+
+.description {
+  padding: 10px;
+  text-align: left;
+  font-size: 16px;
+  color: #fff9f9;
+  margin-top: 1em;
+}
+
+.descriptionplus {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  margin-top: 0.5em;
+  font-family: "Playfair Display", serif;
+}
+
+.line {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 16px;
+  font-family: "Playfair Display", serif;
+}
+
+.regular-description {
+  font-family: "Playfair Display", serif;
+  margin: 0;
+  line-height: 1.6;
+  font-size: 16px;
+  color: #fff9f9;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.nav-button-container {
+  display: flex;
+  gap: 20px;
+  z-index: 200;
+}
+
+.nav-button {
+  background-color: #00112500;
+  color:#ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height:40px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #00112560;
+  color: #ffffff;
+}
+
+.nav-button.prev {
+}
+
+.nav-button.next {
+}
+
+@media screen and (max-width: 600px) {
+    /*All the media query styles that are within .modal-wrapper*/
+  .modal-content-wrapper {
+    width: calc(95% - 40px); 
+  }
+
+  .modal-content {
+    margin: 10px;
+    padding-bottom: 5px;
+  }
+
+  .close {
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .caption,
+  .description {
+    font-size: 12px;
+    padding: 8px;
+  }
+  .line {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 12px;
+    font-family: "Playfair Display", serif;
+  }
+}
