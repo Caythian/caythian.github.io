@@ -99,11 +99,12 @@
   flex-direction: column;
   overflow-y: auto;
   padding: 20px;
-  color: #fff9f9;
+  color: #fef9f9;
 }
 .caption-wrapper:hover{
   background-color: #00112580;
   transition: all 0.3s ease;
+  font-size: 16px;
 }
 
 .modal-content {
@@ -117,19 +118,13 @@
 }
 
 .caption {
-  font-family: "Playfair Display", serif;
   padding: 10px;
   text-align: left;
-  font-size: 16px;
-  color: #fff9f9;
-  text-shadow: #00376a 1px 0 10px;
 }
 
 .description {
   padding: 10px;
   text-align: left;
-  font-size: 16px;
-  color: #fff9f9;
   margin-top: 1em;
 }
 
@@ -138,7 +133,6 @@
   flex-direction: column;
   gap: 0.8em;
   margin-top: 0.5em;
-  font-family: "Playfair Display", serif;
 }
 
 .line {
@@ -149,11 +143,8 @@
 }
 
 .regular-description {
-  font-family: "Playfair Display", serif;
   margin: 0;
   line-height: 1.6;
-  font-size: 16px;
-  color: #fff9f9;
 }
 
 .invisible {
@@ -194,13 +185,34 @@
 
 @media screen and (max-width: 600px) {
     /*All the media query styles that are within .modal-wrapper*/
-  .modal-content-wrapper {
-    width: calc(95% - 40px); 
+  .modal{
+    width: 90%;
+    height: 95%;
+    box-sizing: border-box;
   }
-
+  .modal-content-wrapper {
+    width: 90%; 
+    flex-direction: column;
+    height: 90%;
+    overflow-y: auto;
+    gap: 10px;
+    padding: 0px;
+  }
+  .image-and-nav-wrapper {
+    gap:5px;
+  }
+  .nav-button-container{
+    width: 100%;
+    justify-content: space-between;
+  }
+  .nav-button{
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
   .modal-content {
-    margin: 10px;
-    padding-bottom: 5px;
+    margin: 0px;
+    overflow: hidden;
   }
 
   .close {
@@ -210,11 +222,13 @@
     width: 30px;
     height: 30px;
   }
+  .caption-wrapper{
+    padding: 10px;
+    font-size: 15px;
+  }
 
-  .caption,
-  .description {
-    font-size: 12px;
-    padding: 8px;
+  .description{
+    margin-top: 0px;
   }
   .line {
     margin: 0;
