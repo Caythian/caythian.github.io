@@ -1,17 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+.filter-option{
+  cursor: pointer; 
+  padding: 10px;
+  background-color: rgba(250, 233, 103, 0.2); 
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+
+}
 .title {
   font-family: "Playfair Display", serif;
   font-weight: 400;
   font-size: 20px;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 10px;
+  padding: 0px;
 }
+
 .titlesc {
   font-family: "Noto Serif SC, serif";
   font-weight: 700;
   font-size: 20px;
 }
+
 .filter-wrapper {
   color: #001125;
   justify-content: center;
@@ -19,8 +31,17 @@
   gap: 20px;
   align-items: center;
 }
-.title:hover {
-  background-color: #001125;
-  color: #fae967;
-  transition: color 0.5s ease;
+
+.filter-option.active {
+  background-color: rgba(250, 233, 103, 1); 
+  transition: background-color 0.3s ease-in-out;
+  cursor: default; 
+  transform: scaleX(1.1); 
+
+}
+
+
+.filter-option:hover{
+    transform: scaleX(1.1); 
+    transition: all 0.3s ease-in-out;
 }
