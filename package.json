@@ -1,0 +1,15 @@
+{
+  "name": "xuecong.art",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "bun run --filter \"@xuecong.art/*\" dev",
+    "build": "bun run --filter \"@xuecong.art/frontend\" build",
+    "preview": "bun run --filter \"@xuecong.art/frontend\" preview",
+    "format": "bun run --filter \"@xuecong.art/frontend\" format",
+    "format:check": "bun run --filter \"@xuecong.art/frontend\" format:check"
+  }
+}

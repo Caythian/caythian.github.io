@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Artworks.css";
 import "../App.css";
-import Popup from "./Popup"; 
+import Popup from "./Popup";
 
 const Artwork = ({ selectedFilter }) => {
   const [artworks, setArtworks] = useState([]);
@@ -12,12 +12,12 @@ const Artwork = ({ selectedFilter }) => {
 
   useEffect(() => {
     if (selectedArtwork) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [selectedArtwork]);
 
@@ -78,7 +78,7 @@ const Artwork = ({ selectedFilter }) => {
 
   const openModal = (artwork) => {
     setSelectedArtwork(artwork);
-    setCurrentDetailIndex(0); 
+    setCurrentDetailIndex(0);
   };
 
   const closeModal = () => {
@@ -87,13 +87,13 @@ const Artwork = ({ selectedFilter }) => {
 
   const goToPrevious = () => {
     setCurrentDetailIndex((prevIndex) =>
-      prevIndex > 0 ? prevIndex - 1 : getDetailImageUrls().length - 1
+      prevIndex > 0 ? prevIndex - 1 : getDetailImageUrls().length - 1,
     );
   };
 
   const goToNext = () => {
     setCurrentDetailIndex((nextIndex) =>
-      nextIndex < getDetailImageUrls().length - 1 ? nextIndex + 1 : 0
+      nextIndex < getDetailImageUrls().length - 1 ? nextIndex + 1 : 0,
     );
   };
 
@@ -117,7 +117,7 @@ const Artwork = ({ selectedFilter }) => {
 
   return (
     <div>
-       <div className="artworkgallery-wrapper">
+      <div className="artworkgallery-wrapper">
         {artworks.map((artwork, index) => (
           <div
             className="artworkgallery"
@@ -129,7 +129,6 @@ const Artwork = ({ selectedFilter }) => {
           </div>
         ))}
       </div>
-
 
       <Popup
         selectedArtwork={selectedArtwork}

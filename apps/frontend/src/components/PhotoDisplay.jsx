@@ -35,13 +35,15 @@ const Photo = () => {
   };
 
   const goToPrevious = () => {
-    const newIndex = currentPhotoIndex > 0 ? currentPhotoIndex - 1 : photos.length - 1;
+    const newIndex =
+      currentPhotoIndex > 0 ? currentPhotoIndex - 1 : photos.length - 1;
     setCurrentPhotoIndex(newIndex);
     setSelectedPhoto(photos[newIndex]);
   };
 
   const goToNext = () => {
-    const newIndex = currentPhotoIndex < photos.length - 1 ? currentPhotoIndex + 1 : 0;
+    const newIndex =
+      currentPhotoIndex < photos.length - 1 ? currentPhotoIndex + 1 : 0;
     setCurrentPhotoIndex(newIndex);
     setSelectedPhoto(photos[newIndex]);
   };

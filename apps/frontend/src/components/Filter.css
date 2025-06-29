@@ -1,13 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
-.filter-option{
-  cursor: pointer; 
+.filter-option {
+  cursor: pointer;
   padding: 10px;
-  background-color: rgba(250, 233, 103, 0.2); 
+  background-color: rgba(250, 233, 103, 0.2);
   border-radius: 3px;
   transition: background-color 0.3s ease;
   display: inline-block;
-
 }
 .title {
   font-family: "Playfair Display", serif;
@@ -33,25 +32,24 @@
 }
 
 .filter-option.active {
-  background-color: rgba(250, 233, 103, 1); 
+  background-color: rgba(250, 233, 103, 1);
   transition: background-color 0.3s ease-in-out;
-  cursor: default; 
-  transform: scaleX(1.1); 
-
+  cursor: default;
+  transform: scaleX(1.1);
 }
 
-
-.filter-option:hover{
-    transform: scaleX(1.1); 
-    transition: all 0.3s ease-in-out;
+.filter-option:hover {
+  transform: scaleX(1.1);
+  transition: all 0.3s ease-in-out;
 }
 
 @media screen and (max-width: 600px) {
   .filter-wrapper {
     flex-wrap: wrap;
   }
-  
-  .title, .titlesc {
+
+  .title,
+  .titlesc {
     font-size: 16px;
   }
 }
