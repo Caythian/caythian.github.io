@@ -74,6 +74,9 @@ app.get("/", async (c) => {
               </div>
             )}
             <p>
+              <strong>Category:</strong> {artwork.category}
+            </p>
+            <p>
               <strong>Time:</strong> {artwork.time}
             </p>
             <p>
@@ -106,6 +109,40 @@ app.get("/", async (c) => {
                     value={artwork.title}
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">
+                    Category
+                  </label>
+                  <select
+                    name="category"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  >
+                    <option
+                      value="painting"
+                      selected={artwork.category === "painting"}
+                    >
+                      Painting
+                    </option>
+                    <option
+                      value="sculpture"
+                      selected={artwork.category === "sculpture"}
+                    >
+                      Sculpture
+                    </option>
+                    <option
+                      value="installation"
+                      selected={artwork.category === "installation"}
+                    >
+                      Installation
+                    </option>
+                    <option
+                      value="other"
+                      selected={artwork.category === "other"}
+                    >
+                      Other
+                    </option>
+                  </select>
                 </div>
                 <div>
                   <label class="block text-sm font-medium text-gray-700">
@@ -214,6 +251,20 @@ app.get("/", async (c) => {
             />
           </div>
           <div>
+            <label class="block text-sm font-medium text-gray-700">
+              Category
+            </label>
+            <select
+              name="category"
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            >
+              <option value="painting">Painting</option>
+              <option value="sculpture">Sculpture</option>
+              <option value="installation">Installation</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
             <label class="block text-sm font-medium text-gray-700">Time</label>
             <input
               type="text"
@@ -313,6 +364,11 @@ app.post("/create", async (c) => {
   const dimension = formData.get("dimension") as string;
   const description = (formData.get("description") as string).split("\\n");
   const detailFiles = formData.getAll("details") as File[];
+  const category = formData.get("category") as
+    | "painting"
+    | "sculpture"
+    | "installation"
+    | "other";
 
   if (image && title) {
     const imageKey = `${Date.now()}-${image.name}`;
@@ -335,6 +391,7 @@ app.post("/create", async (c) => {
       dimension,
       description,
       details: detailKeys,
+      category,
     });
   }
 
@@ -352,6 +409,11 @@ app.post("/edit/:id", async (c) => {
   const dimension = formData.get("dimension") as string;
   const description = (formData.get("description") as string).split("\\n");
   const detailFiles = formData.getAll("details") as File[];
+  const category = formData.get("category") as
+    | "painting"
+    | "sculpture"
+    | "installation"
+    | "other";
 
   const artwork = await db
     .select()
@@ -397,6 +459,7 @@ app.post("/edit/:id", async (c) => {
         dimension,
         description,
         details: detailKeys,
+        category,
       })
       .where(sql`id = ${id}`);
   }
