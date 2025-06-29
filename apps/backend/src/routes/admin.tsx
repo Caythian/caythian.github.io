@@ -24,6 +24,25 @@ const app = new Hono<{ Bindings: Bindings; Variables: Variables }>();
 
 app.use("*", async (c, next) => {
   const db = drizzle(c.env.DB);
+  try {
+    await db.run(sql`
+      CREATE TABLE IF NOT EXISTS artworks (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        image TEXT NOT NULL,
+        title TEXT NOT NULL,
+        category TEXT CHECK( category IN ('painting', 'sculpture', 'installation', 'other') ) NOT NULL,
+        time TEXT,
+        medium TEXT,
+        dimension TEXT,
+        description TEXT,
+        details TEXT
+      );
+    `);
+  } catch (e) {
+    // This might fail if the table already exists in some race conditions,
+    // but it's fine to ignore since the goal is to have the table.
+    console.error("DB init:", e);
+  }
   c.set("db", db);
   await next();
 });
