@@ -73,7 +73,12 @@ blog.get("/", async (c) => {
         <div class="space-y-8">
           <div>
             <h2 class="text-2xl font-bold mb-4">Create New Post</h2>
-            <form action="/admin/blog/create" method="post" class="space-y-4">
+            <form
+              action="/admin/blog/create"
+              method="post"
+              enctype="multipart/form-data"
+              class="space-y-4"
+            >
               <div>
                 <label class="block text-sm font-medium text-gray-700">
                   Title
@@ -112,6 +117,17 @@ blog.get("/", async (c) => {
                 <input type="hidden" name="content" />
                 <div id="editor" class="mt-1 block w-full h-64"></div>
               </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700">
+                  Banner Image
+                </label>
+                <input
+                  type="file"
+                  name="bannerImage"
+                  required
+                  class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+                />
+              </div>
               <button
                 type="submit"
                 class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -147,6 +163,7 @@ blog.get("/", async (c) => {
                     <form
                       action={`/admin/blog/edit/${post.id}`}
                       method="post"
+                      enctype="multipart/form-data"
                       class="mt-2 space-y-4"
                     >
                       <div>
@@ -199,6 +216,16 @@ blog.get("/", async (c) => {
                           dangerouslySetInnerHTML={{ __html: post.content }}
                         >
                         </div>
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium text-gray-700">
+                          Banner Image (re-upload to change)
+                        </label>
+                        <input
+                          type="file"
+                          name="bannerImage"
+                          class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+                        />
                       </div>
                       <button
                         type="submit"
@@ -324,20 +351,27 @@ blog.get("/", async (c) => {
     const formData = await c.req.formData();
     const title = formData.get("title") as string;
     const content = formData.get("content") as string;
+    const bannerImage = formData.get("bannerImage");
     const tags = (formData.get("tags") as string)
       .split(",")
       .map((t) => t.trim())
       .filter((t) => t);
     const publishedAt = formData.get("publishedAt") as string;
   
-    if (title && content) {
-      await db.insert(posts).values({
-        title,
-        content,
-        tags,
-        publishedAt: new Date(publishedAt).toISOString(),
-      });
+    if (!(title && content && bannerImage instanceof File && bannerImage.size > 0)) {
+      return c.text("Title, content, and banner image are required.", 400);
     }
+
+    const bannerImageKey = `${Date.now()}-banner-${bannerImage.name}`;
+    await c.env.BUCKET.put(bannerImageKey, await bannerImage.arrayBuffer());
+
+    await db.insert(posts).values({
+      title,
+      content,
+      bannerImage: bannerImageKey,
+      tags,
+      publishedAt: new Date(publishedAt).toISOString(),
+    });
   
     return c.redirect("/admin/blog");
   });
@@ -348,17 +382,36 @@ blog.get("/", async (c) => {
     const formData = await c.req.formData();
     const title = formData.get("title") as string;
     const content = formData.get("content") as string;
+    const bannerImage = formData.get("bannerImage");
     const tags = (formData.get("tags") as string)
       .split(",")
       .map((t) => t.trim())
       .filter((t) => t);
     const publishedAt = formData.get("publishedAt") as string;
   
+    if (!title || !content) {
+      return c.text("Title and content cannot be empty.", 400);
+    }
+
+    const post = await db.select().from(posts).where(sql`id = ${id}`).get();
+
+    if (!post) {
+      return c.notFound();
+    }
+
+    let bannerImageKey = post.bannerImage;
+    if (bannerImage instanceof File && bannerImage.size > 0) {
+      await c.env.BUCKET.delete(post.bannerImage);
+      bannerImageKey = `${Date.now()}-banner-${bannerImage.name}`;
+      await c.env.BUCKET.put(bannerImageKey, await bannerImage.arrayBuffer());
+    }
+
     await db
       .update(posts)
       .set({
         title,
         content,
+        bannerImage: bannerImageKey,
         tags,
         publishedAt: new Date(publishedAt).toISOString(),
       })
@@ -370,7 +423,12 @@ blog.get("/", async (c) => {
   blog.post("/delete/:id", async (c) => {
     const db = c.get("db");
     const id = parseInt(c.req.param("id"));
-    await db.delete(posts).where(sql`id = ${id}`);
+    const post = await db.select().from(posts).where(sql`id = ${id}`).get();
+
+    if (post) {
+      await c.env.BUCKET.delete(post.bannerImage);
+      await db.delete(posts).where(sql`id = ${id}`);
+    }
     return c.redirect("/admin/blog");
   });
   

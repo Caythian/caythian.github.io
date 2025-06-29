@@ -19,6 +19,7 @@ export const posts = sqliteTable("posts", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   title: text("title").notNull(),
   content: text("content").notNull(),
+  bannerImage: text("banner_image").notNull(),
   tags: text("tags", { mode: "json" }).$type<string[]>(),
   publishedAt: text("published_at").notNull(),
 });

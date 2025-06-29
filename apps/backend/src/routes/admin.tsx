@@ -50,6 +50,7 @@ app.use("*", async (c, next) => {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         title TEXT NOT NULL,
         content TEXT NOT NULL,
+        banner_image TEXT NOT NULL,
         tags TEXT,
         "published_at" TEXT NOT NULL
       );
