@@ -10,6 +10,16 @@
     "build": "bun run --filter \"@xuecong.art/frontend\" build",
     "preview": "bun run --filter \"@xuecong.art/frontend\" preview",
     "format": "bun run --filter \"@xuecong.art/frontend\" format",
-    "format:check": "bun run --filter \"@xuecong.art/frontend\" format:check"
+    "format:check": "prettier --check .",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.35.0",
+    "@typescript-eslint/parser": "^8.35.0",
+    "eslint": "^9.30.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "jiti": "^2.4.2"
   }
 }
