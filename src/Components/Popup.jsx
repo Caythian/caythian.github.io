@@ -1,7 +1,20 @@
-import React,{useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import './Popup.css';
+import { useSwipeable } from 'react-swipeable';
 
 function Popup({ selectedArtwork, closeModal, goToPrevious, goToNext, getDetailImageUrls, currentDetailIndex }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => goToNext(),
+    onSwipedRight: () => goToPrevious(),
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+
+  useEffect(() => {
+    setIsExpanded(false);
+  }, [selectedArtwork]);
 
   if (!selectedArtwork) return null;
 
@@ -10,13 +23,12 @@ function Popup({ selectedArtwork, closeModal, goToPrevious, goToNext, getDetailI
     navFunction();
   };
 
-
   return (
     <div className="popup-overlay" onClick={closeModal}> 
       <div className="modal" onClick={e => e.stopPropagation()}> 
         <span className="close" onClick={closeModal}>&times;</span>
          <div className="modal-content-wrapper">
-            <div className="image-and-nav-wrapper">
+            <div className="image-and-nav-wrapper" {...swipeHandlers}>
               <div className="modal-images-container">
                 {getDetailImageUrls().length > 0 && (
                   <div
@@ -51,9 +63,18 @@ function Popup({ selectedArtwork, closeModal, goToPrevious, goToNext, getDetailI
                       </p>
                     ))
                   ) : (
-                    <p className="regular-description">
-                      {selectedArtwork.description}
-                    </p>
+                    <>
+                      <p className="regular-description">
+                        {isExpanded || selectedArtwork.description.split(' ').length <= 50
+                          ? selectedArtwork.description
+                          : `${selectedArtwork.description.split(' ').slice(0, 50).join(' ')}...`}
+                      </p>
+                      {selectedArtwork.description.split(' ').length > 50 && (
+                        <button onClick={() => setIsExpanded(!isExpanded)} className="read-more-button">
+                          {isExpanded ? 'Read Less' : 'Read More'}
+                        </button>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
