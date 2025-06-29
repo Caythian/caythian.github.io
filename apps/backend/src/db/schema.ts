@@ -14,3 +14,11 @@ export const artworks = sqliteTable("artworks", {
   description: text("description", { mode: "json" }).$type<string[]>(),
   details: text("details", { mode: "json" }).$type<string[]>(),
 });
+
+export const posts = sqliteTable("posts", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  title: text("title").notNull(),
+  content: text("content").notNull(),
+  tags: text("tags", { mode: "json" }).$type<string[]>(),
+  publishedAt: text("published_at").notNull(),
+});

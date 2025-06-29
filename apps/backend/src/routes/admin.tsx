@@ -2,14 +2,21 @@ import { Hono } from "hono";
 import { jsx } from "hono/jsx";
 import { drizzle } from "drizzle-orm/d1";
 import { sql } from "drizzle-orm";
-import { artworks } from "../db/schema";
+import { artworks, posts } from "../db/schema";
 import type { DrizzleD1Database } from "drizzle-orm/d1";
+import blog from "./admin/blog";
 
 // 2) Describe your Env interface
 export interface Env {
   DB: D1Database;
   BUCKET: R2Bucket;
 }
+
+export type AdminLayoutProps = {
+  children: any;
+  title?: string;
+  activeTab: "artworks" | "blog";
+};
 
 type Bindings = {
   DB: D1Database;
@@ -38,6 +45,15 @@ app.use("*", async (c, next) => {
         details TEXT
       );
     `);
+    await db.run(sql`
+      CREATE TABLE IF NOT EXISTS posts (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT NOT NULL,
+        content TEXT NOT NULL,
+        tags TEXT,
+        "published_at" TEXT NOT NULL
+      );
+    `);
   } catch (e) {
     // This might fail if the table already exists in some race conditions,
     // but it's fine to ignore since the goal is to have the table.
@@ -47,21 +63,52 @@ app.use("*", async (c, next) => {
   await next();
 });
 
-const AdminLayout = (props: { children: any; title?: string }) => {
+const AdminLayout = (props: AdminLayoutProps) => {
   return (
     <html>
       <head>
         <title>{props.title || "Admin"}</title>
         <script src="https://cdn.tailwindcss.com"></script>
+        <link
+          href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css"
+          rel="stylesheet"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
       </head>
       <body class="bg-gray-100 text-gray-800">
         <div class="container mx-auto p-4">
-          <div class="bg-white p-8 rounded-lg shadow-md">{props.children}</div>
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <div class="flex border-b mb-4">
+              <a
+                href="/admin"
+                class={`py-2 px-4 ${
+                  props.activeTab === "artworks"
+                    ? "border-b-2 border-indigo-500"
+                    : ""
+                }`}
+              >
+                Artworks
+              </a>
+              <a
+                href="/admin/blog"
+                class={`py-2 px-4 ${
+                  props.activeTab === "blog"
+                    ? "border-b-2 border-indigo-500"
+                    : ""
+                }`}
+              >
+                Blog
+              </a>
+            </div>
+            {props.children}
+          </div>
         </div>
       </body>
     </html>
   );
 };
+
+app.route("/blog", blog);
 
 app.get("/", async (c) => {
   const db = c.get("db");
@@ -69,7 +116,7 @@ app.get("/", async (c) => {
   const r2Files = await c.env.BUCKET.list();
 
   return c.html(
-    <AdminLayout>
+    <AdminLayout activeTab="artworks">
       <h1 class="text-3xl font-bold mb-6">Artworks</h1>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {allArtworks.map((artwork) => (

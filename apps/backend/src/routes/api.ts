@@ -3,7 +3,6 @@ import { drizzle } from "drizzle-orm/d1";
 import { sql } from "drizzle-orm";
 import { artworks } from "../db/schema";
 import type { DrizzleD1Database } from "drizzle-orm/d1";
-import type { R2Bucket } from "hono/r2";
 
 type Bindings = {
   DB: D1Database;
