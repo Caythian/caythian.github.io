@@ -12,7 +12,7 @@ function Filter({ onFilter, selectedFilter }) {
         className={`filter-option ${selectedFilter === "painting" ? "active" : ""}`}
         onClick={() => handleFilterClick("painting")}
       >
-        <span className="title">Paintings</span> <span className="titlesc">绘画</span>
+        <span className="title">Painting</span> <span className="titlesc">绘画</span>
       </div>
       <div
         className={`filter-option ${selectedFilter === "sculpture" ? "active" : ""}`}
