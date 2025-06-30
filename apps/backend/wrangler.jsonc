@@ -1,0 +1,21 @@
+{
+  "name": "caythian-backend",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-06-03",
+  "site": {
+    "bucket": "../frontend/dist",
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "xuecong.art",
+      "database_id": "c99e2377-fd48-49c3-8d4b-c6d4f8e1d491",
+    },
+  ],
+  "r2_buckets": [
+    {
+      "binding": "BUCKET",
+      "bucket_name": "caythian",
+    },
+  ],
+}
