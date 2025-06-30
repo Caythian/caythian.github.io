@@ -143,6 +143,11 @@ blog.get("/", async (c) => {
               {allPosts.map((post) => (
                 <div class="p-4 border rounded-lg">
                   <h3 class="text-xl font-semibold">{post.title}</h3>
+                  <img
+                    src={`/admin/file/${post.bannerImage}`}
+                    alt="Banner Image"
+                    class="my-4 w-full h-auto max-h-48 object-cover rounded-md"
+                  />
                   <p class="text-sm text-gray-500">
                     Published on:{" "}
                     {new Date(post.publishedAt).toLocaleDateString()}

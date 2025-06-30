@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import PostPopup from "./components/PostPopup";
 import "./components/Artworks.css";
 import "./components/Filter.css";
+import "./Blog.css";
 
 function Blog() {
   const [posts, setPosts] = useState([]);
@@ -71,10 +72,10 @@ function Blog() {
           </button>
         ))}
       </div>
-      <div className="artworkgallery-wrapper">
+      <div className="blog-posts-wrapper">
         {posts.map((post) => (
           <div
-            className="artworkgallery"
+            className="blog-post-card"
             key={post.id}
             onClick={() => openModal(post)}
           >
