@@ -55,7 +55,11 @@ app.get("/posts/:tagOrId", async (c) => {
 
   const id = parseInt(tagOrId, 10);
   if (!isNaN(id)) {
-    const post = await db.select().from(posts).where(sql`id = ${id}`).get();
+    const post = await db
+      .select()
+      .from(posts)
+      .where(sql`id = ${id}`)
+      .get();
     return c.json(post);
   }
 
@@ -97,4 +101,3 @@ app.get("/image/:key", async (c) => {
 });
 
 export default app;
-

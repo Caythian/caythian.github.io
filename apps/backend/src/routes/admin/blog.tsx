@@ -1,5 +1,4 @@
 import { Hono } from "hono";
-import { jsx } from "hono/jsx";
 import { drizzle, type DrizzleD1Database } from "drizzle-orm/d1";
 import { sql } from "drizzle-orm";
 import { posts } from "../../db/schema";
@@ -61,206 +60,204 @@ const AdminLayout = (props: AdminLayoutProps) => {
   );
 };
 
-
 // Blog Section
 blog.get("/", async (c) => {
-    const db = c.get("db");
-    const allPosts = await db.select().from(posts).all();
-  
-    return c.html(
-      <AdminLayout activeTab="blog">
-        <h1 class="text-3xl font-bold mb-6">Blog</h1>
-        <div class="space-y-8">
-          <div>
-            <h2 class="text-2xl font-bold mb-4">Create New Post</h2>
-            <form
-              action="/admin/blog/create"
-              method="post"
-              enctype="multipart/form-data"
-              class="space-y-4"
+  const db = c.get("db");
+  const allPosts = await db.select().from(posts).all();
+
+  return c.html(
+    <AdminLayout activeTab="blog">
+      <h1 class="text-3xl font-bold mb-6">Blog</h1>
+      <div class="space-y-8">
+        <div>
+          <h2 class="text-2xl font-bold mb-4">Create New Post</h2>
+          <form
+            action="/admin/blog/create"
+            method="post"
+            enctype="multipart/form-data"
+            class="space-y-4"
+          >
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                Title
+              </label>
+              <input
+                type="text"
+                name="title"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                Tags (comma-separated)
+              </label>
+              <input
+                type="text"
+                name="tags"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                Published Date
+              </label>
+              <input
+                type="date"
+                name="publishedAt"
+                value={new Date().toISOString().split("T")[0]}
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                Content
+              </label>
+              <input type="hidden" name="content" />
+              <div id="editor" class="mt-1 block w-full h-64"></div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                Banner Image
+              </label>
+              <input
+                type="file"
+                name="bannerImage"
+                required
+                class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+              />
+            </div>
+            <button
+              type="submit"
+              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              <div>
-                <label class="block text-sm font-medium text-gray-700">
-                  Title
-                </label>
-                <input
-                  type="text"
-                  name="title"
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              Create Post
+            </button>
+          </form>
+        </div>
+
+        <div class="border-t pt-8">
+          <h2 class="text-2xl font-bold mb-4">Existing Posts</h2>
+          <div class="space-y-6">
+            {allPosts.map((post) => (
+              <div class="p-4 border rounded-lg">
+                <h3 class="text-xl font-semibold">{post.title}</h3>
+                <img
+                  src={`/admin/file/${post.bannerImage}`}
+                  alt="Banner Image"
+                  class="my-4 w-full h-auto max-h-48 object-cover rounded-md"
                 />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700">
-                  Tags (comma-separated)
-                </label>
-                <input
-                  type="text"
-                  name="tags"
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700">
-                  Published Date
-                </label>
-                <input
-                  type="date"
-                  name="publishedAt"
-                  value={new Date().toISOString().split("T")[0]}
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700">
-                  Content
-                </label>
-                <input type="hidden" name="content" />
-                <div id="editor" class="mt-1 block w-full h-64"></div>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700">
-                  Banner Image
-                </label>
-                <input
-                  type="file"
-                  name="bannerImage"
-                  required
-                  class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
-                />
-              </div>
-              <button
-                type="submit"
-                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Create Post
-              </button>
-            </form>
-          </div>
-  
-          <div class="border-t pt-8">
-            <h2 class="text-2xl font-bold mb-4">Existing Posts</h2>
-            <div class="space-y-6">
-              {allPosts.map((post) => (
-                <div class="p-4 border rounded-lg">
-                  <h3 class="text-xl font-semibold">{post.title}</h3>
-                  <img
-                    src={`/admin/file/${post.bannerImage}`}
-                    alt="Banner Image"
-                    class="my-4 w-full h-auto max-h-48 object-cover rounded-md"
-                  />
+                <p class="text-sm text-gray-500">
+                  Published on:{" "}
+                  {new Date(post.publishedAt).toLocaleDateString()}
+                </p>
+                {post.tags && post.tags.length > 0 && (
                   <p class="text-sm text-gray-500">
-                    Published on:{" "}
-                    {new Date(post.publishedAt).toLocaleDateString()}
+                    Tags: {post.tags.join(", ")}
                   </p>
-                  {post.tags && post.tags.length > 0 && (
-                    <p class="text-sm text-gray-500">
-                      Tags: {post.tags.join(", ")}
-                    </p>
-                  )}
-                  <div
-                    class="prose mt-2"
-                    dangerouslySetInnerHTML={{ __html: post.content }}
-                  ></div>
-                  <details class="mt-4">
-                    <summary class="cursor-pointer font-semibold">
-                      Edit Post
-                    </summary>
-                    <form
-                      action={`/admin/blog/edit/${post.id}`}
-                      method="post"
-                      enctype="multipart/form-data"
-                      class="mt-2 space-y-4"
-                    >
-                      <div>
-                        <label class="block text-sm font-medium text-gray-700">
-                          Title
-                        </label>
-                        <input
-                          type="text"
-                          name="title"
-                          value={post.title}
-                          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                        />
-                      </div>
-                      <div>
-                        <label class="block text-sm font-medium text-gray-700">
-                          Tags (comma-separated)
-                        </label>
-                        <input
-                          type="text"
-                          name="tags"
-                          value={post.tags?.join(", ")}
-                          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                        />
-                      </div>
-                      <div>
-                        <label class="block text-sm font-medium text-gray-700">
-                          Published Date
-                        </label>
-                        <input
-                          type="date"
-                          name="publishedAt"
-                          value={
-                            new Date(post.publishedAt).toISOString().split("T")[0]
-                          }
-                          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                        />
-                      </div>
-                      <div>
-                        <label class="block text-sm font-medium text-gray-700">
-                          Content
-                        </label>
-                        <input
-                          type="hidden"
-                          name="content"
-                          value={post.content}
-                        />
-                        <div
-                          id={`editor-${post.id}`}
-                          class="mt-1 block w-full h-64"
-                          dangerouslySetInnerHTML={{ __html: post.content }}
-                        >
-                        </div>
-                      </div>
-                      <div>
-                        <label class="block text-sm font-medium text-gray-700">
-                          Banner Image (re-upload to change)
-                        </label>
-                        <input
-                          type="file"
-                          name="bannerImage"
-                          class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
-                        />
-                      </div>
-                      <button
-                        type="submit"
-                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      >
-                        Update Post
-                      </button>
-                    </form>
-                  </details>
+                )}
+                <div
+                  class="prose mt-2"
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                ></div>
+                <details class="mt-4">
+                  <summary class="cursor-pointer font-semibold">
+                    Edit Post
+                  </summary>
                   <form
-                    action={`/admin/blog/delete/${post.id}`}
+                    action={`/admin/blog/edit/${post.id}`}
                     method="post"
-                    class="mt-2"
-                    onsubmit="return confirm('Are you sure you want to delete this post?');"
+                    enctype="multipart/form-data"
+                    class="mt-2 space-y-4"
                   >
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700">
+                        Title
+                      </label>
+                      <input
+                        type="text"
+                        name="title"
+                        value={post.title}
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700">
+                        Tags (comma-separated)
+                      </label>
+                      <input
+                        type="text"
+                        name="tags"
+                        value={post.tags?.join(", ")}
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700">
+                        Published Date
+                      </label>
+                      <input
+                        type="date"
+                        name="publishedAt"
+                        value={
+                          new Date(post.publishedAt).toISOString().split("T")[0]
+                        }
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700">
+                        Content
+                      </label>
+                      <input
+                        type="hidden"
+                        name="content"
+                        value={post.content}
+                      />
+                      <div
+                        id={`editor-${post.id}`}
+                        class="mt-1 block w-full h-64"
+                        dangerouslySetInnerHTML={{ __html: post.content }}
+                      ></div>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700">
+                        Banner Image (re-upload to change)
+                      </label>
+                      <input
+                        type="file"
+                        name="bannerImage"
+                        class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+                      />
+                    </div>
                     <button
                       type="submit"
-                      class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                      class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                      Delete
+                      Update Post
                     </button>
                   </form>
-                </div>
-              ))}
-            </div>
+                </details>
+                <form
+                  action={`/admin/blog/delete/${post.id}`}
+                  method="post"
+                  class="mt-2"
+                  onsubmit="return confirm('Are you sure you want to delete this post?');"
+                >
+                  <button
+                    type="submit"
+                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                  >
+                    Delete
+                  </button>
+                </form>
+              </div>
+            ))}
           </div>
         </div>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+      </div>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
             document.addEventListener('DOMContentLoaded', () => {
               const quills = {};
               
@@ -345,109 +342,119 @@ blog.get("/", async (c) => {
               });
             });
           `,
-          }}
-        ></script>
-      </AdminLayout>,
-    );
+        }}
+      ></script>
+    </AdminLayout>,
+  );
+});
+
+blog.post("/create", async (c) => {
+  const db = c.get("db");
+  const formData = await c.req.formData();
+  const title = formData.get("title") as string;
+  const content = formData.get("content") as string;
+  const bannerImage = formData.get("bannerImage");
+  const tags = (formData.get("tags") as string)
+    .split(",")
+    .map((t) => t.trim())
+    .filter((t) => t);
+  const publishedAt = formData.get("publishedAt") as string;
+
+  if (
+    !(title && content && bannerImage instanceof File && bannerImage.size > 0)
+  ) {
+    return c.text("Title, content, and banner image are required.", 400);
+  }
+
+  const bannerImageKey = `${Date.now()}-banner-${bannerImage.name}`;
+  await c.env.BUCKET.put(bannerImageKey, await bannerImage.arrayBuffer());
+
+  await db.insert(posts).values({
+    title,
+    content,
+    bannerImage: bannerImageKey,
+    tags,
+    publishedAt: new Date(publishedAt).toISOString(),
   });
-  
-  blog.post("/create", async (c) => {
-    const db = c.get("db");
-    const formData = await c.req.formData();
-    const title = formData.get("title") as string;
-    const content = formData.get("content") as string;
-    const bannerImage = formData.get("bannerImage");
-    const tags = (formData.get("tags") as string)
-      .split(",")
-      .map((t) => t.trim())
-      .filter((t) => t);
-    const publishedAt = formData.get("publishedAt") as string;
-  
-    if (!(title && content && bannerImage instanceof File && bannerImage.size > 0)) {
-      return c.text("Title, content, and banner image are required.", 400);
-    }
 
-    const bannerImageKey = `${Date.now()}-banner-${bannerImage.name}`;
+  return c.redirect("/admin/blog");
+});
+
+blog.post("/edit/:id", async (c) => {
+  const db = c.get("db");
+  const id = parseInt(c.req.param("id"));
+  const formData = await c.req.formData();
+  const title = formData.get("title") as string;
+  const content = formData.get("content") as string;
+  const bannerImage = formData.get("bannerImage");
+  const tags = (formData.get("tags") as string)
+    .split(",")
+    .map((t) => t.trim())
+    .filter((t) => t);
+  const publishedAt = formData.get("publishedAt") as string;
+
+  if (!title || !content) {
+    return c.text("Title and content cannot be empty.", 400);
+  }
+
+  const post = await db
+    .select()
+    .from(posts)
+    .where(sql`id = ${id}`)
+    .get();
+
+  if (!post) {
+    return c.notFound();
+  }
+
+  let bannerImageKey = post.bannerImage;
+  if (bannerImage instanceof File && bannerImage.size > 0) {
+    await c.env.BUCKET.delete(post.bannerImage);
+    bannerImageKey = `${Date.now()}-banner-${bannerImage.name}`;
     await c.env.BUCKET.put(bannerImageKey, await bannerImage.arrayBuffer());
+  }
 
-    await db.insert(posts).values({
+  await db
+    .update(posts)
+    .set({
       title,
       content,
       bannerImage: bannerImageKey,
       tags,
       publishedAt: new Date(publishedAt).toISOString(),
-    });
-  
-    return c.redirect("/admin/blog");
-  });
-  
-  blog.post("/edit/:id", async (c) => {
-    const db = c.get("db");
-    const id = parseInt(c.req.param("id"));
-    const formData = await c.req.formData();
-    const title = formData.get("title") as string;
-    const content = formData.get("content") as string;
-    const bannerImage = formData.get("bannerImage");
-    const tags = (formData.get("tags") as string)
-      .split(",")
-      .map((t) => t.trim())
-      .filter((t) => t);
-    const publishedAt = formData.get("publishedAt") as string;
-  
-    if (!title || !content) {
-      return c.text("Title and content cannot be empty.", 400);
-    }
+    })
+    .where(sql`id = ${id}`);
 
-    const post = await db.select().from(posts).where(sql`id = ${id}`).get();
+  return c.redirect("/admin/blog");
+});
 
-    if (!post) {
-      return c.notFound();
-    }
+blog.post("/delete/:id", async (c) => {
+  const db = c.get("db");
+  const id = parseInt(c.req.param("id"));
+  const post = await db
+    .select()
+    .from(posts)
+    .where(sql`id = ${id}`)
+    .get();
 
-    let bannerImageKey = post.bannerImage;
-    if (bannerImage instanceof File && bannerImage.size > 0) {
-      await c.env.BUCKET.delete(post.bannerImage);
-      bannerImageKey = `${Date.now()}-banner-${bannerImage.name}`;
-      await c.env.BUCKET.put(bannerImageKey, await bannerImage.arrayBuffer());
-    }
+  if (post) {
+    await c.env.BUCKET.delete(post.bannerImage);
+    await db.delete(posts).where(sql`id = ${id}`);
+  }
+  return c.redirect("/admin/blog");
+});
 
-    await db
-      .update(posts)
-      .set({
-        title,
-        content,
-        bannerImage: bannerImageKey,
-        tags,
-        publishedAt: new Date(publishedAt).toISOString(),
-      })
-      .where(sql`id = ${id}`);
-  
-    return c.redirect("/admin/blog");
-  });
-  
-  blog.post("/delete/:id", async (c) => {
-    const db = c.get("db");
-    const id = parseInt(c.req.param("id"));
-    const post = await db.select().from(posts).where(sql`id = ${id}`).get();
+blog.post("/upload", async (c) => {
+  const formData = await c.req.formData();
+  const image = formData.get("image") as File;
 
-    if (post) {
-      await c.env.BUCKET.delete(post.bannerImage);
-      await db.delete(posts).where(sql`id = ${id}`);
-    }
-    return c.redirect("/admin/blog");
-  });
-  
-  blog.post("/upload", async (c) => {
-    const formData = await c.req.formData();
-    const image = formData.get("image") as File;
-  
-    if (image) {
-      const imageKey = `${Date.now()}-${image.name}`;
-      await c.env.BUCKET.put(imageKey, await image.arrayBuffer());
-      return c.json({ key: imageKey });
-    }
-  
-    return c.json({ error: "No image provided" }, 400);
-  });
-  
-  export default blog; 
+  if (image) {
+    const imageKey = `${Date.now()}-${image.name}`;
+    await c.env.BUCKET.put(imageKey, await image.arrayBuffer());
+    return c.json({ key: imageKey });
+  }
+
+  return c.json({ error: "No image provided" }, 400);
+});
+
+export default blog;

@@ -33,4 +33,4 @@ const PostPopup = ({ selectedPost, closeModal }) => {
   );
 };
 
-export default PostPopup; 
+export default PostPopup;

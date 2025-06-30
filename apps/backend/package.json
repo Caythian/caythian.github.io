@@ -2,7 +2,8 @@
   "name": "@xuecong.art/backend",
   "version": "0.1.0",
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "bun run --hot src/index.ts",
+    "deploy": "wrangler deploy --minify src/index.ts"
   },
   "dependencies": {
     "drizzle-orm": "^0.44.2",
