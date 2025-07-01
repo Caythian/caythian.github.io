@@ -5,7 +5,8 @@ import App from "./App";
 import Blog from "./Blog";
 import About from "./About";
 import Cv from "./Cv";
-// import More from './More';
+import Headbar from "./components/Headbar";
+import Footer from "./components/Footer";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -29,6 +30,8 @@ const router = createBrowserRouter([
 ]);
 root.render(
   <React.StrictMode>
+    <Headbar />
     <RouterProvider router={router} />
+    <Footer />
   </React.StrictMode>,
 );

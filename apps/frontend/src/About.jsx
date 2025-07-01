@@ -1,7 +1,5 @@
 import "./App.css";
 import React from "react";
-import Headbar from "./Components/Headbar";
-import Footer from "./Components/Footer";
 const imageCdnBaseUrl =
   import.meta.env.VITE_CDN_URL || "https://images.xuecong.art/";
 const img = `${imageCdnBaseUrl}MewithTheyWhisper.JPG`;
@@ -11,7 +9,6 @@ const email = `${imageCdnBaseUrl}email.svg`;
 function About() {
   return (
     <div>
-      <Headbar />
       <div className="profilecol">
         <img className="profilepic" src={img} alt="profile"></img>
         <div className="des-wrapper">
@@ -69,7 +66,6 @@ function About() {
           </a>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

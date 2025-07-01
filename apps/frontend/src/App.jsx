@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Headbar from "./Components/Headbar";
-import Footer from "./Components/Footer";
-import Artwork from "./Components/Artworks";
-import Starter from "./Components/Artpage";
-import Filter from "./Components/Filter";
+import Artwork from "./components/Artworks";
+import Starter from "./components/Artpage";
+import Filter from "./components/Filter";
 import "./App.css";
 
 function App() {
@@ -43,10 +41,8 @@ function App() {
   return (
     <div className="App">
       <Starter />
-      <Headbar />
       <Filter onFilter={handleFilter} selectedFilter={selectedFilter} />
       <Artwork selectedFilter={selectedFilter} openModal={openModal} />
-      <Footer />
     </div>
   );
 }

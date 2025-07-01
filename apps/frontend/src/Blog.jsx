@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import Headbar from "./components/Headbar";
-import Footer from "./components/Footer";
+
+import Footer from "./Components/Footer";
 import PostPopup from "./components/PostPopup";
 import "./components/Artworks.css";
 import "./components/Filter.css";
@@ -53,7 +53,6 @@ function Blog() {
 
   return (
     <div>
-      <Headbar />
       <div className="filter-container">
         <button
           onClick={() => setSelectedTag(null)}
