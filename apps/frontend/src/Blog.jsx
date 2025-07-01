@@ -1,7 +1,6 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 
-import Footer from "./Components/Footer";
 import PostPopup from "./components/PostPopup";
 import "./components/Artworks.css";
 import "./components/Filter.css";
@@ -98,7 +97,6 @@ function Blog() {
         ))}
       </div>
       <PostPopup selectedPost={selectedPost} closeModal={closeModal} />
-      <Footer />
     </div>
   );
 }
