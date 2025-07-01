@@ -15,7 +15,9 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
 }
@@ -94,12 +96,12 @@
 }
 
 .modal .tags .tag {
-    display: inline-block;
-    background-color: #eee;
-    padding: 5px 10px;
-    border-radius: 15px;
-    margin-right: 5px;
-    font-size: 0.9em;
+  display: inline-block;
+  background-color: #eee;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin-right: 5px;
+  font-size: 0.9em;
 }
 
 .modal .post-content {

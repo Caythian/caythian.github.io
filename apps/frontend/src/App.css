@@ -47,7 +47,7 @@
   font-size: 30px;
   color: #001125;
 }
-.headersc{
+.headersc {
   font-family: "Noto Serif SC", serif;
 }
 .contact {
@@ -92,17 +92,16 @@ a:-webkit-any-link {
   .profilecol {
     display: block;
   }
-  .extra-indent{
+  .extra-indent {
     padding-left: 0;
   }
-  .des-wrapper{
+  .des-wrapper {
     margin: 20px;
   }
-  .generaldes{
+  .generaldes {
     text-indent: 0;
   }
 }
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

@@ -5,9 +5,15 @@ function Cv() {
   return (
     <div>
       <div className="cv-header-wrapper">
-        <div className="header">CV <span className="headersc">简历</span></div>
+        <div className="header">
+          CV <span className="headersc">简历</span>
+        </div>
         <div className="cv-caption">Last update: June 2025</div>
-        <a href="/Xuecong_ArtResumeJun2025.pdf" download="Xuecong_ArtResumeJun2025.pdf" className="download-link">
+        <a
+          href="/Xuecong_ArtResumeJun2025.pdf"
+          download="Xuecong_ArtResumeJun2025.pdf"
+          className="download-link"
+        >
           Download CV
         </a>
       </div>
@@ -46,17 +52,17 @@ function Cv() {
         <div className="generaldes extra-indent">
           NYU Earth Day Fair, Schwarz Plaza, New York, NY
         </div>
-      
+
         <div className="header">Awards and Grants:</div>
         <div className="generaldes">2025</div>
         <div className="generaldes extra-indent">
-           NYU Student Excellence Award
+          NYU Student Excellence Award
         </div>
         <div className="generaldes">2024</div>
         <div className="generaldes extra-indent">
           Chen Cui Artist Practice Award
         </div>
-        </div>
+      </div>
       <div className="divider"></div>
     </div>
   );

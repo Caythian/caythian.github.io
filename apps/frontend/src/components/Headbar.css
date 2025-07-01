@@ -40,20 +40,20 @@
   transition: color 0.5s ease;
 }
 
-.title {
+.headbar-title {
   color: #001125;
   font-family: "Playfair Display", serif;
   font-weight: 400;
   font-size: 30px;
   text-transform: uppercase;
 }
-.titlesc {
+.headbar-titlesc {
   color: #001125;
   font-family: "Noto Serif SC, serif";
   font-weight: 700;
   font-size: 20px;
 }
-.title:hover {
+.headbar-title:hover {
   background-color: transparent !important;
   color: #001125 !important;
 }

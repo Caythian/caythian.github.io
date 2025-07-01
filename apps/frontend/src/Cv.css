@@ -6,10 +6,10 @@
   margin: 40px;
   margin-top: 100px;
 }
-.cv-caption{
-    font-family: "Playfair Display", serif;
-    font-size: 14px;
-    margin: 10px;
+.cv-caption {
+  font-family: "Playfair Display", serif;
+  font-size: 14px;
+  margin: 10px;
 }
 
 .download-link {
@@ -24,4 +24,4 @@
 
 .download-link:hover {
   background-color: rgba(250, 233, 103, 1);
-} 
+}
