@@ -7,7 +7,9 @@ const Artwork = ({ selectedFilter }) => {
   const [artworks, setArtworks] = useState([]);
   const [selectedArtwork, setSelectedArtwork] = useState(null);
   const [currentDetailIndex, setCurrentDetailIndex] = useState(0);
-  const imageCdnBaseUrl = "/api/image/";
+  const imageCdnBaseUrl = import.meta.env.DEV
+    ? "/api/image/"
+    : "https://images.xuecong.art/";
   const apiBaseUrl = "/api";
 
   useEffect(() => {
