@@ -7,8 +7,9 @@ const Artwork = ({ selectedFilter }) => {
   const [artworks, setArtworks] = useState([]);
   const [selectedArtwork, setSelectedArtwork] = useState(null);
   const [currentDetailIndex, setCurrentDetailIndex] = useState(0);
-  const imageCdnBaseUrl = "/api/image/";
-  const apiBaseUrl = "/api";
+  const imageCdnBaseUrl = import.meta.env.DEV
+    ? "/api/image/"
+    : "https://images.xuecong.art/";
 
   useEffect(() => {
     if (selectedArtwork) {
@@ -25,15 +26,15 @@ const Artwork = ({ selectedFilter }) => {
     const loadArtworks = async () => {
       try {
         const url = selectedFilter
-          ? `${apiBaseUrl}/artworks/${selectedFilter}`
-          : `${apiBaseUrl}/artworks`;
+          ? `/api/artworks/${selectedFilter}`
+          : `/api/artworks`;
         const response = await fetch(url);
         let artPicData = await response.json();
 
         if (Array.isArray(artPicData)) {
           const loadedArtworks = artPicData.map((artwork) => ({
             ...artwork,
-            url: `${imageCdnBaseUrl}${artwork.image}`,
+            url: `${imageCdnBaseUrl}${encodeURIComponent(artwork.image)}`,
           }));
           setArtworks(loadedArtworks);
         } else {
@@ -47,7 +48,7 @@ const Artwork = ({ selectedFilter }) => {
     };
 
     loadArtworks();
-  }, [selectedFilter, apiBaseUrl]);
+  }, [selectedFilter, "/api"]);
 
   const openModal = (artwork) => {
     setSelectedArtwork(artwork);
@@ -76,10 +77,11 @@ const Artwork = ({ selectedFilter }) => {
       urls.push(selectedArtwork.url);
       if (selectedArtwork.details && Array.isArray(selectedArtwork.details)) {
         selectedArtwork.details.forEach((detail) => {
-          urls.push(`${imageCdnBaseUrl}${detail}`);
+          urls.push(`${imageCdnBaseUrl}${encodeURIComponent(detail)}`);
         });
       }
     }
+    console.log("urls:", urls);
     return urls;
   };
 

@@ -1,15 +1,18 @@
 import { Hono } from "hono";
-import { jsx } from "hono/jsx";
 import { drizzle } from "drizzle-orm/d1";
 import { sql } from "drizzle-orm";
 import { artworks, posts } from "../db/schema";
 import type { DrizzleD1Database } from "drizzle-orm/d1";
 import blog from "./admin/blog";
+import { jwt } from "hono/jwt";
+import { LoginPage, createLoginHandler } from "../auth";
 
 // 2) Describe your Env interface
 export interface Env {
   DB: D1Database;
   BUCKET: R2Bucket;
+  ADMIN_PASS: string;
+  JWT_SECRET: string;
 }
 
 export type AdminLayoutProps = {
@@ -21,6 +24,8 @@ export type AdminLayoutProps = {
 type Bindings = {
   DB: D1Database;
   BUCKET: R2Bucket;
+  ADMIN_PASS: string;
+  JWT_SECRET: string;
 };
 
 type Variables = {
@@ -28,6 +33,15 @@ type Variables = {
 };
 
 const app = new Hono<{ Bindings: Bindings; Variables: Variables }>();
+const loginHandler = createLoginHandler();
+
+app.get("/login", (c) => c.html(<LoginPage />));
+app.route("/login", loginHandler);
+
+app.use("/*", async (c, next) => {
+  const auth = jwt({ secret: c.env.JWT_SECRET, cookie: "token" });
+  return auth(c, next);
+});
 
 app.use("*", async (c, next) => {
   const db = drizzle(c.env.DB);

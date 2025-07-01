@@ -21,7 +21,14 @@ const PostPopup = ({ selectedPost, closeModal }) => {
             {new Date(selectedPost.publishedAt).toLocaleDateString()}
           </p>
           {selectedPost.tags && selectedPost.tags.length > 0 && (
-            <p className="tags">Tags: {selectedPost.tags.join(", ")}</p>
+            <div className="tags">
+              <span>Tags: </span>
+              {selectedPost.tags.map((tag) => (
+                <span key={tag} className="tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
           )}
           <div
             className="post-content"
