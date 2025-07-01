@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Headbar from "./Components/Headbar";
-import Footer from "./Components/Footer";
 import Artwork from "./Components/Artworks";
 import Starter from "./Components/Artpage";
 import Filter from "./Components/Filter";
@@ -43,10 +41,8 @@ function App() {
   return (
     <div className="App">
       <Starter />
-      <Headbar />
       <Filter onFilter={handleFilter} selectedFilter={selectedFilter} />
       <Artwork selectedFilter={selectedFilter} openModal={openModal} />
-      <Footer />
     </div>
   );
 }

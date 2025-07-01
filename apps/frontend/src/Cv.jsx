@@ -1,12 +1,9 @@
 import React from "react";
 import "./Cv.css";
-import Headbar from "./Components/Headbar";
-import Footer from "./Components/Footer";
 
 function Cv() {
   return (
     <div>
-      <Headbar />
       <div className="cv-header-wrapper">
         <div className="header">CV <span className="headersc">简历</span></div>
         <div className="cv-caption">Last update: June 2025</div>
@@ -61,8 +58,6 @@ function Cv() {
         </div>
         </div>
       <div className="divider"></div>
-
-      <Footer />
     </div>
   );
 }
