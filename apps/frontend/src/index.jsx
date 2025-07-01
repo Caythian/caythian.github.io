@@ -5,8 +5,8 @@ import App from "./App";
 import Blog from "./Blog";
 import About from "./About";
 import Cv from "./Cv";
-import Headbar from "./Components/Headbar";
-import Footer from "./Components/Footer";
+import Headbar from "./components/Headbar";
+import Footer from "./components/Footer";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
