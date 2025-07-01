@@ -175,7 +175,6 @@
   color: #ffffff;
 }
 
-
 @media screen and (max-width: 600px) {
   /*All the media query styles that are within .modal-wrapper*/
   .modal {
