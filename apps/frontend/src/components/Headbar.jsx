@@ -6,8 +6,8 @@ function Headbar() {
   return (
     <div className="headbar-wrapper">
       <div className="headbar">
-        <div className="title">Xuecong Wang</div>
-        <div className="titlesc">王雪聪</div>
+        <div className="headbar-title">Xuecong Wang</div>
+        <div className="headbar-titlesc">王雪聪</div>
       </div>
       <div className="menubar">
         <div className="menubarcol">
