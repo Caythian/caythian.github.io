@@ -17,8 +17,8 @@ function Footer() {
         <Link to="/" className="footerdessc">
           Art 艺术
         </Link>
-        <Link to="/photography" className="footerdessc">
-          Photography 摄影
+        <Link to="/blog" className="footerdessc">
+          Blog 博客
         </Link>
         <Link to="/about" className="footerdessc">
           About 关于

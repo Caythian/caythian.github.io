@@ -1,0 +1,27 @@
+.cv-header-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px;
+  margin-top: 100px;
+}
+.cv-caption{
+    font-family: "Playfair Display", serif;
+    font-size: 14px;
+    margin: 10px;
+}
+
+.download-link {
+  font-family: "Playfair Display", serif;
+  text-decoration: none;
+  color: #001125;
+  background-color: rgba(250, 233, 103, 0.5);
+  padding: 5px 10px;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.download-link:hover {
+  background-color: rgba(250, 233, 103, 1);
+} 

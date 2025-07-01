@@ -41,7 +41,7 @@ function Popup({
             <div className="modal-images-container">
               {getDetailImageUrls().length > 0 && (
                 <div
-                  className="modal-content"
+                  className="image-wrapper"
                   style={{
                     backgroundImage: `url(${getDetailImageUrls()[currentDetailIndex]})`,
                   }}
