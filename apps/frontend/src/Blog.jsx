@@ -12,7 +12,9 @@ function Blog() {
   const [tags, setTags] = useState([]);
   const [selectedTag, setSelectedTag] = useState(null);
   const [selectedPost, setSelectedPost] = useState(null);
-  const imageCdnBaseUrl = "/api/image/";
+  const imageCdnBaseUrl = import.meta.env.DEV
+    ? "/api/image/"
+    : "https://images.xuecong.art/";
   const apiBaseUrl = "/api";
 
   useEffect(() => {

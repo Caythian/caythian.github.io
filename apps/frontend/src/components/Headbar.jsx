@@ -15,11 +15,11 @@ function Headbar() {
             Art <span className="subtitlesc">艺术</span>
           </Link>
         </div>
-        {/* <div className="menubarcol"> */}
-        {/*   <Link to="/blog" className="subtitle"> */}
-        {/*     Blog <span className="subtitlesc">博客</span> */}
-        {/*   </Link> */}
-        {/* </div> */}
+        <div className="menubarcol">
+          <Link to="/blog" className="subtitle">
+            Blog <span className="subtitlesc">博客</span>
+          </Link>
+        </div>
         <div className="menubarcol">
           <Link to="/about" className="subtitle">
             About <span className="subtitlesc">关于</span>
