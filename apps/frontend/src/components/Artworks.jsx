@@ -33,7 +33,7 @@ const Artwork = ({ selectedFilter }) => {
         if (Array.isArray(artPicData)) {
           const loadedArtworks = artPicData.map((artwork) => ({
             ...artwork,
-            url: `${imageCdnBaseUrl}${artwork.image}`,
+            url: `${imageCdnBaseUrl}${encodeURIComponent(artwork.image)}`,
           }));
           setArtworks(loadedArtworks);
         } else {
@@ -76,10 +76,11 @@ const Artwork = ({ selectedFilter }) => {
       urls.push(selectedArtwork.url);
       if (selectedArtwork.details && Array.isArray(selectedArtwork.details)) {
         selectedArtwork.details.forEach((detail) => {
-          urls.push(`${imageCdnBaseUrl}${detail}`);
+          urls.push(`${imageCdnBaseUrl}${encodeURIComponent(detail)}`);
         });
       }
     }
+    console.log("urls:", urls);
     return urls;
   };
 
