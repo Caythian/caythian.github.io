@@ -10,7 +10,6 @@ const Artwork = ({ selectedFilter }) => {
   const imageCdnBaseUrl = import.meta.env.DEV
     ? "/api/image/"
     : "https://images.xuecong.art/";
-  const apiBaseUrl = "/api";
 
   useEffect(() => {
     if (selectedArtwork) {
@@ -27,8 +26,8 @@ const Artwork = ({ selectedFilter }) => {
     const loadArtworks = async () => {
       try {
         const url = selectedFilter
-          ? `${apiBaseUrl}/artworks/${selectedFilter}`
-          : `${apiBaseUrl}/artworks`;
+          ? `/api/artworks/${selectedFilter}`
+          : `/api/artworks`;
         const response = await fetch(url);
         let artPicData = await response.json();
 
@@ -49,7 +48,7 @@ const Artwork = ({ selectedFilter }) => {
     };
 
     loadArtworks();
-  }, [selectedFilter, apiBaseUrl]);
+  }, [selectedFilter, "/api"]);
 
   const openModal = (artwork) => {
     setSelectedArtwork(artwork);

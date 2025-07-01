@@ -15,12 +15,11 @@ function Blog() {
   const imageCdnBaseUrl = import.meta.env.DEV
     ? "/api/image/"
     : "https://images.xuecong.art/";
-  const apiBaseUrl = "/api";
 
   useEffect(() => {
     const fetchTags = async () => {
       try {
-        const response = await fetch(`${apiBaseUrl}/posts/tags`);
+        const response = await fetch(`/api/posts/tags`);
         const data = await response.json();
         setTags(data);
       } catch (error) {
@@ -32,9 +31,7 @@ function Blog() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const url = selectedTag
-        ? `${apiBaseUrl}/posts/${selectedTag}`
-        : `${apiBaseUrl}/posts`;
+      const url = selectedTag ? `/api/posts/${selectedTag}` : `/api/posts`;
       try {
         const response = await fetch(url);
         const data = await response.json();
@@ -85,8 +82,19 @@ function Blog() {
               src={`${imageCdnBaseUrl}${post.bannerImage}`}
               alt={post.title}
               loading="lazy"
+              className="blog-post-image"
             />
-            <div className="overlay">{post.title}</div>
+            <div className="blog-post-content">
+              <div className="blog-post-tags">
+                {post.tags &&
+                  post.tags.map((tag) => (
+                    <span key={tag} className="tag">
+                      {tag}
+                    </span>
+                  ))}
+              </div>
+              <h3 className="blog-post-title">{post.title}</h3>
+            </div>
           </div>
         ))}
       </div>
