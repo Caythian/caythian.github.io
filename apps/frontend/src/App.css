@@ -27,7 +27,6 @@
   height: auto;
 }
 .profilecol {
-  background-color: #fef9f9;
   font-family: "Playfair Display", serif;
   color: #001125;
 }
@@ -37,14 +36,21 @@
   margin: 40px;
   gap: 50px;
 }
+.contact-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
 .header {
   font-family: "Playfair Display", serif;
   font-size: 30px;
   color: #001125;
 }
+.headersc{
+  font-family: "Noto Serif SC", serif;
+}
 .contact {
   padding: 20px;
-  background-color: #c0baff;
   display: flex;
   justify-content: center;
   gap: 30px;
@@ -55,6 +61,7 @@
   width: 40px;
   height: 40px;
   display: block;
+  cursor: grab;
 }
 
 .icon-wrapper {
@@ -64,12 +71,16 @@
   cursor: pointer;
 }
 
-.icon-wrapper:hover {
-  opacity: 0.8;
-}
-
 a:-webkit-any-link {
   text-decoration: none;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 600px) {
@@ -79,5 +90,45 @@ a:-webkit-any-link {
   }
   .profilecol {
     display: block;
+  }
+  .extra-indent{
+    padding-left: 0;
+  }
+  .des-wrapper{
+    margin: 20px;
+  }
+  .generaldes{
+    text-indent: 0;
+  }
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

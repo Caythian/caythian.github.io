@@ -51,8 +51,8 @@ function About() {
           </div>
         </div>
       </div>
-      <div className="des-wrapper">
-        <div className="header">Social Media:</div>
+      <div className="contact-wrapper">
+        <div className="header">Contact and Social Media:</div>
         <div className="contact">
           <a
             className="icon-wrapper"
@@ -63,7 +63,7 @@ function About() {
             <img className="icon" src={insta} alt="instagram icon"></img>
             {/* <div className="generaldes">Instagram</div> */}
           </a>
-          <a className="icon-wrapper" href="mailto:xcatherine020202@gmail.com">
+          <a className="icon-wrapper" href="mailto:inquiry@xuecong.art">
             <img className="icon" src={email} alt="email icon"></img>
             {/* <div className="generaldes">Email</div> */}
           </a>
