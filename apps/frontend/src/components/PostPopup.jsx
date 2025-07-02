@@ -19,16 +19,16 @@ function PostPopup({ selectedPost, closeModal, imageCdnBaseUrl }) {
           <h2 className="blog-popup-title">{selectedPost.title}</h2>
           <div className="blog-popup-meta">
             <span>
-              Published on:{" "}
-              {new Date(selectedPost.publishedAt).toLocaleDateString()}
+            Published on:{" "}
+            {new Date(selectedPost.publishedAt).toLocaleDateString()}
             </span>
             <div className="blog-popup-tags">
               {selectedPost.tags &&
                 selectedPost.tags.map((tag) => (
-                  <span key={tag} className="tag">
-                    {tag}
-                  </span>
-                ))}
+                <span key={tag} className="tag">
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
           <div
