@@ -1,36 +1,34 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-
+import BlogFilter from "./components/Blogfilter";
 import PostPopup from "./components/PostPopup";
-import "./components/Artworks.css";
 import "./components/Filter.css";
 import "./Blog.css";
 
 function Blog() {
   const [posts, setPosts] = useState([]);
-  const [tags, setTags] = useState([]);
-  const [selectedTag, setSelectedTag] = useState(null);
+  const [selectedFilter, setSelectedFilter] = useState(null);
   const [selectedPost, setSelectedPost] = useState(null);
   const imageCdnBaseUrl = import.meta.env.DEV
     ? "/api/image/"
     : "https://images.xuecong.art/";
 
   useEffect(() => {
-    const fetchTags = async () => {
-      try {
-        const response = await fetch(`/api/posts/tags`);
-        const data = await response.json();
-        setTags(data);
-      } catch (error) {
-        console.error("Error fetching tags:", error);
-      }
+    if (selectedPost) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
     };
-    fetchTags();
-  }, []);
+  }, [selectedPost]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const url = selectedTag ? `/api/posts/${selectedTag}` : `/api/posts`;
+      const url = selectedFilter
+        ? `/api/posts/${selectedFilter}`
+        : `/api/posts`;
       try {
         const response = await fetch(url);
         const data = await response.json();
@@ -40,7 +38,7 @@ function Blog() {
       }
     };
     fetchPosts();
-  }, [selectedTag]);
+  }, [selectedFilter]);
 
   const openModal = (post) => {
     setSelectedPost(post);
@@ -49,54 +47,50 @@ function Blog() {
   const closeModal = () => {
     setSelectedPost(null);
   };
-
+  const handleFilter = (filterType) => {
+    setSelectedFilter((prevFilter) => {
+      if (prevFilter === filterType) {
+        return null;
+      } else {
+        return filterType;
+      }
+    });
+  };
   return (
     <div>
-      <div className="filter-container">
-        <button
-          onClick={() => setSelectedTag(null)}
-          className={selectedTag === null ? "active" : ""}
-        >
-          All
-        </button>
-        {tags.map((tag) => (
-          <button
-            key={tag}
-            onClick={() => setSelectedTag(tag)}
-            className={selectedTag === tag ? "active" : ""}
-          >
-            {tag}
-          </button>
-        ))}
+      <div className="blog-header-wrapper">
+          <div className="header">Blog <span className="headersc">博客</span></div>
       </div>
-      <div className="blog-posts-wrapper">
+      <BlogFilter onFilter={handleFilter} selectedFilter={selectedFilter} />
+      <div className="blog-gallery-wrapper">
         {posts.map((post) => (
           <div
-            className="blog-post-card"
+            className="blog-gallery"
             key={post.id}
             onClick={() => openModal(post)}
           >
-            <img
-              src={`${imageCdnBaseUrl}${post.bannerImage}`}
-              alt={post.title}
-              loading="lazy"
-              className="blog-post-image"
-            />
-            <div className="blog-post-content">
-              <div className="blog-post-tags">
-                {post.tags &&
-                  post.tags.map((tag) => (
-                    <span key={tag} className="tag">
-                      {tag}
-                    </span>
-                  ))}
-              </div>
-              <h3 className="blog-post-title">{post.title}</h3>
+            <div className="blog-image-container">
+              <img
+                src={`${imageCdnBaseUrl}${post.bannerImage}`}
+                alt={post.title}
+                loading="lazy"
+              />
+              <div className="blog-overlay">{post.title}</div>
+            </div>
+            <div className="blog-info">
+              <h3 className="blog-title">{post.title}</h3>
+              <p className="blog-date">
+                {new Date(post.publishedAt).toLocaleDateString()}
+              </p>
             </div>
           </div>
         ))}
       </div>
-      <PostPopup selectedPost={selectedPost} closeModal={closeModal} />
+      <PostPopup
+        selectedPost={selectedPost}
+        closeModal={closeModal}
+        imageCdnBaseUrl={imageCdnBaseUrl}
+      />
     </div>
   );
 }
