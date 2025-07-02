@@ -31,8 +31,7 @@
   text-align: center;
   display: flex;
   gap: 20px;
-  align-items: baseline;
-  color: #56606a;
+  align-items: center;
   padding: 10px;
 }
 .headbar:hover {
@@ -44,14 +43,14 @@
   color: #001125;
   font-family: "Playfair Display", serif;
   font-weight: 400;
-  font-size: 30px;
+  font-size: 25px;
   text-transform: uppercase;
 }
 .headbar-titlesc {
   color: #001125;
   font-family: "Noto Serif SC, serif";
   font-weight: 700;
-  font-size: 25px;
+  font-size: 20px;
 }
 .headbar-title:hover {
   background-color: transparent !important;
