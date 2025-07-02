@@ -26,6 +26,35 @@ const AdminLayout = (props: AdminLayoutProps) => {
           rel="stylesheet"
         />
         <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Playfair+Display&display=swap"
+          rel="stylesheet"
+        />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+          .ql-font-noto-sans { font-family: 'Noto Sans', sans-serif; }
+          .ql-font-playfair { font-family: 'Playfair Display', serif; }
+
+          .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="noto-sans"]::before,
+          .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="noto-sans"]::before {
+            content: 'Noto Sans';
+            font-family: 'Noto Sans', sans-serif;
+          }
+          .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="playfair"]::before,
+          .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="playfair"]::before {
+            content: 'Playfair';
+            font-family: 'Playfair Display', serif;
+          }
+        `,
+          }}
+        ></style>
       </head>
       <body class="bg-gray-100 text-gray-800">
         <div class="container mx-auto p-4">
@@ -291,9 +320,14 @@ blog.get("/", async (c) => {
                 };
               }
   
+              const Font = Quill.import('attributors/class/font');
+              const fonts = ['noto-sans', 'playfair'];
+              Font.whitelist = fonts;
+              Quill.register(Font, true);
+  
               const toolbarOptions = {
                 container: [
-                  [{ 'header': [1, 2, 3, false] }],
+                  [{ 'font': fonts }, { 'header': [1, 2, 3, false] }],
                   ['bold', 'italic', 'underline', 'strike'],
                   ['link', 'image', 'video'],
                   [{'list': 'ordered'}, {'list': 'bullet'}],
