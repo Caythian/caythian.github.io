@@ -99,7 +99,7 @@
   font-weight: bold;
 }
 .blog-popup-content .ql-size-subtitle {
-  font-size: 40px;
+  font-size: 20px;
   font-weight: bold;
 }
 .blog-popup-content .ql-size-body {
@@ -137,6 +137,12 @@
   }
   .blog-popup-title {
     font-size: 2rem;
+  }
+  .blog-popup-content p {
+    text-indent:0;
+  }
+  .blog-popup-content img {
+    width: 100%;
   }
 }
 
