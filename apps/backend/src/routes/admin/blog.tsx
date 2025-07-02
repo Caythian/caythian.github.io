@@ -26,6 +26,50 @@ const AdminLayout = (props: AdminLayoutProps) => {
           rel="stylesheet"
         />
         <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&family=Playfair+Display&display=swap"
+          rel="stylesheet"
+        />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+          .ql-font-noto-sans { font-family: 'Noto Serif SC', sans-serif; }
+          .ql-font-playfair { font-family: 'Playfair Display', serif; }
+
+          .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="noto-sans"]::before,
+          .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="noto-sans"]::before {
+            content: 'Noto Serif SC';
+            font-family: 'Noto Serif SC', sans-serif;
+          }
+          .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="playfair"]::before,
+          .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="playfair"]::before {
+            content: 'Playfair';
+            font-family: 'Playfair Display', serif;
+          }
+
+          .ql-size-title { font-size: 32px; font-weight: bold; }
+          .ql-size-subtitle { font-size: 40px; font-weight: bold; }
+          .ql-size-body { font-size: 16px; }
+          .ql-size-caption { font-size: 12px; color: #00000090; }
+
+          .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="body"]::before,
+          .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="body"]::before { content: 'Body'; font-size: 16px; }
+          .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="title"]::before,
+          .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="title"]::before { content: 'Title'; font-size: 24px; font-weight: bold; }
+          .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="subtitle"]::before,
+          .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="subtitle"]::before { content: 'Subtitle'; font-size: 20px; font-weight: bold; }
+          .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="caption"]::before,
+          .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="caption"]::before { content: 'Caption'; font-size: 12px; }
+          .ql-snow .ql-picker.ql-size .ql-picker-label::before { content: 'Body'; }
+        `,
+          }}
+        ></style>
       </head>
       <body class="bg-gray-100 text-gray-800">
         <div class="container mx-auto p-4">
@@ -291,12 +335,22 @@ blog.get("/", async (c) => {
                 };
               }
   
+              const Font = Quill.import('attributors/class/font');
+              const fonts = ['noto-sans', 'playfair'];
+              Font.whitelist = fonts;
+              Quill.register(Font, true);
+
+              const Size = Quill.import('attributors/class/size');
+              Size.whitelist = ['title', 'subtitle', 'body', 'caption'];
+              Quill.register(Size, true);
+  
               const toolbarOptions = {
                 container: [
-                  [{ 'header': [1, 2, 3, false] }],
+                  [{ 'font': fonts }, { 'size': [ 'body', 'title', 'subtitle', 'caption'] }],
                   ['bold', 'italic', 'underline', 'strike'],
                   ['link', 'image', 'video'],
                   [{'list': 'ordered'}, {'list': 'bullet'}],
+                  [{ 'align': [] }],
                   ['clean']
                 ],
                 handlers: {
@@ -322,6 +376,11 @@ blog.get("/", async (c) => {
                   });
   
                   quills[selector] = quill;
+
+                  const initialContent = form.querySelector('input[name="content"]').value;
+                  if (!initialContent) {
+                    quill.format('size', 'body');
+                  }
                 }
               };
   

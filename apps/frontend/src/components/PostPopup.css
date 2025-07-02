@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css");
 
 .blog-popup-overlay {
   position: fixed;
@@ -28,8 +29,7 @@
 }
 
 .blog-modal-content {
-  font-family: "Playfair Display", serif !important;
-  color: #333;
+  box-sizing: border-box;
   padding: 40px;
   height: 100%;
   overflow-y: auto;
@@ -66,7 +66,6 @@
 }
 
 .blog-popup-title {
-  font-size: 2.5rem;
   margin-bottom: 0.5em;
 }
 
@@ -74,6 +73,7 @@
   font-family: "Noto Sans SC", sans-serif;
   color: #666;
   margin-bottom: 2em;
+  font-size: 0.9em;
 }
 
 .blog-popup-tags .tag {
@@ -85,16 +85,45 @@
   font-size: 0.9em;
 }
 
-.blog-popup-content {
-  font-family: "Noto Sans SC", sans-serif;
-  line-height: 1.8;
-  font-size: 1.1rem;
+.blog-popup-content .ql-font-noto-sans {
+  font-family: "Noto Serif SC", serif;
 }
+.blog-popup-content .ql-font-playfair {
+  font-family: "Playfair Display", serif;
+}
+.blog-popup-content .ql-size-title {
+  font-size: 32px;
+  font-weight: bold;
+}
+.blog-popup-content .ql-size-subtitle {
+  font-size: 40px;
+  font-weight: bold;
+}
+.blog-popup-content .ql-size-body {
+  font-size: 16px;
+}
+.blog-popup-content .ql-size-caption {
+  font-size: 12px;
+  color: #00000090;
+}
+.blog-popup-content .ql-align-center {
+  text-align: center;
+}
+.blog-popup-content .ql-align-right {
+  text-align: right;
+}
+.blog-popup-content .ql-align-justify {
+  text-align: justify;
+}
+.blog-popup-content p {
+  text-indent: 2em;
+}
+
 .blog-popup-content img {
-  max-width: 100%;
+  max-height: 50vh;
+  display: block;
+  margin:1em auto;
   height: auto;
-  border-radius: 5px;
-  margin: 1em 0;
 }
 
 @media screen and (max-width: 600px) {
