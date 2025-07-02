@@ -86,15 +86,16 @@
 }
 
 .blog-popup-content {
-  font-family: "Noto Sans SC", sans-serif;
+  font-family: "Noto Serif SC", serif;
   line-height: 1.8;
   font-size: 1.1rem;
+  text-indent: 2em;
 }
 .blog-popup-content img {
-  max-width: 100%;
+  max-height: 50vh;
+  display: block;
+  margin:1em auto;
   height: auto;
-  border-radius: 5px;
-  margin: 1em 0;
 }
 
 @media screen and (max-width: 600px) {
