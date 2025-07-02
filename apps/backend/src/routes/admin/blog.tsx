@@ -33,17 +33,18 @@ const AdminLayout = (props: AdminLayoutProps) => {
           crossOrigin=""
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&family=Playfair+Display&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&family=Playfair+Display&family=Noto+Serif&display=swap"
           rel="stylesheet"
         />
         <style
           dangerouslySetInnerHTML={{
             __html: `
-          .ql-font-noto-sans { font-family: 'Noto Serif SC', sans-serif; }
+          .ql-font-noto-serif { font-family: 'Noto Serif', serif; }
+          .ql-font-noto-serif-sc { font-family: 'Noto Serif SC', sans-serif; }
           .ql-font-playfair { font-family: 'Playfair Display', serif; }
 
-          .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="noto-sans"]::before,
-          .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="noto-sans"]::before {
+          .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="noto-serif-sc"]::before,
+          .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="noto-serif-sc"]::before {
             content: 'Noto Serif SC';
             font-family: 'Noto Serif SC', sans-serif;
           }
@@ -51,6 +52,11 @@ const AdminLayout = (props: AdminLayoutProps) => {
           .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="playfair"]::before {
             content: 'Playfair';
             font-family: 'Playfair Display', serif;
+          }
+          .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="noto-serif"]::before,
+          .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="noto-serif"]::before {
+            content: 'Noto Serif';
+            font-family: 'Noto Serif', serif;
           }
 
           .ql-size-title { font-size: 32px; font-weight: bold; }
@@ -336,7 +342,7 @@ blog.get("/", async (c) => {
               }
   
               const Font = Quill.import('attributors/class/font');
-              const fonts = ['noto-sans', 'playfair'];
+              const fonts = ['noto-serif', 'noto-serif-sc', 'playfair'];
               Font.whitelist = fonts;
               Quill.register(Font, true);
 

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css");
 
@@ -84,8 +85,10 @@
   margin-right: 10px;
   font-size: 0.9em;
 }
-
-.blog-popup-content .ql-font-noto-sans {
+.blog-popup-content .ql-font-noto-serif {
+  font-family: "Noto Serif", serif;
+}
+.blog-popup-content .ql-font-noto-serif-sc {
   font-family: "Noto Serif SC", serif;
 }
 .blog-popup-content .ql-font-playfair {
@@ -96,7 +99,7 @@
   font-weight: bold;
 }
 .blog-popup-content .ql-size-subtitle {
-  font-size: 40px;
+  font-size: 20px;
   font-weight: bold;
 }
 .blog-popup-content .ql-size-body {
@@ -134,6 +137,12 @@
   }
   .blog-popup-title {
     font-size: 2rem;
+  }
+  .blog-popup-content p {
+    text-indent:0;
+  }
+  .blog-popup-content img {
+    width: 100%;
   }
 }
 
