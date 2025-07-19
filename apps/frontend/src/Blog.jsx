@@ -27,8 +27,8 @@ function Blog() {
   useEffect(() => {
     const fetchPosts = async () => {
       const url = selectedFilter
-        ? `/api/posts/${selectedFilter}`
-        : `/api/posts`;
+        ? `/api/blogs/${selectedFilter}`
+        : `/api/blogs`;
       try {
         const response = await fetch(url);
         const data = await response.json();
@@ -59,7 +59,9 @@ function Blog() {
   return (
     <div>
       <div className="blog-header-wrapper">
-          <div className="header">Blog <span className="headersc">博客</span></div>
+        <div className="header">
+          Blog <span className="headersc">博客</span>
+        </div>
       </div>
       <BlogFilter onFilter={handleFilter} selectedFilter={selectedFilter} />
       <div className="blog-gallery-wrapper">
