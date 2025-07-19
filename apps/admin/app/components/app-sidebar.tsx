@@ -17,6 +17,7 @@ import {
   Image, 
   FileText, 
   FolderOpen, 
+  Database,
   Settings,
   LogOut
 } from "lucide-react"
@@ -28,6 +29,11 @@ const menuItems = [
     title: "Dashboard",
     url: "/dashboard",
     icon: LayoutDashboard,
+  },
+  {
+    title: "Database",
+    url: "/database",
+    icon: Database,
   },
   {
     title: "Artworks",
