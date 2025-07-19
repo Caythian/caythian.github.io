@@ -1,7 +1,12 @@
-"use client"
+"use client";
 
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, X, ZoomIn, ZoomOut } from "lucide-react";
@@ -32,17 +37,23 @@ export function ArtworkViewer({ artwork, open, onClose }: ArtworkViewerProps) {
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + allImages.length) % allImages.length,
+    );
     setIsZoomed(false);
     setImageError(false);
   };
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case "painting": return "bg-blue-100 text-blue-800";
-      case "sculpture": return "bg-green-100 text-green-800";
-      case "installation": return "bg-purple-100 text-purple-800";
-      default: return "bg-gray-100 text-gray-800";
+      case "painting":
+        return "bg-blue-100 text-blue-800";
+      case "sculpture":
+        return "bg-green-100 text-green-800";
+      case "installation":
+        return "bg-purple-100 text-purple-800";
+      default:
+        return "bg-gray-100 text-gray-800";
     }
   };
 
@@ -54,13 +65,17 @@ export function ArtworkViewer({ artwork, open, onClose }: ArtworkViewerProps) {
           <DialogHeader className="p-6 pb-4 border-b">
             <div className="flex items-start justify-between">
               <div>
-                <DialogTitle className="text-2xl font-bold">{artwork.title}</DialogTitle>
+                <DialogTitle className="text-2xl font-bold">
+                  {artwork.title}
+                </DialogTitle>
                 <div className="flex items-center gap-2 mt-2">
                   <Badge className={getCategoryColor(artwork.category)}>
                     {artwork.category}
                   </Badge>
                   {artwork.time && (
-                    <span className="text-sm text-muted-foreground">{artwork.time}</span>
+                    <span className="text-sm text-muted-foreground">
+                      {artwork.time}
+                    </span>
                   )}
                 </div>
               </div>
@@ -76,7 +91,7 @@ export function ArtworkViewer({ artwork, open, onClose }: ArtworkViewerProps) {
               {currentImage && !imageError ? (
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Image
-                    src={`/api/files/${currentImage}`}
+                    src={`/api/image/${currentImage}`}
                     alt={`${artwork.title} - Image ${currentImageIndex + 1}`}
                     fill
                     className={`object-contain transition-transform duration-200 ${
@@ -86,7 +101,7 @@ export function ArtworkViewer({ artwork, open, onClose }: ArtworkViewerProps) {
                     onError={() => setImageError(true)}
                     priority
                   />
-                  
+
                   {/* Image Navigation */}
                   {allImages.length > 1 && (
                     <>
@@ -116,7 +131,11 @@ export function ArtworkViewer({ artwork, open, onClose }: ArtworkViewerProps) {
                     className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white border-0"
                     onClick={() => setIsZoomed(!isZoomed)}
                   >
-                    {isZoomed ? <ZoomOut className="h-4 w-4" /> : <ZoomIn className="h-4 w-4" />}
+                    {isZoomed ? (
+                      <ZoomOut className="h-4 w-4" />
+                    ) : (
+                      <ZoomIn className="h-4 w-4" />
+                    )}
                   </Button>
 
                   {/* Image Counter */}
@@ -145,24 +164,30 @@ export function ArtworkViewer({ artwork, open, onClose }: ArtworkViewerProps) {
                 {/* Basic Info */}
                 <div className="space-y-3">
                   <h3 className="font-semibold text-lg">Details</h3>
-                  
+
                   {artwork.medium && (
                     <div>
-                      <dt className="text-sm font-medium text-muted-foreground">Medium</dt>
+                      <dt className="text-sm font-medium text-muted-foreground">
+                        Medium
+                      </dt>
                       <dd className="text-sm">{artwork.medium}</dd>
                     </div>
                   )}
-                  
+
                   {artwork.dimension && (
                     <div>
-                      <dt className="text-sm font-medium text-muted-foreground">Dimensions</dt>
+                      <dt className="text-sm font-medium text-muted-foreground">
+                        Dimensions
+                      </dt>
                       <dd className="text-sm">{artwork.dimension}</dd>
                     </div>
                   )}
-                  
+
                   {artwork.time && (
                     <div>
-                      <dt className="text-sm font-medium text-muted-foreground">Year</dt>
+                      <dt className="text-sm font-medium text-muted-foreground">
+                        Year
+                      </dt>
                       <dd className="text-sm">{artwork.time}</dd>
                     </div>
                   )}
@@ -174,7 +199,10 @@ export function ArtworkViewer({ artwork, open, onClose }: ArtworkViewerProps) {
                     <h3 className="font-semibold text-lg mb-3">Description</h3>
                     <div className="space-y-2">
                       {artwork.description.map((paragraph, index) => (
-                        <p key={index} className="text-sm text-muted-foreground leading-relaxed">
+                        <p
+                          key={index}
+                          className="text-sm text-muted-foreground leading-relaxed"
+                        >
                           {paragraph}
                         </p>
                       ))}
@@ -201,7 +229,7 @@ export function ArtworkViewer({ artwork, open, onClose }: ArtworkViewerProps) {
                           }`}
                         >
                           <Image
-                            src={`/api/files/${image}`}
+                            src={`/api/image/${image}`}
                             alt={`${artwork.title} - Thumbnail ${index + 1}`}
                             fill
                             className="object-cover"
@@ -224,3 +252,4 @@ export function ArtworkViewer({ artwork, open, onClose }: ArtworkViewerProps) {
     </Dialog>
   );
 }
+

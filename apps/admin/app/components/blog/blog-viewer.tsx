@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -14,10 +14,10 @@ interface BlogViewerProps {
 
 export function BlogViewer({ post, onClose, onEdit }: BlogViewerProps) {
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
@@ -47,19 +47,19 @@ export function BlogViewer({ post, onClose, onEdit }: BlogViewerProps) {
         {post.bannerImage && (
           <div className="relative aspect-video overflow-hidden rounded-lg border">
             <img
-              src={`/api/files/${post.bannerImage}`}
+              src={`/api/image/${post.bannerImage}`}
               alt={post.title}
               className="object-cover w-full h-full"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
+                target.style.display = "none";
               }}
             />
           </div>
         )}
 
         {/* Content */}
-        <div 
+        <div
           className="prose prose-sm max-w-none prose-headings:font-semibold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-p:leading-relaxed prose-img:rounded-lg prose-a:text-blue-600 prose-a:underline prose-blockquote:border-l-4 prose-blockquote:border-gray-300 prose-blockquote:pl-4 prose-blockquote:italic prose-ul:list-disc prose-ol:list-decimal prose-li:marker:text-gray-500 [&_.ql-font-noto-serif]:font-serif [&_.ql-font-noto-serif-sc]:font-serif [&_.ql-font-playfair]:font-serif [&_.ql-size-title]:text-4xl [&_.ql-size-title]:font-bold [&_.ql-size-subtitle]:text-5xl [&_.ql-size-subtitle]:font-bold [&_.ql-size-body]:text-base [&_.ql-size-caption]:text-xs [&_.ql-size-caption]:text-gray-500"
           dangerouslySetInnerHTML={{ __html: post.content || "" }}
         />
@@ -82,3 +82,4 @@ export function BlogViewer({ post, onClose, onEdit }: BlogViewerProps) {
     </>
   );
 }
+

@@ -9,12 +9,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:8787",
-        changeOrigin: true,
-        secure: false,
-      },
-      "/admin": {
-        target: "http://localhost:8787",
+        target: "http://localhost:4000",
         changeOrigin: true,
         secure: false,
       },

@@ -22,7 +22,10 @@ interface RichTextEditorProps {
 }
 
 export const RichTextEditor = forwardRef<QuillInstance, RichTextEditorProps>(
-  ({ content, onChange, placeholder = "Start writing...", readOnly = false }, ref) => {
+  (
+    { content, onChange, placeholder = "Start writing...", readOnly = false },
+    ref,
+  ) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const onChangeRef = useRef(onChange);
     const initializedRef = useRef(false);
@@ -32,15 +35,20 @@ export const RichTextEditor = forwardRef<QuillInstance, RichTextEditorProps>(
     });
 
     useEffect(() => {
-      if (ref && typeof ref === 'object' && ref.current) {
+      if (ref && typeof ref === "object" && ref.current) {
         ref.current.enable(!readOnly);
       }
     }, [ref, readOnly]);
 
     useEffect(() => {
       const initializeQuill = async () => {
-        if (typeof window === "undefined" || !containerRef.current || initializedRef.current) return;
-        
+        if (
+          typeof window === "undefined" ||
+          !containerRef.current ||
+          initializedRef.current
+        )
+          return;
+
         initializedRef.current = true;
 
         // Dynamically import Quill to avoid SSR issues
@@ -72,13 +80,18 @@ export const RichTextEditor = forwardRef<QuillInstance, RichTextEditorProps>(
                 formData.append("image", file);
 
                 const result = await uploadImage(formData);
-                if (result?.key && ref && typeof ref === 'object' && ref.current) {
+                if (
+                  result?.key &&
+                  ref &&
+                  typeof ref === "object" &&
+                  ref.current
+                ) {
                   const range = ref.current.getSelection(true);
                   if (range) {
                     ref.current.insertEmbed(
                       range.index,
                       "image",
-                      `/api/files/${result.key}`,
+                      `/api/image/${result.key}`,
                     );
                   }
                 }
@@ -129,7 +142,7 @@ export const RichTextEditor = forwardRef<QuillInstance, RichTextEditorProps>(
           ],
         }) as QuillInstance;
 
-        if (ref && typeof ref === 'object') {
+        if (ref && typeof ref === "object") {
           ref.current = quill;
         }
 
@@ -158,8 +171,13 @@ export const RichTextEditor = forwardRef<QuillInstance, RichTextEditorProps>(
 
     // Update content when prop changes
     useEffect(() => {
-      if (ref && typeof ref === 'object' && ref.current && content !== ref.current.root.innerHTML) {
-        ref.current.root.innerHTML = content || '';
+      if (
+        ref &&
+        typeof ref === "object" &&
+        ref.current &&
+        content !== ref.current.root.innerHTML
+      ) {
+        ref.current.root.innerHTML = content || "";
       }
     }, [content, ref]);
 
@@ -171,8 +189,7 @@ export const RichTextEditor = forwardRef<QuillInstance, RichTextEditorProps>(
         />
       </div>
     );
-  }
+  },
 );
 
-RichTextEditor.displayName = 'RichTextEditor';
-
+RichTextEditor.displayName = "RichTextEditor";

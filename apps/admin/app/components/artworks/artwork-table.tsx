@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import {
@@ -17,10 +17,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  Dialog,
-  DialogContent,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { MoreHorizontal, Eye, Edit, Trash2 } from "lucide-react";
 import { type Artwork } from "@/lib/db";
 import { deleteArtwork } from "@/lib/actions/artworks";
@@ -35,7 +32,11 @@ interface ArtworkTableProps {
   onArtworkDelete?: (artworkId: number) => void;
 }
 
-export function ArtworkTable({ artworks, onArtworkUpdate, onArtworkDelete }: ArtworkTableProps) {
+export function ArtworkTable({
+  artworks,
+  onArtworkUpdate,
+  onArtworkDelete,
+}: ArtworkTableProps) {
   const [editingArtwork, setEditingArtwork] = useState<Artwork | null>(null);
   const [viewingArtwork, setViewingArtwork] = useState<Artwork | null>(null);
   const [isDeleting, setIsDeleting] = useState<number | null>(null);
@@ -53,7 +54,9 @@ export function ArtworkTable({ artworks, onArtworkUpdate, onArtworkDelete }: Art
         onArtworkDelete?.(artwork.id);
       }
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Failed to delete artwork");
+      toast.error(
+        error instanceof Error ? error.message : "Failed to delete artwork",
+      );
     } finally {
       setIsDeleting(null);
     }
@@ -61,10 +64,14 @@ export function ArtworkTable({ artworks, onArtworkUpdate, onArtworkDelete }: Art
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case "painting": return "bg-blue-100 text-blue-800";
-      case "sculpture": return "bg-green-100 text-green-800";
-      case "installation": return "bg-purple-100 text-purple-800";
-      default: return "bg-gray-100 text-gray-800";
+      case "painting":
+        return "bg-blue-100 text-blue-800";
+      case "sculpture":
+        return "bg-green-100 text-green-800";
+      case "installation":
+        return "bg-purple-100 text-purple-800";
+      default:
+        return "bg-gray-100 text-gray-800";
     }
   };
 
@@ -86,7 +93,10 @@ export function ArtworkTable({ artworks, onArtworkUpdate, onArtworkDelete }: Art
           <TableBody>
             {artworks.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
+                <TableCell
+                  colSpan={7}
+                  className="text-center py-8 text-muted-foreground"
+                >
                   No artworks found. Create your first artwork!
                 </TableCell>
               </TableRow>
@@ -99,16 +109,17 @@ export function ArtworkTable({ artworks, onArtworkUpdate, onArtworkDelete }: Art
                       className="w-16 h-16 bg-muted rounded-md overflow-hidden hover:opacity-80 transition-opacity relative flex items-center justify-center"
                     >
                       <Image
-                        src={`/api/files/${artwork.image}`}
+                        src={`/api/image/${artwork.image}`}
                         alt={artwork.title}
                         fill
                         className="object-cover"
                         sizes="64px"
                         onError={(e) => {
-                          e.currentTarget.style.display = 'none';
+                          e.currentTarget.style.display = "none";
                           const parent = e.currentTarget.parentElement;
                           if (parent) {
-                            parent.innerHTML = '<span class="text-xs text-muted-foreground">IMG</span>';
+                            parent.innerHTML =
+                              '<span class="text-xs text-muted-foreground">IMG</span>';
                           }
                         }}
                       />
@@ -131,15 +142,19 @@ export function ArtworkTable({ artworks, onArtworkUpdate, onArtworkDelete }: Art
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem onClick={() => setViewingArtwork(artwork)}>
+                        <DropdownMenuItem
+                          onClick={() => setViewingArtwork(artwork)}
+                        >
                           <Eye className="mr-2 h-4 w-4" />
                           View
                         </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => setEditingArtwork(artwork)}>
+                        <DropdownMenuItem
+                          onClick={() => setEditingArtwork(artwork)}
+                        >
                           <Edit className="mr-2 h-4 w-4" />
                           Edit
                         </DropdownMenuItem>
-                        <DropdownMenuItem 
+                        <DropdownMenuItem
                           onClick={() => handleDelete(artwork)}
                           disabled={isDeleting === artwork.id}
                           className="text-red-600"
@@ -158,11 +173,14 @@ export function ArtworkTable({ artworks, onArtworkUpdate, onArtworkDelete }: Art
       </div>
 
       {/* Edit Dialog */}
-      <Dialog open={!!editingArtwork} onOpenChange={() => setEditingArtwork(null)}>
+      <Dialog
+        open={!!editingArtwork}
+        onOpenChange={() => setEditingArtwork(null)}
+      >
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           {editingArtwork && (
-            <ArtworkForm 
-              artwork={editingArtwork} 
+            <ArtworkForm
+              artwork={editingArtwork}
               onClose={() => setEditingArtwork(null)}
               onSuccess={(updatedArtwork) => {
                 onArtworkUpdate?.(updatedArtwork);
@@ -182,3 +200,4 @@ export function ArtworkTable({ artworks, onArtworkUpdate, onArtworkDelete }: Art
     </>
   );
 }
+
