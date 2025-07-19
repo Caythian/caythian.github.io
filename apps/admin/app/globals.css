@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "quill/dist/quill.snow.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -127,4 +128,85 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Rich Text Editor Font Classes */
+.ql-font-noto-serif { 
+  font-family: var(--font-noto-serif), serif; 
+}
+.ql-font-noto-serif-sc { 
+  font-family: var(--font-noto-serif-sc), serif; 
+}
+.ql-font-playfair { 
+  font-family: var(--font-playfair-display), serif; 
+}
+
+/* Rich Text Size Classes */
+.ql-size-title { 
+  font-size: 32px; 
+  font-weight: bold; 
+}
+.ql-size-subtitle { 
+  font-size: 40px; 
+  font-weight: bold; 
+}
+.ql-size-body { 
+  font-size: 16px; 
+}
+.ql-size-caption { 
+  font-size: 12px; 
+  color: rgba(0, 0, 0, 0.56); 
+}
+
+/* Quill Font Picker Labels */
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="noto-serif-sc"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="noto-serif-sc"]::before {
+  content: 'Noto Serif SC';
+  font-family: var(--font-noto-serif-sc), serif;
+}
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="playfair"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="playfair"]::before {
+  content: 'Playfair';
+  font-family: var(--font-playfair-display), serif;
+}
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="noto-serif"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="noto-serif"]::before {
+  content: 'Noto Serif';
+  font-family: var(--font-noto-serif), serif;
+}
+
+/* Quill Size Picker Labels */
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="body"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="body"]::before { 
+  content: 'Body'; 
+  font-size: 16px; 
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="title"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="title"]::before { 
+  content: 'Title'; 
+  font-size: 24px; 
+  font-weight: bold; 
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="subtitle"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="subtitle"]::before { 
+  content: 'Subtitle'; 
+  font-size: 20px; 
+  font-weight: bold; 
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="caption"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="caption"]::before { 
+  content: 'Caption'; 
+  font-size: 12px; 
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label::before { 
+  content: 'Body'; 
+}
+
+/* Ensure only one Quill toolbar is visible */
+.ql-container .ql-toolbar {
+  display: none;
+}
+
+.ql-snow.ql-toolbar {
+  display: block;
 }

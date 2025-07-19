@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Table,
@@ -201,6 +201,7 @@ export function FilesBrowser({ files }: FilesBrowserProps) {
         <DialogContent className="max-w-4xl">
           {viewingFile && (
             <div className="space-y-4">
+              <DialogTitle className="sr-only">View Image: {viewingFile.key}</DialogTitle>
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold">{viewingFile.key}</h3>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">

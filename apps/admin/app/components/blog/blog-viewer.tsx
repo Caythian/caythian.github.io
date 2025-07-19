@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Edit, Calendar } from "lucide-react";
 import { type Post } from "@/lib/db";
 
@@ -25,8 +25,8 @@ export function BlogViewer({ post, onClose, onEdit }: BlogViewerProps) {
     <>
       <DialogHeader>
         <DialogTitle className="text-2xl">{post.title}</DialogTitle>
-        <DialogDescription className="flex items-center gap-4">
-          <div className="flex items-center space-x-1 text-sm">
+        <div className="flex items-center gap-4 text-muted-foreground text-sm">
+          <div className="flex items-center space-x-1">
             <Calendar className="h-3 w-3" />
             <span>Published {formatDate(post.publishedAt)}</span>
           </div>
@@ -39,7 +39,7 @@ export function BlogViewer({ post, onClose, onEdit }: BlogViewerProps) {
               ))}
             </div>
           )}
-        </DialogDescription>
+        </div>
       </DialogHeader>
 
       <div className="space-y-6">
@@ -60,7 +60,7 @@ export function BlogViewer({ post, onClose, onEdit }: BlogViewerProps) {
 
         {/* Content */}
         <div 
-          className="prose prose-sm max-w-none"
+          className="prose prose-sm max-w-none prose-headings:font-semibold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-p:leading-relaxed prose-img:rounded-lg prose-a:text-blue-600 prose-a:underline prose-blockquote:border-l-4 prose-blockquote:border-gray-300 prose-blockquote:pl-4 prose-blockquote:italic prose-ul:list-disc prose-ol:list-decimal prose-li:marker:text-gray-500 [&_.ql-font-noto-serif]:font-serif [&_.ql-font-noto-serif-sc]:font-serif [&_.ql-font-playfair]:font-serif [&_.ql-size-title]:text-4xl [&_.ql-size-title]:font-bold [&_.ql-size-subtitle]:text-5xl [&_.ql-size-subtitle]:font-bold [&_.ql-size-body]:text-base [&_.ql-size-caption]:text-xs [&_.ql-size-caption]:text-gray-500"
           dangerouslySetInnerHTML={{ __html: post.content || "" }}
         />
 
