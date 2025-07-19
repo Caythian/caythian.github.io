@@ -80,19 +80,18 @@ export const RichTextEditor = forwardRef<QuillInstance, RichTextEditorProps>(
                 formData.append("image", file);
 
                 const result = await uploadImage(formData);
-                if (
-                  result?.key &&
-                  ref &&
-                  typeof ref === "object" &&
-                  ref.current
-                ) {
-                  const range = ref.current.getSelection(true);
-                  if (range) {
-                    ref.current.insertEmbed(
-                      range.index,
-                      "image",
-                      `/api/image/${result.key}`,
-                    );
+                if (result?.key) {
+                  // Get the quill instance from the container ref
+                  const quill = (containerRef.current as any).quill;
+                  if (quill) {
+                    const range = quill.getSelection(true);
+                    if (range) {
+                      quill.insertEmbed(
+                        range.index,
+                        "image",
+                        `/api/image/${result.key}`,
+                      );
+                    }
                   }
                 }
               } catch (error) {
@@ -141,6 +140,9 @@ export const RichTextEditor = forwardRef<QuillInstance, RichTextEditorProps>(
             "align",
           ],
         }) as QuillInstance;
+
+        // Attach quill instance to container for access in imageHandler
+        (containerRef.current as any).quill = quill;
 
         if (ref && typeof ref === "object") {
           ref.current = quill;
