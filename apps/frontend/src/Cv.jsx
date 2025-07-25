@@ -8,10 +8,10 @@ function Cv() {
         <div className="header">
           CV <span className="headersc">简历</span>
         </div>
-        <div className="cv-caption">Last update: June 2025</div>
+        <div className="cv-caption">Last update: July 2025</div>
         <a
-          href="/Xuecong_ArtResumeJun2025.pdf"
-          download="Xuecong_ArtResumeJun2025.pdf"
+          href="/Xuecong_ArtResumeJul2025.pdf"
+          download="Xuecong_ArtResumeJul2025.pdf"
           className="download-link"
         >
           Download CV
@@ -25,6 +25,9 @@ function Cv() {
         </div>
         <div className="header">Exhibitions:</div>
         <div className="generaldes">2025</div>
+        <div className="generaldes extra-indent">
+          Half Wind, Half Still, A Space Gallery, Brooklyn, NY
+        </div>
         <div className="generaldes extra-indent">
           NYU ISAI Public Showcase, La MaMa Theatre, New York, NY
         </div>
@@ -56,11 +59,14 @@ function Cv() {
         <div className="header">Awards and Grants:</div>
         <div className="generaldes">2025</div>
         <div className="generaldes extra-indent">
-          NYU Student Excellence Award
+          Founder's Day Award, NYU
+        </div>
+        <div className="generaldes extra-indent">
+          NYU Student Excellence Award, NYU
         </div>
         <div className="generaldes">2024</div>
         <div className="generaldes extra-indent">
-          Chen Cui Artist Practice Award
+          Chen Cui Artist Practice Award, NYU
         </div>
       </div>
       <div className="divider"></div>
