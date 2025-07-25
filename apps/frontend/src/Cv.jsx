@@ -59,14 +59,14 @@ function Cv() {
         <div className="header">Awards and Grants:</div>
         <div className="generaldes">2025</div>
         <div className="generaldes extra-indent">
-          Founder's Day Award, NYU
+          NYU Founder's Day Award
         </div>
         <div className="generaldes extra-indent">
-          NYU Student Excellence Award, NYU
+          NYU Student Excellence Award
         </div>
         <div className="generaldes">2024</div>
         <div className="generaldes extra-indent">
-          Chen Cui Artist Practice Award, NYU
+          Chen Cui Artist Practice Award
         </div>
       </div>
       <div className="divider"></div>
