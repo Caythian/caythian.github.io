@@ -19,32 +19,16 @@ function About() {
             US.{" "}
           </div>
           <div className="generaldes">
-            In an era marked by the rapid advancement of technology in domains
-            such as the internet, social media, and artificial intelligence, the
-            nature of things and people becomes ambiguous. Our knowledge and
-            beliefs are heavily influenced by our surroundings—the tangible
-            world and the cultural and historical contexts in which we find
-            ourselves. There is no absolute truth, only the truth we believe in.
-            This realization can make one feel small and seemingly irrelevant,
-            but it also provides an advantage, allowing for a momentary retreat
-            from the turmoil to observe the world from a distance. This is what
-            I do in art—to find the “observed truth”.
+            "My art is about human, or perhaps it is not. 
+            It reflects on how, from a fragments of my experience, that a bigger picture of humanity unfolds.
+            It is a bull charging into a vast variety of topics, mundane or peculiar. 
+            Society is a cold-blooded machine run by people with hearts." 
           </div>
           <div className="generaldes">
-            In my work, I reimagine the physical, cultural, and social
-            environments that surround me. My pieces feature realistic
-            portrayals of subjects and settings, yet they are situated within a
-            surreal, dream-like pseudo-reality. The ambiguity of these spaces is
-            achieved through the manipulation of light, which can be either
-            insufficient or excessive.
+            My art investigates the presence of subjectivity in an era encouraging reason and objective thinking. It shows the reciprocal nurturing between internal, unquantified qualities of humanity-such as emotion, memory, and belief- and individuals' perception of the external world. That is, for an individual, the fragment of the outer reality they choose to see often mirrors their soul. 
           </div>
           <div className="generaldes">
-            Occasionally, I employ a first-person perspective to reveal my
-            cognitive and emotional responses to an environment. Through this
-            approach, I explore the multifaceted nature of my own identity and
-            dissect my psyche. I hope that the audience will gain insights about
-            the multifaceted nature of the world from these perspectives as
-            well.
+            My interest lies in the stories and concepts characterized by the tension between human intuitive responses and their objective explanations. By recreating them from a peculiar angle like first-person perspective, my art highlights the immediacy of the human protagonist and their mental states. 
           </div>
         </div>
       </div>
