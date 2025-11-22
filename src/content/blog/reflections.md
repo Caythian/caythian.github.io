@@ -14,4 +14,3 @@ Art is a journey.
 Every piece starts with an idea...
 
 ![Studio Process](../../assets/placeholder.jpg)
-
