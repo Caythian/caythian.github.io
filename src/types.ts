@@ -18,4 +18,3 @@ export interface Post {
   tags?: string[];
   publishedAt: string | Date;
 }
-

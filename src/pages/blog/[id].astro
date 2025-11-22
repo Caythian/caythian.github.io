@@ -1,11 +1,11 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { getCollection, render } from 'astro:content';
-import { formatDate, generateSlug } from '../../lib/utils';
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { formatDate, generateSlug } from "../../lib/utils";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map(entry => ({
+  const posts = await getCollection("blog");
+  return posts.map((entry) => ({
     params: { id: generateSlug(entry.data.title) },
     props: { post: entry },
   }));

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import type React from "react";
+import { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import type { Artwork } from "../types";
 
@@ -43,11 +44,28 @@ export default function Popup({
   const currentImageUrl = imageUrls[currentDetailIndex];
 
   return (
-    <div className="popup-overlay" onClick={closeModal}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <span className="close" onClick={closeModal}>
+    <div
+      className="popup-overlay"
+      onClick={closeModal}
+      onKeyDown={(e) => e.key === "Escape" && closeModal()}
+      role="button"
+      tabIndex={0}
+    >
+      <div
+        className="modal"
+        onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => e.stopPropagation()}
+        role="button"
+        tabIndex={0}
+      >
+        <button
+          type="button"
+          className="close"
+          onClick={closeModal}
+          onKeyDown={(e) => e.key === "Enter" && closeModal()}
+        >
           &times;
-        </span>
+        </button>
         <div className="modal-content-wrapper">
           <div className="image-and-nav-wrapper" {...swipeHandlers}>
             <div className="modal-images-container">
@@ -57,18 +75,21 @@ export default function Popup({
                   style={{
                     backgroundImage: `url(${currentImageUrl})`,
                   }}
+                  role="img"
                   aria-label={selectedArtwork.title}
-                ></div>
+                />
               )}
             </div>
             <div className="nav-button-container">
               <button
+                type="button"
                 className={`nav-button prev ${!(imageUrls.length > 1 && currentDetailIndex > 0) ? "invisible" : ""}`}
                 onClick={(e) => handleNavClick(e, goToPrevious)}
               >
                 &lt;
               </button>
               <button
+                type="button"
                 className={`nav-button next ${!(imageUrls.length > 1 && currentDetailIndex < imageUrls.length - 1) ? "invisible" : ""}`}
                 onClick={(e) => handleNavClick(e, goToNext)}
               >
@@ -78,10 +99,18 @@ export default function Popup({
           </div>
           <div className="caption-wrapper">
             <div className="caption">Title: {selectedArtwork.title}</div>
-            {selectedArtwork.time && <div className="caption">Time: {selectedArtwork.time}</div>}
-            {selectedArtwork.medium && <div className="caption">Medium: {selectedArtwork.medium}</div>}
-            {selectedArtwork.dimension && <div className="caption">Dimension: {selectedArtwork.dimension}</div>}
-            
+            {selectedArtwork.time && (
+              <div className="caption">Time: {selectedArtwork.time}</div>
+            )}
+            {selectedArtwork.medium && (
+              <div className="caption">Medium: {selectedArtwork.medium}</div>
+            )}
+            {selectedArtwork.dimension && (
+              <div className="caption">
+                Dimension: {selectedArtwork.dimension}
+              </div>
+            )}
+
             <div className="description">
               Description:
               <div className="descriptionplus">
@@ -108,6 +137,7 @@ export default function Popup({
                       const words = desc.split(" ");
                       return words.length > 50 ? (
                         <button
+                          type="button"
                           onClick={() => setIsExpanded(!isExpanded)}
                           className="read-more-button"
                         >

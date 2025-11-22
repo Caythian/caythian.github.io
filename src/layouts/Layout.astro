@@ -1,16 +1,16 @@
 ---
-import '../styles/global.css';
-import Headbar from '../components/Headbar.astro';
-import Footer from '../components/Footer.astro';
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import Headbar from "../components/Headbar.astro";
 
 interface Props {
-	title?: string;
-	description?: string;
+  title?: string;
+  description?: string;
 }
 
-const { 
-	title = "Xuecong Wang - Artist",
-	description = "Portfolio of artist Xuecong Wang featuring artworks and blog posts"
+const {
+  title = "Xuecong Wang - Artist",
+  description = "Portfolio of artist Xuecong Wang featuring artworks and blog posts",
 } = Astro.props;
 ---
 
