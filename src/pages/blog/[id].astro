@@ -1,12 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
-import { formatDate } from '../../lib/utils';
+import { formatDate, generateSlug } from '../../lib/utils';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map(entry => ({
-    params: { id: entry.id },
+    params: { id: generateSlug(entry.data.title) },
     props: { post: entry },
   }));
 }
@@ -46,4 +46,3 @@ const { Content } = await render(post);
       </article>
     </div>
 </Layout>
-
