@@ -1,8 +1,9 @@
-import React, { useState, useMemo, useEffect } from "react";
+import type React from "react";
+import { useEffect, useMemo, useState } from "react";
 import { generateSlug } from "../lib/utils";
-import Popup from "./Popup";
-import Filter from "./Filter";
 import type { Artwork } from "../types";
+import Filter from "./Filter";
+import Popup from "./Popup";
 
 interface ProcessedArtwork extends Artwork {
   url: string;
@@ -20,9 +21,11 @@ export default function StaticArtworkGallery({
   const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
   const [currentDetailIndex, setCurrentDetailIndex] = useState(0);
   const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
-  
+
   // Pre-process artworks with image URLs and dimension detection
-  const [processedArtworks, setProcessedArtworks] = useState<ProcessedArtwork[]>([]);
+  const [processedArtworks, setProcessedArtworks] = useState<
+    ProcessedArtwork[]
+  >([]);
 
   useEffect(() => {
     if (selectedArtwork) {
@@ -37,21 +40,24 @@ export default function StaticArtworkGallery({
 
   // Initialize state from URL params
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
+    if (typeof window === "undefined") return;
+
     const params = new URLSearchParams(window.location.search);
     const category = params.get("category");
     const artworkSlug = params.get("artwork");
 
     // Set filter from URL
-    if (category && ["painting", "sculpture", "installation", "other"].includes(category)) {
+    if (
+      category &&
+      ["painting", "sculpture", "installation", "other"].includes(category)
+    ) {
       setSelectedFilter(category);
     }
 
     // Set selected artwork from URL (only if processedArtworks is ready)
     if (artworkSlug && processedArtworks.length > 0) {
       const artwork = processedArtworks.find(
-        (artwork) => generateSlug(artwork.title) === artworkSlug
+        (artwork) => generateSlug(artwork.title) === artworkSlug,
       );
       if (artwork) {
         setSelectedArtwork(artwork);
@@ -60,7 +66,9 @@ export default function StaticArtworkGallery({
     }
   }, [processedArtworks]);
 
-  const getImageDimensions = (src: string): Promise<{ width: number; height: number }> => {
+  const getImageDimensions = (
+    src: string,
+  ): Promise<{ width: number; height: number }> => {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.onload = () => resolve({ width: img.width, height: img.height });
@@ -76,14 +84,14 @@ export default function StaticArtworkGallery({
         url: artwork.image, // Already resolved URL
         isLoading: true,
       }));
-      
+
       setProcessedArtworks(initialArtworks);
 
       // Load image dimensions in batches to avoid overwhelming the browser
       const batchSize = 5;
       for (let i = 0; i < initialArtworks.length; i += batchSize) {
         const batch = initialArtworks.slice(i, i + batchSize);
-        
+
         const batchPromises = batch.map(async (artwork, index) => {
           try {
             const dimensions = await getImageDimensions(artwork.url);
@@ -94,7 +102,10 @@ export default function StaticArtworkGallery({
               isLoading: false,
             };
           } catch (error) {
-            console.warn(`Failed to load dimensions for ${artwork.title}:`, error);
+            console.warn(
+              `Failed to load dimensions for ${artwork.title}:`,
+              error,
+            );
             return {
               index: i + index,
               aspectRatio: 75, // Default 4:3 aspect ratio
@@ -104,10 +115,10 @@ export default function StaticArtworkGallery({
         });
 
         const results = await Promise.all(batchPromises);
-        
-        setProcessedArtworks(prev => {
+
+        setProcessedArtworks((prev) => {
           const updated = [...prev];
-          results.forEach(result => {
+          results.forEach((result) => {
             updated[result.index] = {
               ...updated[result.index],
               aspectRatio: result.aspectRatio,
@@ -132,7 +143,7 @@ export default function StaticArtworkGallery({
 
   const handleFilter = (filterType: string | null) => {
     setSelectedFilter(filterType);
-    
+
     // Update URL with filter
     const params = new URLSearchParams(window.location.search);
     if (filterType) {
@@ -141,30 +152,34 @@ export default function StaticArtworkGallery({
       params.delete("category");
     }
     // Keep artwork param if it exists
-    const newUrl = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname;
-    window.history.pushState({}, '', newUrl);
+    const newUrl = params.toString()
+      ? `${window.location.pathname}?${params.toString()}`
+      : window.location.pathname;
+    window.history.pushState({}, "", newUrl);
   };
 
   const openModal = (artwork: ProcessedArtwork) => {
     setSelectedArtwork(artwork);
     setCurrentDetailIndex(0);
-    
+
     // Update URL with artwork
     const params = new URLSearchParams(window.location.search);
     const artworkSlug = generateSlug(artwork.title);
     params.set("artwork", artworkSlug);
     const newUrl = `${window.location.pathname}?${params.toString()}`;
-    window.history.pushState({}, '', newUrl);
+    window.history.pushState({}, "", newUrl);
   };
 
   const closeModal = () => {
     setSelectedArtwork(null);
-    
+
     // Remove artwork from URL, keep category
     const params = new URLSearchParams(window.location.search);
     params.delete("artwork");
-    const newUrl = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname;
-    window.history.pushState({}, '', newUrl);
+    const newUrl = params.toString()
+      ? `${window.location.pathname}?${params.toString()}`
+      : window.location.pathname;
+    window.history.pushState({}, "", newUrl);
   };
 
   const goToPrevious = () => {
@@ -198,13 +213,18 @@ export default function StaticArtworkGallery({
 
       <div className="artworkgallery-wrapper">
         {filteredArtworks.map((artwork, index) => (
-          <div
-            className={`artworkgallery ${artwork.isLoading ? 'loading' : ''}`}
+          <button
+            type="button"
+            className={`artworkgallery ${artwork.isLoading ? "loading" : ""}`}
             key={artwork.id || index}
             onClick={() => openModal(artwork)}
-            style={{
-              '--aspect-ratio': artwork.aspectRatio ? `${artwork.aspectRatio}%` : '75%'
-            } as React.CSSProperties}
+            style={
+              {
+                "--aspect-ratio": artwork.aspectRatio
+                  ? `${artwork.aspectRatio}%`
+                  : "75%",
+              } as React.CSSProperties
+            }
           >
             <div className="artworkgallery-content">
               {artwork.isLoading ? (
@@ -217,13 +237,13 @@ export default function StaticArtworkGallery({
                   className="artwork-image"
                   onError={(e) => {
                     console.warn(`Failed to load image for ${artwork.title}`);
-                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.style.display = "none";
                   }}
                 />
               )}
               <div className="overlay">{artwork.title}</div>
             </div>
-          </div>
+          </button>
         ))}
       </div>
 
@@ -244,4 +264,3 @@ export default function StaticArtworkGallery({
     </div>
   );
 }
-

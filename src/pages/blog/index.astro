@@ -1,17 +1,17 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import StaticBlogGallery from '../../components/StaticBlogGallery.astro';
-import { getCollection } from 'astro:content';
-import type { Post } from '../../types';
+import { getCollection } from "astro:content";
+import StaticBlogGallery from "../../components/StaticBlogGallery.astro";
+import Layout from "../../layouts/Layout.astro";
+import type { Post } from "../../types";
 
-const blogCollection = await getCollection('blog');
-const posts: Post[] = blogCollection.map(entry => ({
+const blogCollection = await getCollection("blog");
+const posts: Post[] = blogCollection.map((entry) => ({
   id: entry.id,
   title: entry.data.title,
-  content: entry.body, 
+  content: entry.body,
   bannerImage: entry.data.bannerImage.src,
   tags: entry.data.tags,
-  publishedAt: entry.data.publishedAt
+  publishedAt: entry.data.publishedAt,
 }));
 ---
 

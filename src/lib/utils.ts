@@ -22,4 +22,3 @@ export function formatDate(dateString: string | Date): string {
     day: "numeric",
   });
 }
-
