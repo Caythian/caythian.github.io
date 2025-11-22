@@ -1,0 +1,63 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const artworks = await getCollection('artworks');
+  return artworks.map(entry => ({
+    params: { id: entry.id },
+    props: { artwork: entry },
+  }));
+}
+
+const { artwork } = Astro.props;
+const { data } = artwork;
+---
+
+<Layout title={`${data.title} - Xuecong Wang`}>
+  <div class="artwork-page">
+      <div class="artwork-container">
+        <div class="artwork-images">
+          <div class="main-image">
+            <img src={data.image.src} alt={data.title} />
+          </div>
+          {data.details && data.details.length > 0 && (
+            <div class="detail-images">
+              {data.details.map((img: any) => (
+                <img
+                  src={img.src}
+                  alt={`${data.title} detail`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div class="artwork-info">
+          <h1 class="artwork-title">{data.title}</h1>
+          {data.time && <p class="artwork-time">Time: {data.time}</p>}
+          {data.medium && (
+            <p class="artwork-medium">Medium: {data.medium}</p>
+          )}
+          {data.dimension && (
+            <p class="artwork-dimension">Dimension: {data.dimension}</p>
+          )}
+          <p class="artwork-category">Category: {data.category}</p>
+
+          {data.description && (
+            <div class="artwork-description">
+              <h2>Description:</h2>
+              {Array.isArray(data.description) ? (
+                data.description.map((line: string) => (
+                  <p>{line}</p>
+                ))
+              ) : (
+                <p>{data.description}</p>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+</Layout>
+

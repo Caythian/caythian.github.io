@@ -1,0 +1,34 @@
+---
+import '../styles/global.css';
+import Headbar from '../components/Headbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Xuecong Wang - Artist",
+	description = "Portfolio of artist Xuecong Wang featuring artworks and blog posts"
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<Headbar />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>

@@ -1,0 +1,38 @@
+---
+import type { Post } from '../types';
+import { generateSlug, formatDate } from '../lib/utils';
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+{(!posts || posts.length === 0) ? (
+  <div style={{ textAlign: "center", padding: "2rem", color: "#001125" }}>
+    No blog posts found.
+  </div>
+) : (
+  <div class="blog-gallery-wrapper">
+    {posts.map((post) => (
+      <a href={`/blog/${generateSlug(post.title)}`} style="text-decoration: none;">
+        <div class="blog-gallery">
+          <div class="blog-image-container">
+            <img
+              src={post.bannerImage}
+              alt={post.title}
+              loading="lazy"
+            />
+            <div class="blog-overlay">{post.title}</div>
+          </div>
+          <div class="blog-info">
+            <h3 class="blog-title">{post.title}</h3>
+            <p class="blog-date">{formatDate(post.publishedAt)}</p>
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+)}
+

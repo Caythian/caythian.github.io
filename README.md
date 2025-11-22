@@ -1,35 +1,46 @@
-# To run
+# Astro Starter Kit: Basics
 
-```
-npm run dev
-```
-
-# To stop
-
-```
-control + c
+```sh
+bun create astro@latest -- --template basics
 ```
 
-# To add changes for commit
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-```
-git add .
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src
+│   ├── assets
+│   │   └── astro.svg
+│   ├── components
+│   │   └── Welcome.astro
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
+└── package.json
 ```
 
-# To commit all changes staged
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-```
-git commit -m ""
-```
+## 🧞 Commands
 
-# To push
+All commands are run from the root of the project, from a terminal:
 
-```
-git push
-```
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `bun install`             | Installs dependencies                            |
+| `bun dev`             | Starts local dev server at `localhost:4321`      |
+| `bun build`           | Build your production site to `./dist/`          |
+| `bun preview`         | Preview your build locally, before deploying     |
+| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `bun astro -- --help` | Get help using the Astro CLI                     |
 
-# To check status
+## 👀 Want to learn more?
 
-```
-git status
-```
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
