@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bunx:*)",
+      "Bash(bun add:*)",
+      "Bash(mkdir:*)",
+      "Bash(find:*)",
+      "Bash(bun run:*)"
+    ],
+    "deny": []
+  }
+}
