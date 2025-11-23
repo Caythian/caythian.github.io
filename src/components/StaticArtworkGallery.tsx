@@ -223,6 +223,10 @@ export default function StaticArtworkGallery({
                 "--aspect-ratio": artwork.aspectRatio
                   ? `${artwork.aspectRatio}%`
                   : "75%",
+                border: "none",
+                fontSize: "inherit",
+                padding: 0,
+                background: "transparent",
               } as React.CSSProperties
             }
           >
