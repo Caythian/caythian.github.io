@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import Starter from "../../components/Starter.astro";
+import StaticArtworkGallery from "../../components/StaticArtworkGallery";
+import Layout from "../../layouts/Layout.astro";
+import type { Artwork } from "../../types";
+
+const artworksCollection = await getCollection("artworks");
+
+// Map collection to Artwork type
+const artworks: Artwork[] = artworksCollection.map((entry) => ({
+  id: entry.id,
+  title: entry.data.title,
+  category: entry.data.category,
+  image: entry.data.image.src,
+  time: entry.data.time,
+  medium: entry.data.medium,
+  dimension: entry.data.dimension,
+  description: entry.data.description,
+  details: entry.data.details?.map((img: any) => img.src),
+}));
+---
+
+<Layout title="Artworks - Xuecong Wang">
+  <Starter />
+  <StaticArtworkGallery artworks={artworks} client:load />
+</Layout>
+

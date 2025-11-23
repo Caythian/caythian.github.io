@@ -1,0 +1,48 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { formatDate, generateSlug } from "../../lib/utils";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((entry) => ({
+    params: { id: generateSlug(entry.data.title) },
+    props: { post: entry },
+  }));
+}
+
+const { post } = Astro.props;
+const { data } = post;
+const { Content } = await render(post);
+---
+
+<Layout title={`${data.title} - Xuecong Wang Blog`}>
+  <div class="blog-post-page">
+      <article class="blog-post-container">
+        <header class="blog-post-header">
+          <img
+            src={data.bannerImage.src}
+            alt={data.title}
+            class="blog-post-banner"
+          />
+          <div class="blog-post-meta">
+            <h1 class="blog-post-title">{data.title}</h1>
+            <p class="blog-post-date">{formatDate(data.publishedAt)}</p>
+            {data.tags && data.tags.length > 0 && (
+              <div class="blog-post-tags">
+                {data.tags.map((tag: string) => (
+                  <span class="blog-post-tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </header>
+
+        <div class="blog-post-content">
+          <Content />
+        </div>
+      </article>
+    </div>
+</Layout>
