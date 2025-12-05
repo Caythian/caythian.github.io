@@ -954,6 +954,28 @@ body.admin-route {
   border-radius: 4px;
 }
 
+.blog-image-figure {
+  margin: 1.5rem 0;
+  display: block;
+}
+
+.blog-image-figure img {
+  margin: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.blog-image-caption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  font-family: "Noto Sans SC", sans-serif;
+  line-height: 1.5;
+}
+
 .blog-post-content blockquote {
   border-left: 4px solid rgba(250, 233, 103, 1);
   margin: 1rem 0;
