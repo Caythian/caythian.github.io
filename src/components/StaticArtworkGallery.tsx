@@ -83,6 +83,8 @@ export default function StaticArtworkGallery({
         ...artwork,
         url: artwork.image, // Already resolved URL
         isLoading: true,
+        // Explicitly preserve details to ensure they're not lost
+        details: artwork.details,
       }));
 
       setProcessedArtworks(initialArtworks);
@@ -197,10 +199,18 @@ export default function StaticArtworkGallery({
   const getDetailImageUrls = () => {
     const urls: string[] = [];
     if (selectedArtwork) {
+      // Always include the main image first
       urls.push(selectedArtwork.image);
-      if (selectedArtwork.details && Array.isArray(selectedArtwork.details)) {
+      // Add detail images if they exist
+      if (selectedArtwork.details && Array.isArray(selectedArtwork.details) && selectedArtwork.details.length > 0) {
         selectedArtwork.details.forEach((detail) => {
-          urls.push(detail);
+          // Ensure detail is a string (URL)
+          if (detail && typeof detail === 'string') {
+            urls.push(detail);
+          } else if (detail && typeof detail === 'object' && detail.src) {
+            // Handle case where detail might be an Image object
+            urls.push(detail.src);
+          }
         });
       }
     }

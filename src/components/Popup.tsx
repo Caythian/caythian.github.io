@@ -41,7 +41,12 @@ export default function Popup({
   };
 
   const imageUrls = getDetailImageUrls();
-  const currentImageUrl = imageUrls[currentDetailIndex];
+  const currentImageUrl = imageUrls[currentDetailIndex] || imageUrls[0];
+  
+  // Format URL for CSS backgroundImage - quote it to handle spaces in path
+  const encodedImageUrl = currentImageUrl 
+    ? `url("${currentImageUrl}")`
+    : '';
 
   return (
     <div
@@ -69,14 +74,15 @@ export default function Popup({
         <div className="modal-content-wrapper">
           <div className="image-and-nav-wrapper" {...swipeHandlers}>
             <div className="modal-images-container">
-              {imageUrls.length > 0 && (
+              {imageUrls.length > 0 && currentImageUrl && (
                 <div
+                  key={`${selectedArtwork.id}-${currentDetailIndex}`}
                   className="image-wrapper"
                   style={{
-                    backgroundImage: `url(${currentImageUrl})`,
+                    backgroundImage: encodedImageUrl,
                   }}
                   role="img"
-                  aria-label={selectedArtwork.title}
+                  aria-label={`${selectedArtwork.title} - Image ${currentDetailIndex + 1} of ${imageUrls.length}`}
                 />
               )}
             </div>

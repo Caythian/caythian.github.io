@@ -2,8 +2,12 @@
 import { defineConfig } from 'astro/config';
 
 import react from '@astrojs/react';
+import { rehypeImageCaptions } from './src/lib/rehype-image-captions.ts';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()]
+  integrations: [react()],
+  markdown: {
+    rehypePlugins: [rehypeImageCaptions],
+  },
 });

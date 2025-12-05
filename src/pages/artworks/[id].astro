@@ -13,6 +13,9 @@ export async function getStaticPaths() {
 
 const { artwork } = Astro.props;
 const { data } = artwork;
+
+// Ensure detail images are properly processed - extract src from Image objects
+const detailImages = data.details?.map((img: any) => img?.src || img) || [];
 ---
 
 <Layout title={`${data.title} - Xuecong Wang`}>
@@ -22,12 +25,13 @@ const { data } = artwork;
           <div class="main-image">
             <img src={data.image.src} alt={data.title} />
           </div>
-          {data.details && data.details.length > 0 && (
+          {detailImages.length > 0 && (
             <div class="detail-images">
-              {data.details.map((img: any) => (
+              {detailImages.map((imgSrc: string, index: number) => (
                 <img
-                  src={img.src}
-                  alt={`${data.title} detail`}
+                  key={index}
+                  src={imgSrc}
+                  alt={`${data.title} detail ${index + 1}`}
                 />
               ))}
             </div>
