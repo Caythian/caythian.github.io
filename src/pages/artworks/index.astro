@@ -32,6 +32,21 @@ const artworks: Artwork[] = artworksCollection.map((entry) => {
     details,
   };
 });
+
+// Sort artworks by time in reverse chronological order (newest first)
+artworks.sort((a, b) => {
+  // Handle undefined time values - put them at the end
+  if (!a.time && !b.time) return 0;
+  if (!a.time) return 1;
+  if (!b.time) return -1;
+  
+  // Parse time as number for comparison (e.g., "2025" -> 2025)
+  const timeA = parseInt(a.time, 10) || 0;
+  const timeB = parseInt(b.time, 10) || 0;
+  
+  // Reverse chronological: newer (larger number) comes first
+  return timeB - timeA;
+});
 ---
 
 <Layout title="Artworks - Xuecong Wang">
