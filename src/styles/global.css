@@ -1044,6 +1044,13 @@ body.admin-route {
   gap: 50px;
 }
 
+.generaldes-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  gap: 20px;
+}
+
 .contact-wrapper {
   display: flex;
   flex-direction: column;
@@ -1125,5 +1132,9 @@ body.admin-route {
 
   .des-wrapper {
     margin: 20px;
+  }
+
+  .generaldes-wrapper {
+    max-width: 100%;
   }
 }
