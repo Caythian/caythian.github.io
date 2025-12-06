@@ -720,6 +720,7 @@ body.admin-route {
 
   .blog-image-container .blog-overlay {
     font-size: 12px;
+    text-align: center;
   }
 
   .filter-wrapper {
