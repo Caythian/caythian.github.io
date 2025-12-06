@@ -6,9 +6,8 @@ time: "2025"
 medium: "Watercolor on paper mounted on wood panel"
 dimension: "6 x 6 in"
 description:
-  - ""
-  - ""
-details:
   - "This particular painting reveals the strange sense of acquaintance established through the act of observation. Inspired by the artist’s daily commute—during which she frequently observes an attendant in a basement parking lot—her constant wondering about his vantage point and whether he notices the downward gaze of passersby seems to intertwine the fates of observer and observed."
+details:
+  - ""
 ---
 

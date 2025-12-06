@@ -9,6 +9,25 @@
   box-sizing: border-box;
 }
 
+/* Hide scrollbars */
+html,
+body,
+* {
+  /* Firefox */
+  scrollbar-width: none;
+  /* IE and Edge */
+  -ms-overflow-style: none;
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 /* Global styles */
 body {
   margin: 0;
@@ -465,6 +484,7 @@ body.admin-route {
   top: 10px;
   right: 1px;
   color: rgba(254, 249, 249, 0.5);
+  border: none;
   font-size: 35px;
   font-weight: bold;
   cursor: pointer;
