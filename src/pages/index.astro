@@ -1,3 +1,7 @@
 ---
-return Astro.redirect("/artworks");
 ---
+
+<meta http-equiv="refresh" content="0;url=/artworks" />
+<script>
+  window.location.href = "/artworks";
+</script>
