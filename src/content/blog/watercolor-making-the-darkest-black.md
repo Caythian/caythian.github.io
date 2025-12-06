@@ -1,11 +1,9 @@
 ---
 title: "Watercolor: Making the darkest black"
-bannerImage: "../../assets/placeholder.jpg"
+bannerImage: "../../assets/blogpic/Colorchart.png"
 tags: ["art","watercolor"]
-publishedAt: 2025-05-09
+publishedAt: 2025-09-05
 ---
-
-# Watercolor: Making the darkest black
 
 Ever since I started concentrating on watercolor painting two years ago, I’ve confronted this problem many times: how to create a rich and deep black color. While the transparency and luminosity have always been the charm of this medium, sometimes darkness needs to take place for the brightest colors to shine. 
 
