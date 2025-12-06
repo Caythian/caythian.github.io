@@ -57,7 +57,7 @@ export default function StaticArtworkGallery({
     // Set selected artwork from URL (only if processedArtworks is ready)
     if (artworkSlug && processedArtworks.length > 0) {
       const artwork = processedArtworks.find(
-        (artwork) => generateSlug(artwork.title) === artworkSlug,
+        (artwork) => generateSlug(artwork.title, artwork.id) === artworkSlug,
       );
       if (artwork) {
         setSelectedArtwork(artwork);
@@ -166,7 +166,7 @@ export default function StaticArtworkGallery({
 
     // Update URL with artwork
     const params = new URLSearchParams(window.location.search);
-    const artworkSlug = generateSlug(artwork.title);
+    const artworkSlug = generateSlug(artwork.title, artwork.id);
     params.set("artwork", artworkSlug);
     const newUrl = `${window.location.pathname}?${params.toString()}`;
     window.history.pushState({}, "", newUrl);

@@ -6,7 +6,7 @@ import { generateSlug } from "../../lib/utils";
 export async function getStaticPaths() {
   const artworks = await getCollection("artworks");
   return artworks.map((entry) => ({
-    params: { id: generateSlug(entry.data.title) },
+    params: { id: generateSlug(entry.data.title, entry.id) },
     props: { artwork: entry },
   }));
 }
