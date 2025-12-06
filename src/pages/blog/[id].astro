@@ -6,7 +6,7 @@ import { formatDate, generateSlug } from "../../lib/utils";
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((entry) => ({
-    params: { id: generateSlug(entry.data.title) },
+    params: { id: generateSlug(entry.data.title, entry.id) },
     props: { post: entry },
   }));
 }
