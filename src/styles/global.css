@@ -1047,7 +1047,8 @@ body.admin-route {
 .generaldes-wrapper {
   display: flex;
   flex-direction: column;
-  max-width: 80%;
+  max-width: 60%;
+  margin-left: 2%;
   gap: 20px;
 }
 
