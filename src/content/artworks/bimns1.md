@@ -6,7 +6,7 @@ time: "2025"
 medium: "Watercolor on paper mounted on wood panel"
 dimension: "6 x 6 in"
 description:
-  - "What a person stands for is often determined by where they sit. Similarly, what a person sees is often determined by who they are. “Because I Might Not See” is an ongoing series focusing on the synthesis between vision and mind, for this synthesis creates a subjective version of reality filtered with the artist’s agency. These moments depicted in this series aim to represent her ways of seeing, her points of interest, and thus, her identities."
+  - "\"Because I Might Not See\" is an ongoing series about the exchange between imagery and mind. It snaps moments of reality perceived through sensitive eyes. Premised on the title that one day one might not see, every moment of life turns precious, urgent. The artist chases the ephemeral and fugue vignettes, distilled through emotion, imagination, and reflection they trigger. It functions as a visual diary—developing, accumulating over time—tracing what was thought, sensed, and seen."
 details:
   - ""
 ---

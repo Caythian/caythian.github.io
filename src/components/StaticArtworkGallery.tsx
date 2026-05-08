@@ -5,6 +5,8 @@ import type { Artwork } from "../types";
 import Filter from "./Filter";
 import Popup from "./Popup";
 
+type SortMode = "time-desc" | "time-asc" | "title-asc" | "title-desc";
+
 interface ProcessedArtwork extends Artwork {
   url: string;
   aspectRatio?: number;
@@ -21,6 +23,7 @@ export default function StaticArtworkGallery({
   const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
   const [currentDetailIndex, setCurrentDetailIndex] = useState(0);
   const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
+  const [sortMode, setSortMode] = useState<SortMode>("time-desc");
 
   // Pre-process artworks with image URLs and dimension detection
   const [processedArtworks, setProcessedArtworks] = useState<
@@ -45,6 +48,7 @@ export default function StaticArtworkGallery({
     const params = new URLSearchParams(window.location.search);
     const category = params.get("category");
     const artworkSlug = params.get("artwork");
+    const sort = params.get("sort");
 
     // Set filter from URL
     if (
@@ -52,6 +56,15 @@ export default function StaticArtworkGallery({
       ["painting", "sculpture", "installation", "other"].includes(category)
     ) {
       setSelectedFilter(category);
+    }
+
+    if (
+      sort === "title-asc" ||
+      sort === "title-desc" ||
+      sort === "time-asc" ||
+      sort === "time-desc"
+    ) {
+      setSortMode(sort);
     }
 
     // Set selected artwork from URL (only if processedArtworks is ready)
@@ -143,6 +156,53 @@ export default function StaticArtworkGallery({
     );
   }, [processedArtworks, selectedFilter]);
 
+  const sortedArtworks = useMemo(() => {
+    const byTitleAsc = (a: ProcessedArtwork, b: ProcessedArtwork) => {
+      const cmp = a.title.localeCompare(b.title, undefined, {
+        sensitivity: "base",
+        numeric: true,
+      });
+      if (cmp !== 0) return cmp;
+      return (a.id || "").localeCompare(b.id || "");
+    };
+    const byTitleDesc = (a: ProcessedArtwork, b: ProcessedArtwork) =>
+      byTitleAsc(b, a);
+
+    const byTimeDesc = (a: ProcessedArtwork, b: ProcessedArtwork) => {
+      // Put artworks without a time at the end
+      if (!a.time && !b.time) return byTitleDesc(a, b);
+      if (!a.time) return 1;
+      if (!b.time) return -1;
+
+      const timeA = Number.parseInt(a.time, 10);
+      const timeB = Number.parseInt(b.time, 10);
+      if (Number.isFinite(timeA) && Number.isFinite(timeB) && timeA !== timeB) {
+        return timeB - timeA;
+      }
+      return byTitleDesc(a, b);
+    };
+
+    const byTimeAsc = (a: ProcessedArtwork, b: ProcessedArtwork) => {
+      // Put artworks without a time at the end
+      if (!a.time && !b.time) return byTitleDesc(a, b);
+      if (!a.time) return 1;
+      if (!b.time) return -1;
+
+      const timeA = Number.parseInt(a.time, 10);
+      const timeB = Number.parseInt(b.time, 10);
+      if (Number.isFinite(timeA) && Number.isFinite(timeB) && timeA !== timeB) {
+        return timeA - timeB;
+      }
+      return byTitleDesc(a, b);
+    };
+
+    const copy = [...filteredArtworks];
+    if (sortMode === "title-asc") return copy.sort(byTitleAsc);
+    if (sortMode === "title-desc") return copy.sort((a, b) => byTitleAsc(b, a));
+    if (sortMode === "time-asc") return copy.sort(byTimeAsc);
+    return copy.sort(byTimeDesc);
+  }, [filteredArtworks, sortMode]);
+
   const handleFilter = (filterType: string | null) => {
     setSelectedFilter(filterType);
 
@@ -157,6 +217,15 @@ export default function StaticArtworkGallery({
     const newUrl = params.toString()
       ? `${window.location.pathname}?${params.toString()}`
       : window.location.pathname;
+    window.history.pushState({}, "", newUrl);
+  };
+
+  const handleSortChange = (nextSort: SortMode) => {
+    setSortMode(nextSort);
+
+    const params = new URLSearchParams(window.location.search);
+    params.set("sort", nextSort);
+    const newUrl = `${window.location.pathname}?${params.toString()}`;
     window.history.pushState({}, "", newUrl);
   };
 
@@ -219,10 +288,26 @@ export default function StaticArtworkGallery({
 
   return (
     <div>
-      <Filter onFilter={handleFilter} selectedFilter={selectedFilter} />
+      <div className="artwork-controls">
+        <Filter onFilter={handleFilter} selectedFilter={selectedFilter} />
+        <label className="sort-control">
+          <span className="sort-control-label">Sort</span>
+          <select
+            className="sort-control-select"
+            value={sortMode}
+            onChange={(e) => handleSortChange(e.target.value as SortMode)}
+            aria-label="Sort artworks"
+          >
+            <option value="title-asc">Title (A to Z)</option>
+            <option value="title-desc">Title (Z to A)</option>
+            <option value="time-desc">Time (Newest)</option>
+            <option value="time-asc">Time (Oldest)</option>
+          </select>
+        </label>
+      </div>
 
       <div className="artworkgallery-wrapper">
-        {filteredArtworks.map((artwork, index) => (
+        {sortedArtworks.map((artwork, index) => (
           <button
             type="button"
             className={`artworkgallery ${artwork.isLoading ? "loading" : ""}`}
@@ -261,7 +346,7 @@ export default function StaticArtworkGallery({
         ))}
       </div>
 
-      {filteredArtworks.length === 0 && (
+      {sortedArtworks.length === 0 && (
         <div style={{ textAlign: "center", padding: "2rem", color: "#001125" }}>
           No artworks found for the selected category.
         </div>

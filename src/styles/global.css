@@ -187,15 +187,15 @@ body.admin-route {
 
 /* Artwork gallery styles */
 .artworkgallery-wrapper {
-  column-count: 3;
-  column-gap: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
   max-width: 100%;
   padding: 20px 4px;
 }
 
 .artworkgallery {
-  break-inside: avoid;
-  margin-bottom: 1em;
+  margin: 0;
   width: 100%;
   cursor: pointer;
   position: relative;
@@ -363,6 +363,40 @@ body.admin-route {
   display: flex;
   gap: 20px;
   align-items: center;
+}
+
+.artwork-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+
+.sort-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Playfair Display", serif;
+  color: #001125;
+}
+
+.sort-control-label {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+  color: #56606a;
+}
+
+.sort-control-select {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #fae96733;
+  border: none !important;
+  font-size: inherit;
+  font-family: inherit;
+  color: #001125;
 }
 
 .filter-option.active {
@@ -723,7 +757,8 @@ body.admin-route {
   }
 
   .artworkgallery-wrapper {
-    column-count: 1;
+    grid-template-columns: 1fr;
+    gap: 12px;
     margin: 10px;
     padding: 0 2px;
   }
