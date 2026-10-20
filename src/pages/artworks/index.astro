@@ -40,16 +40,24 @@ const byTitle = (a: ArtworkEntry, b: ArtworkEntry) =>
 const yearOf = (entry: ArtworkEntry) =>
   Number.parseInt(entry.data.time ?? "", 10);
 
-// "2025", or "2025–2026" when the pieces span several years
-const yearRange = (entries: ArtworkEntry[]) => {
+const yearSpan = (entries: ArtworkEntry[]) => {
   const years = entries.map(yearOf).filter(Number.isFinite);
-  if (years.length === 0) return undefined;
-  const first = Math.min(...years);
-  const last = Math.max(...years);
+  if (years.length === 0) return { first: 0, last: 0 };
+  return { first: Math.min(...years), last: Math.max(...years) };
+};
+
+// Finished: "2025", or "2024–2025" across several years. Ongoing: "2025–"
+const formatYears = (
+  { first, last }: { first: number; last: number },
+  status: "ongoing" | "finished",
+) => {
+  if (!first) return undefined;
+  if (status === "ongoing") return `${first}–`;
   return first === last ? String(first) : `${first}–${last}`;
 };
 
-const rows: ArtworkRow[] = [];
+// Each row with the years it spans, for sorting
+const rows: (ArtworkRow & { span: { first: number; last: number } })[] = [];
 
 for (const series of seriesCollection) {
   const entries = artworksCollection
@@ -60,11 +68,13 @@ for (const series of seriesCollection) {
   const coverEntry =
     entries.find((entry) => entry.id === series.data.cover?.id) ?? entries[0];
 
+  const span = yearSpan(entries);
   rows.push({
     id: series.id,
     title: series.data.title,
     category: series.data.category,
-    years: yearRange(entries),
+    span,
+    years: formatYears(span, series.data.status),
     summary: series.data.summary,
     cover: coverEntry.data.image.src,
     pieces: await Promise.all(entries.map(toArtwork)),
@@ -73,11 +83,13 @@ for (const series of seriesCollection) {
 
 for (const entry of artworksCollection) {
   if (entry.data.series) continue;
+  const span = yearSpan([entry]);
   rows.push({
     id: entry.id,
     title: entry.data.title,
     category: entry.data.category,
-    years: yearRange([entry]),
+    span,
+    years: formatYears(span, entry.data.status),
     summary: entry.data.summary,
     cover: entry.data.image.src,
     pieces: [await toArtwork(entry)],
@@ -85,25 +97,15 @@ for (const entry of artworksCollection) {
 }
 
 // Newest first: by the latest year in each row, then the earliest, then title
-const rowYears = (row: ArtworkRow) => {
-  const [first, last = first] = (row.years ?? "")
-    .split("–")
-    .map((year) => Number.parseInt(year, 10) || 0);
-  return { first, last };
-};
-
-rows.sort((a, b) => {
-  const yearsA = rowYears(a);
-  const yearsB = rowYears(b);
-  return (
-    yearsB.last - yearsA.last ||
-    yearsB.first - yearsA.first ||
-    a.title.localeCompare(b.title, undefined, { sensitivity: "base" })
-  );
-});
+rows.sort(
+  (a, b) =>
+    b.span.last - a.span.last ||
+    b.span.first - a.span.first ||
+    a.title.localeCompare(b.title, undefined, { sensitivity: "base" }),
+);
 ---
 
 <Layout title="Artworks - Xuecong Wang">
   <Starter />
-  <StaticArtworkGallery rows={rows} client:load />
+  <StaticArtworkGallery rows={rows.map(({ span, ...row }) => row)} client:load />
 </Layout>
