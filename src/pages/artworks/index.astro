@@ -56,8 +56,11 @@ const formatYears = (
   return first === last ? String(first) : `${first}–${last}`;
 };
 
-// Each row with the years it spans, for sorting
-const rows: (ArtworkRow & { span: { first: number; last: number } })[] = [];
+// Each row with the years it spans and whether it's ongoing, for sorting
+const rows: (ArtworkRow & {
+  span: { first: number; last: number };
+  ongoing: boolean;
+})[] = [];
 
 for (const series of seriesCollection) {
   const entries = artworksCollection
@@ -74,6 +77,7 @@ for (const series of seriesCollection) {
     title: series.data.title,
     category: series.data.category,
     span,
+    ongoing: series.data.status === "ongoing",
     years: formatYears(span, series.data.status),
     summary: series.data.summary,
     cover: coverEntry.data.image.src,
@@ -89,6 +93,7 @@ for (const entry of artworksCollection) {
     title: entry.data.title,
     category: entry.data.category,
     span,
+    ongoing: entry.data.status === "ongoing",
     years: formatYears(span, entry.data.status),
     summary: entry.data.summary,
     cover: entry.data.image.src,
@@ -96,9 +101,11 @@ for (const entry of artworksCollection) {
   });
 }
 
-// Newest first: by the latest year in each row, then the earliest, then title
+// Ongoing work first, then newest first: by the latest year in each row,
+// then the earliest, then title
 rows.sort(
   (a, b) =>
+    Number(b.ongoing) - Number(a.ongoing) ||
     b.span.last - a.span.last ||
     b.span.first - a.span.first ||
     a.title.localeCompare(b.title, undefined, { sensitivity: "base" }),
@@ -107,5 +114,5 @@ rows.sort(
 
 <Layout title="Artworks - Xuecong Wang">
   <Starter />
-  <StaticArtworkGallery rows={rows.map(({ span, ...row }) => row)} client:load />
+  <StaticArtworkGallery rows={rows.map(({ span, ongoing, ...row }) => row)} client:load />
 </Layout>
