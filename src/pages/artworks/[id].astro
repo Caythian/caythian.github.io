@@ -1,114 +1,32 @@
 ---
-import { getImage } from "astro:assets";
 import { getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
 import { generateSlug } from "../../lib/utils";
 
 export async function getStaticPaths() {
   const artworks = await getCollection("artworks");
   return artworks.map((entry) => ({
     params: { id: generateSlug(entry.data.title, entry.id) },
-    props: { artwork: entry },
+    props: { title: entry.data.title },
   }));
 }
 
-const { artwork } = Astro.props;
-const { data } = artwork;
-
-// Reopens this artwork's popup on the artworks page
-const backUrl = `/artworks?artwork=${Astro.params.id}`;
-const description = data.description?.filter((line: string) => line.trim()) ?? [];
-
-// The main image followed by its detail images, each with a small thumbnail
-const images = await Promise.all(
-  [data.image, ...(data.details ?? [])]
-    .filter((image) => image?.src)
-    .map(async (image, index) => ({
-      src: image.src,
-      thumb: (await getImage({ src: image, width: 240 })).src,
-      alt: index === 0 ? data.title : `${data.title} detail ${index}`,
-    })),
-);
+// Artworks are shown in the viewer on the artworks page; keep old links working
+const { title } = Astro.props;
+const target = `/artworks?artwork=${Astro.params.id}`;
 ---
 
-<Layout title={`${data.title} - Xuecong Wang`}>
-  <div class="artwork-page">
-      <a class="artwork-back" href={backUrl}>
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M15 6l-6 6 6 6" />
-        </svg>
-        Back
-      </a>
-      <div class="artwork-container">
-        <div class="artwork-images">
-          <div class="main-image">
-            <img src={images[0].src} alt={images[0].alt} />
-          </div>
-          {images.length > 1 && (
-            <div class="artwork-thumbs">
-              {images.map((image, index) => (
-                <button
-                  type="button"
-                  class="artwork-thumb"
-                  data-src={image.src}
-                  data-alt={image.alt}
-                  aria-label={`Show ${image.alt}`}
-                  aria-pressed={index === 0 ? "true" : "false"}
-                >
-                  <img src={image.thumb} alt="" loading="lazy" />
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div class="artwork-info">
-          <h1 class="artwork-title">{data.title}</h1>
-          {data.time && <p class="artwork-time">Time: {data.time}</p>}
-          {data.medium && (
-            <p class="artwork-medium">Medium: {data.medium}</p>
-          )}
-          {data.dimension && (
-            <p class="artwork-dimension">Dimension: {data.dimension}</p>
-          )}
-          <p class="artwork-category">Category: {data.category}</p>
-
-          {description.length > 0 && (
-            <div class="artwork-description">
-              {description.map((line: string) => <p>{line}</p>)}
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-</Layout>
-
-<script>
-  // Clicking a thumbnail shows that image in the large view
-  const mainImage = document.querySelector<HTMLImageElement>(".main-image img");
-  const thumbs = document.querySelectorAll<HTMLButtonElement>(".artwork-thumb");
-  for (const thumb of thumbs) {
-    thumb.addEventListener("click", () => {
-      if (!mainImage || !thumb.dataset.src) return;
-      mainImage.src = thumb.dataset.src;
-      mainImage.alt = thumb.dataset.alt ?? "";
-      for (const other of thumbs) {
-        other.setAttribute("aria-pressed", String(other === thumb));
-      }
-    });
-  }
-
-  // Coming from the artworks page, go back in history so the popup and
-  // scroll position are restored; otherwise follow the link.
-  document.querySelector(".artwork-back")?.addEventListener("click", (e) => {
-    const referrer = document.referrer ? new URL(document.referrer) : null;
-    if (
-      referrer?.origin === location.origin &&
-      referrer.pathname.replace(/\/$/, "") === "/artworks" &&
-      history.length > 1
-    ) {
-      e.preventDefault();
-      history.back();
-    }
-  });
-</script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title} - Xuecong Wang</title>
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <link rel="canonical" href={target} />
+  </head>
+  <body>
+    <a href={target}>{title}</a>
+    <script is:inline define:vars={{ target }}>
+      window.location.replace(target);
+    </script>
+  </body>
+</html>

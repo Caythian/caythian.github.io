@@ -1,4 +1,5 @@
 ---
+import { getImage } from "astro:assets";
 import { getCollection } from "astro:content";
 import Starter from "../../components/Starter.astro";
 import StaticArtworkGallery from "../../components/StaticArtworkGallery";
@@ -11,16 +12,23 @@ const seriesCollection = await getCollection("series");
 
 type ArtworkEntry = (typeof artworksCollection)[number];
 
-const toArtwork = (entry: ArtworkEntry): Artwork => ({
+const toArtwork = async (entry: ArtworkEntry): Promise<Artwork> => ({
   id: entry.id,
   slug: generateSlug(entry.data.title, entry.id),
-  image: entry.data.image.src,
   title: entry.data.title,
   time: entry.data.time,
   medium: entry.data.medium,
   dimension: entry.data.dimension,
   description: entry.data.description?.filter((line) => line.trim()),
-  hasDetails: (entry.data.details ?? []).some((detail) => detail?.src),
+  // The main image followed by its detail images, each with a small thumbnail
+  images: await Promise.all(
+    [entry.data.image, ...(entry.data.details ?? [])]
+      .filter((image) => image?.src)
+      .map(async (image) => ({
+        src: image.src,
+        thumb: (await getImage({ src: image, width: 160 })).src,
+      })),
+  ),
 });
 
 const byTitle = (a: ArtworkEntry, b: ArtworkEntry) =>
@@ -59,7 +67,7 @@ for (const series of seriesCollection) {
     years: yearRange(entries),
     summary: series.data.summary,
     cover: coverEntry.data.image.src,
-    pieces: entries.map(toArtwork),
+    pieces: await Promise.all(entries.map(toArtwork)),
   });
 }
 
@@ -72,7 +80,7 @@ for (const entry of artworksCollection) {
     years: yearRange([entry]),
     summary: entry.data.summary,
     cover: entry.data.image.src,
-    pieces: [toArtwork(entry)],
+    pieces: [await toArtwork(entry)],
   });
 }
 

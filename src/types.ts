@@ -5,17 +5,22 @@ export type ArtworkCategory =
   | "interdisciplinary"
   | "other";
 
-// A single artwork as shown in the series popup
+export interface ArtworkImage {
+  src: string;
+  thumb: string;
+}
+
+// A single artwork as shown in the artwork viewer
 export interface Artwork {
   id: string;
   slug: string;
-  image: string;
   title: string;
   time?: string;
   medium?: string;
   dimension?: string;
   description?: string[];
-  hasDetails: boolean;
+  // Main image first, then detail images
+  images: ArtworkImage[];
 }
 
 // One row on the artworks page: a series, or a standalone work
