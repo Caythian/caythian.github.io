@@ -918,10 +918,12 @@ body.admin-route {
   --thumb-size: 40px;
 }
 
+/* Shows at most four thumbnails; the arrows step through the rest */
 .popup-strip-list {
   display: flex;
   gap: 6px;
   min-width: 0;
+  max-width: calc(var(--thumb-size) * 4 + 6px * 3 + 6px);
   overflow-x: auto;
   padding: 3px;
 }
@@ -1171,7 +1173,6 @@ body.admin-route {
   }
 
   .popup-strips {
-    align-items: stretch;
     max-width: 100%;
   }
 
@@ -1181,10 +1182,6 @@ body.admin-route {
 
   .popup-strip.small {
     --thumb-size: 36px;
-  }
-
-  .popup-strip-list {
-    flex: 1;
   }
 
   .popup-description-body {
