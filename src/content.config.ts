@@ -6,6 +6,7 @@ const categories = [
   "sculpture",
   "installation",
   "interdisciplinary",
+  "transmedia",
   "other",
 ] as const;
 

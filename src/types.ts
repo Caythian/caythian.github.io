@@ -3,6 +3,7 @@ export type ArtworkCategory =
   | "sculpture"
   | "installation"
   | "interdisciplinary"
+  | "transmedia"
   | "other";
 
 export interface ArtworkImage {
