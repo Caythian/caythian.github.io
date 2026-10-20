@@ -1140,9 +1140,10 @@ body.admin-route {
     color: #56606a;
   }
 
-  .series-summary {
-    font-size: 13px;
-    line-height: 1.5;
+  /* Keep rows simple on phones: type, title and year only */
+  .series-summary,
+  .series-count {
+    display: none;
   }
 
   .popup-stage {
