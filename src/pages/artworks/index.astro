@@ -3,54 +3,99 @@ import { getCollection } from "astro:content";
 import Starter from "../../components/Starter.astro";
 import StaticArtworkGallery from "../../components/StaticArtworkGallery";
 import Layout from "../../layouts/Layout.astro";
-import type { Artwork } from "../../types";
+import { generateSlug } from "../../lib/utils";
+import type { Artwork, ArtworkRow } from "../../types";
 
 const artworksCollection = await getCollection("artworks");
+const seriesCollection = await getCollection("series");
 
-// Map collection to Artwork type
-const artworks: Artwork[] = artworksCollection.map((entry) => {
-  // Extract detail image URLs - handle both Image objects and strings
-  const details = entry.data.details
-    ? entry.data.details
-        .map((img: any) => {
-          if (typeof img === 'string') return img;
-          if (img && typeof img === 'object' && img.src) return img.src;
-          return null;
-        })
-        .filter((url: string | null): url is string => Boolean(url))
-    : undefined;
+type ArtworkEntry = (typeof artworksCollection)[number];
 
-  return {
+const toArtwork = (entry: ArtworkEntry): Artwork => ({
+  id: entry.id,
+  slug: generateSlug(entry.data.title, entry.id),
+  image: entry.data.image.src,
+  title: entry.data.title,
+  time: entry.data.time,
+  medium: entry.data.medium,
+  dimension: entry.data.dimension,
+  description: entry.data.description?.filter((line) => line.trim()),
+  hasDetails: (entry.data.details?.length ?? 0) > 0,
+});
+
+const byTitle = (a: ArtworkEntry, b: ArtworkEntry) =>
+  a.data.title.localeCompare(b.data.title, undefined, {
+    sensitivity: "base",
+    numeric: true,
+  });
+
+const yearOf = (entry: ArtworkEntry) =>
+  Number.parseInt(entry.data.time ?? "", 10);
+
+// "2025", or "2025–2026" when the pieces span several years
+const yearRange = (entries: ArtworkEntry[]) => {
+  const years = entries.map(yearOf).filter(Number.isFinite);
+  if (years.length === 0) return undefined;
+  const first = Math.min(...years);
+  const last = Math.max(...years);
+  return first === last ? String(first) : `${first}–${last}`;
+};
+
+const rows: ArtworkRow[] = [];
+
+for (const series of seriesCollection) {
+  const entries = artworksCollection
+    .filter((entry) => entry.data.series?.id === series.id)
+    .sort(byTitle);
+  if (entries.length === 0) continue;
+
+  const coverEntry =
+    entries.find((entry) => entry.id === series.data.cover?.id) ?? entries[0];
+
+  rows.push({
+    id: series.id,
+    title: series.data.title,
+    category: series.data.category,
+    years: yearRange(entries),
+    summary: series.data.summary,
+    cover: coverEntry.data.image.src,
+    pieces: entries.map(toArtwork),
+  });
+}
+
+for (const entry of artworksCollection) {
+  if (entry.data.series) continue;
+  rows.push({
     id: entry.id,
     title: entry.data.title,
     category: entry.data.category,
-    image: entry.data.image.src,
-    time: entry.data.time,
-    medium: entry.data.medium,
-    dimension: entry.data.dimension,
-    description: entry.data.description,
-    details,
-  };
-});
+    years: yearRange([entry]),
+    summary: entry.data.summary,
+    cover: entry.data.image.src,
+    pieces: [toArtwork(entry)],
+  });
+}
 
-// Sort artworks by time in reverse chronological order (newest first)
-artworks.sort((a, b) => {
-  // Handle undefined time values - put them at the end
-  if (!a.time && !b.time) return 0;
-  if (!a.time) return 1;
-  if (!b.time) return -1;
-  
-  // Parse time as number for comparison (e.g., "2025" -> 2025)
-  const timeA = parseInt(a.time, 10) || 0;
-  const timeB = parseInt(b.time, 10) || 0;
-  
-  // Reverse chronological: newer (larger number) comes first
-  return timeB - timeA;
+// Newest first: by the latest year in each row, then the earliest, then title
+const rowYears = (row: ArtworkRow) => {
+  const [first, last = first] = (row.years ?? "")
+    .split("–")
+    .map((year) => Number.parseInt(year, 10) || 0);
+  return { first, last };
+};
+
+rows.sort((a, b) => {
+  const yearsA = rowYears(a);
+  const yearsB = rowYears(b);
+  return (
+    yearsB.last - yearsA.last ||
+    yearsB.first - yearsA.first ||
+    a.title.localeCompare(b.title, undefined, { sensitivity: "base" })
+  );
 });
 ---
 
 <Layout title="Artworks - Xuecong Wang">
   <Starter />
-  <StaticArtworkGallery artworks={artworks} client:load />
+  <StaticArtworkGallery rows={rows} client:load />
 </Layout>
-

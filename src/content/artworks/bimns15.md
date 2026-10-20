@@ -2,6 +2,7 @@
 title: "Because I Might Not See No.15"
 image: "../../assets/artworkpic/Wang_BIMNS_No15_02.jpg"
 category: "painting"
+series: "because-i-might-not-see"
 time: "2026"
 medium: "Watercolor on paper mounted on wood panel"
 dimension: "6 x 6 in"

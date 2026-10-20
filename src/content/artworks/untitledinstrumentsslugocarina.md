@@ -2,6 +2,7 @@
 title: "Untitled Instruments (Slug Ocarina)"
 image: "../../assets/artworkpic/Wang_UntitledInstruments_SlugOcarina_01.jpg"
 category: "sculpture"
+series: "untitled-instruments"
 time: "2024"
 medium: "Ceramics"
 dimension: "unknown"

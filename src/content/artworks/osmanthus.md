@@ -2,6 +2,7 @@
 title: "The Osmanthus Archive"
 image: "../../assets/artworkpic/Wang_TheOsmanthusArchive_01.jpg"
 category: "installation"
+summary: "Dried osmanthus flowers as passport photos, reclaiming the personal stories that bureaucracy flattens."
 time: "2025"
 medium: "Whiteboard, printed paper, glossy photo, pins, dried osmanthus flower, curated music, archival boxes"
 dimension: "Dimension varies"

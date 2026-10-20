@@ -2,6 +2,7 @@
 title: "They Whisper"
 image: "../../assets/artworkpic/Wang_TheyWhisper_01.jpg"
 category: "painting"
+summary: "In foggy natural darkness, imagination and reality blur and a primal fear of the unknown reawakens."
 time: "2023"
 medium: "Watercolor on paper"
 dimension: "29 x 22 in"

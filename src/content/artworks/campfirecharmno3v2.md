@@ -2,6 +2,7 @@
 title: "Campfire Charm No.3 (versdion 2)"
 image: "../../assets/artworkpic/Wang_CampfireCharm_No3_v2_01.jpg"
 category: "painting"
+series: "campfire-charm"
 time: "2025"
 medium: "Watercolor on paper"
 dimension: "10 x 20 in"

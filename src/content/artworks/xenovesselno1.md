@@ -2,6 +2,7 @@
 title: "Xenovessel No.1"
 image: "../../assets/artworkpic/Wang_Xenovessel_No1_01.jpg"
 category: "sculpture"
+summary: "An alien vessel resembling organic forms in nature, offering a “twist in history”."
 time: "2024"
 medium: "ceramics"
 dimension: "4 x 8 x 4 in"

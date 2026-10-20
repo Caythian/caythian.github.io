@@ -2,6 +2,7 @@
 title: "假寐Jia Mei"
 image: "../../assets/artworkpic/Wang_JiaMei_01.jpg"
 category: "painting"
+summary: "Faking sleep, 假寐 (Jia Mei), as a metaphor for self-deception and retreat into the familiar."
 time: "2025"
 medium: "Watercolor on stretched paper"
 dimension: "18 x 24 x 0.8 in"

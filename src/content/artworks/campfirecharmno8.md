@@ -2,6 +2,7 @@
 title: "Campfire Charm No.8"
 image: "../../assets/artworkpic/Wang_CampfireCharm_No8_01.jpg"
 category: "painting"
+series: "campfire-charm"
 time: "2026"
 medium: "Watercolor on paper"
 dimension: "10 x 20 in"

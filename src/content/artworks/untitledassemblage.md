@@ -2,6 +2,7 @@
 title: "Untitled (assemblage)"
 image: "../../assets/artworkpic/Wang_Untitled(assemblage)_01.jpg"
 category: "sculpture"
+summary: "Fragile ceramic modules assembled with the careless playfulness of children’s stacking toys."
 time: "2024"
 medium: "ceramics"
 dimension: "9 x 4.5 x 4.5 in"

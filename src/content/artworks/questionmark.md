@@ -2,6 +2,7 @@
 title: "“?”"
 image: "../../assets/artworkpic/Wang_(QuestionMark)_01.jpg"
 category: "painting"
+summary: "The childhood string game Cat’s Cradle as a metaphor for human connection beyond social confines."
 time: "2025"
 medium: "Watercolor on paper mounted on wood panel"
 dimension: "12 x 12 in"

@@ -2,6 +2,7 @@
 title: "Eggs"
 image: "../../assets/artworkpic/Wang_Eggs_01.jpg"
 category: "sculpture"
+summary: "An experimental ceramic piece of red clay."
 time: "2024"
 medium: "ceramics"
 dimension: "6 x 12 x 6 in"

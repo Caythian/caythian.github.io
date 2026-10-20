@@ -2,6 +2,7 @@
 title: "A Bathroom of No Importance"
 image: "../../assets/artworkpic/Wang_ABathroomofNoImportance_Version2_01.jpg"
 category: "painting"
+summary: "The constant push-and-pull within an intimate relationship, played out like a chess game."
 time: "2025"
 medium: "Watercolor on paper"
 dimension: "28.5 x 21 in"

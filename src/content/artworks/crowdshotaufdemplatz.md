@@ -2,6 +2,7 @@
 title: "Crowd Shot: auf dem Platz"
 image: "../../assets/artworkpic/Wang_CrowdShot_01.jpg"
 category: "painting"
+summary: "“The hooded crows took over the plaza. I saw them. Their eyes glittered in the dark.”"
 time: "2024"
 medium: "Watercolor on paper mounted on wood panel"
 dimension: "8 x 8 in"

@@ -14,12 +14,22 @@ export async function getStaticPaths() {
 const { artwork } = Astro.props;
 const { data } = artwork;
 
+// Reopens this artwork's popup on the artworks page
+const backUrl = `/artworks?artwork=${Astro.params.id}`;
+const description = data.description?.filter((line: string) => line.trim()) ?? [];
+
 // Ensure detail images are properly processed - extract src from Image objects
 const detailImages = data.details?.map((img: any) => img?.src || img) || [];
 ---
 
 <Layout title={`${data.title} - Xuecong Wang`}>
   <div class="artwork-page">
+      <a class="artwork-back" href={backUrl}>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M15 6l-6 6 6 6" />
+        </svg>
+        Back
+      </a>
       <div class="artwork-container">
         <div class="artwork-images">
           <div class="main-image">
@@ -49,19 +59,28 @@ const detailImages = data.details?.map((img: any) => img?.src || img) || [];
           )}
           <p class="artwork-category">Category: {data.category}</p>
 
-          {data.description && (
+          {description.length > 0 && (
             <div class="artwork-description">
-              <h2>Description:</h2>
-              {Array.isArray(data.description) ? (
-                data.description.map((line: string) => (
-                  <p>{line}</p>
-                ))
-              ) : (
-                <p>{data.description}</p>
-              )}
+              {description.map((line: string) => <p>{line}</p>)}
             </div>
           )}
         </div>
       </div>
     </div>
 </Layout>
+
+<script>
+  // Coming from the artworks page, go back in history so the popup and
+  // scroll position are restored; otherwise follow the link.
+  document.querySelector(".artwork-back")?.addEventListener("click", (e) => {
+    const referrer = document.referrer ? new URL(document.referrer) : null;
+    if (
+      referrer?.origin === location.origin &&
+      referrer.pathname.replace(/\/$/, "") === "/artworks" &&
+      history.length > 1
+    ) {
+      e.preventDefault();
+      history.back();
+    }
+  });
+</script>

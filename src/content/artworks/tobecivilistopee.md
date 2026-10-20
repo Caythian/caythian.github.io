@@ -2,6 +2,7 @@
 title: "To Be Civil is To Pee"
 image: "../../assets/artworkpic/Wang_ToBeCivilisToPee_01.jpg"
 category: "installation"
+summary: "New York as a microcosm of post-capitalist society, seen through urine and dogs."
 time: "2024"
 medium: "Frame: Ceramic Painting: Watercolor on paper mounted on wood panel"
 dimension: "14 x 14 x 3 in"

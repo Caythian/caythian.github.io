@@ -2,6 +2,7 @@
 title: "Add One Year of Longevity to my Fate"
 image: "../../assets/artworkpic/Wang_AOYOLTMF_01.jpg"
 category: "installation"
+summary: "Elongating the Life Line on a palm, a futile struggle for survival in the fear of mortality."
 time: "2022"
 medium: "Original:Lipstick, pencil, and pen on paper."
 dimension: "8 x 34 x 5 in"
