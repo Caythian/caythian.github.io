@@ -14,7 +14,5 @@ description:
   - "A small shadow, a small me, "
   - "Inside–"
   - "A big shadow, another me"
-details:
-  - ""
 ---
 

@@ -20,7 +20,7 @@ const toArtwork = (entry: ArtworkEntry): Artwork => ({
   medium: entry.data.medium,
   dimension: entry.data.dimension,
   description: entry.data.description?.filter((line) => line.trim()),
-  hasDetails: (entry.data.details?.length ?? 0) > 0,
+  hasDetails: (entry.data.details ?? []).some((detail) => detail?.src),
 });
 
 const byTitle = (a: ArtworkEntry, b: ArtworkEntry) =>

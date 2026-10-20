@@ -1,4 +1,5 @@
 ---
+import { getImage } from "astro:assets";
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { generateSlug } from "../../lib/utils";
@@ -18,8 +19,16 @@ const { data } = artwork;
 const backUrl = `/artworks?artwork=${Astro.params.id}`;
 const description = data.description?.filter((line: string) => line.trim()) ?? [];
 
-// Ensure detail images are properly processed - extract src from Image objects
-const detailImages = data.details?.map((img: any) => img?.src || img) || [];
+// The main image followed by its detail images, each with a small thumbnail
+const images = await Promise.all(
+  [data.image, ...(data.details ?? [])]
+    .filter((image) => image?.src)
+    .map(async (image, index) => ({
+      src: image.src,
+      thumb: (await getImage({ src: image, width: 240 })).src,
+      alt: index === 0 ? data.title : `${data.title} detail ${index}`,
+    })),
+);
 ---
 
 <Layout title={`${data.title} - Xuecong Wang`}>
@@ -33,16 +42,21 @@ const detailImages = data.details?.map((img: any) => img?.src || img) || [];
       <div class="artwork-container">
         <div class="artwork-images">
           <div class="main-image">
-            <img src={data.image.src} alt={data.title} />
+            <img src={images[0].src} alt={images[0].alt} />
           </div>
-          {detailImages.length > 0 && (
-            <div class="detail-images">
-              {detailImages.map((imgSrc: string, index: number) => (
-                <img
-                  key={index}
-                  src={imgSrc}
-                  alt={`${data.title} detail ${index + 1}`}
-                />
+          {images.length > 1 && (
+            <div class="artwork-thumbs">
+              {images.map((image, index) => (
+                <button
+                  type="button"
+                  class="artwork-thumb"
+                  data-src={image.src}
+                  data-alt={image.alt}
+                  aria-label={`Show ${image.alt}`}
+                  aria-pressed={index === 0 ? "true" : "false"}
+                >
+                  <img src={image.thumb} alt="" loading="lazy" />
+                </button>
               ))}
             </div>
           )}
@@ -70,6 +84,20 @@ const detailImages = data.details?.map((img: any) => img?.src || img) || [];
 </Layout>
 
 <script>
+  // Clicking a thumbnail shows that image in the large view
+  const mainImage = document.querySelector<HTMLImageElement>(".main-image img");
+  const thumbs = document.querySelectorAll<HTMLButtonElement>(".artwork-thumb");
+  for (const thumb of thumbs) {
+    thumb.addEventListener("click", () => {
+      if (!mainImage || !thumb.dataset.src) return;
+      mainImage.src = thumb.dataset.src;
+      mainImage.alt = thumb.dataset.alt ?? "";
+      for (const other of thumbs) {
+        other.setAttribute("aria-pressed", String(other === thumb));
+      }
+    });
+  }
+
   // Coming from the artworks page, go back in history so the popup and
   // scroll position are restored; otherwise follow the link.
   document.querySelector(".artwork-back")?.addEventListener("click", (e) => {
