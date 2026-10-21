@@ -31,7 +31,10 @@ const toArtwork = async (entry: ArtworkEntry): Promise<Artwork> => ({
   ),
 });
 
-const byTitle = (a: ArtworkEntry, b: ArtworkEntry) =>
+// Pieces with an order come first, in that order; the rest follow by title
+const bySeriesOrder = (a: ArtworkEntry, b: ArtworkEntry) =>
+  (a.data.order ?? Number.POSITIVE_INFINITY) -
+    (b.data.order ?? Number.POSITIVE_INFINITY) ||
   a.data.title.localeCompare(b.data.title, undefined, {
     sensitivity: "base",
     numeric: true,
@@ -65,7 +68,7 @@ const rows: (ArtworkRow & {
 for (const series of seriesCollection) {
   const entries = artworksCollection
     .filter((entry) => entry.data.series?.id === series.id)
-    .sort(byTitle);
+    .sort(bySeriesOrder);
   if (entries.length === 0) continue;
 
   const coverEntry =

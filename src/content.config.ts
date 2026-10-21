@@ -23,6 +23,8 @@ const artworks = defineCollection({
       // Series this piece belongs to (file name in src/content/series, without .md).
       // Leave out for standalone works, which get their own row.
       series: reference("series").optional(),
+      // Position within its series (1 first). Pieces without one follow, by title.
+      order: z.number().optional(),
       // One-sentence description shown on the artworks list (standalone works only).
       summary: z.string().optional(),
       status,
