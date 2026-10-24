@@ -7,6 +7,8 @@ order: 2
 time: "2026"
 medium: "Faux fur painted with airbrush, synthetic hair, strings, silicone"
 dimension: "180 x 120 cm"
+description:
+  - "*Wolf Peach* builds a contemporary myth of a female werewolf. Its title translates *Lycopersicon*, the tomato’s old botanical name. Across history, people have turned what their systems couldn’t explain into animal-human hybrids. My werewolf stands for the qualities still grouped as wildness: emotion, impulse, conviction. Like the tomato, once feared as poison and slowly bred into an everyday fruit, wildness gets domesticated as we learn to explain it. The project asks how she might live among us today, in a society led by reason and science. Nothing in the project is her; everything in it passed through someone’s hands."
 details:
   - "../../assets/artworkpic/Wang_WolfPeachTheSkin_Detail_01.jpg"
   - "../../assets/artworkpic/Wang_WolfPeachTheSkin_Detail_02.jpg"

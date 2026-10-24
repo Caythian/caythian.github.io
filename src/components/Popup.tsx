@@ -2,6 +2,7 @@ import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import type { ArtworkRow } from "../types";
+import Emphasis from "./Emphasis";
 
 type Direction = "up" | "down" | "left" | "right";
 
@@ -275,7 +276,9 @@ export default function Popup({
         >
           <div className="popup-description-title">{piece.title}</div>
           {piece.description?.map((line, lineIndex) => (
-            <p key={lineIndex}>{line}</p>
+            <p key={lineIndex}>
+              <Emphasis text={line} />
+            </p>
           ))}
         </div>
       </div>

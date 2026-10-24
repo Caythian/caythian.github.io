@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { ArtworkRow } from "../types";
+import Emphasis from "./Emphasis";
 import Popup from "./Popup";
 
 interface StaticArtworkGalleryProps {
@@ -97,7 +98,9 @@ export default function StaticArtworkGallery({
                 {row.years && <span className="series-years">{row.years}</span>}
               </div>
               {row.summary && (
-                <div className="series-summary">{row.summary}</div>
+                <div className="series-summary">
+                  <Emphasis text={row.summary} />
+                </div>
               )}
               {row.pieces.length > 1 && (
                 <div className="series-count">{row.pieces.length} works</div>
